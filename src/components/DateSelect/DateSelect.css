@@ -1,0 +1,9 @@
+/* .date-section {
+  margin: 2em 0;
+} */
+
+.date {
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-size: 2rem;
+}

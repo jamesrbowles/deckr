@@ -1,0 +1,16 @@
+.plus-icon {
+  font-size: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.test {
+  font-size: 5rem;
+  display: inline-block;
+  margin-top: 0.3em;
+  cursor: pointer;
+}

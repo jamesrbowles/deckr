@@ -1,0 +1,14 @@
+.add-task-form {
+  display: inline-block;
+  width: 30vmin;
+}
+
+.add-task-input {
+  width: 100%;
+}
+
+.add-task-btn {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}

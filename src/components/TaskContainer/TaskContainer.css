@@ -1,0 +1,25 @@
+.task-container,
+.task-card {
+  aspect-ratio: 5 / 7;
+  width: 30vmin;
+
+  margin: 0 auto;
+}
+
+/* hover effects with task cards */
+
+/* .task-container:hover > .task-card:nth-child(1) {
+  transform: translate(-75%, 16%) rotate(-24deg);
+}
+
+.task-container:hover > .task-card:nth-child(2) {
+  transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.task-container:hover > .task-card:nth-child(3) {
+  transform: translate(25%, 8%) rotate(8deg);
+}
+
+.task-container:hover > .task-card:nth-child(4) {
+  transform: translate(75%, 16%) rotate(24deg);
+} */

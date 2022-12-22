@@ -1,0 +1,31 @@
+* {
+  font-family: "Comfortaa", cursive;
+  box-sizing: border-box;
+}
+*:not(input, button) {
+  color: white;
+}
+
+body {
+  margin: 0px;
+  background-color: rgba(118, 112, 112, 0.9);
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Tasks container */
+
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* Add task form */
+
+.add-task-form {
+  color: red;
+}
