@@ -1,4 +1,4 @@
-.plus-icon {
+.default-plus {
   font-size: 5rem;
   position: absolute;
   top: 50%;
@@ -8,9 +8,13 @@
   cursor: pointer;
 }
 
-.test {
+.added-plus {
   font-size: 5rem;
   display: inline-block;
   margin-top: 0.3em;
   cursor: pointer;
+}
+
+.form-plus {
+  display: none;
 }

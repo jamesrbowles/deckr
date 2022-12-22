@@ -3,6 +3,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+import "../TaskForm/TaskForm.css";
 import "../icons.css";
 import Header from "../Header/Header";
 import TaskForm from "../TaskForm/TaskForm";
@@ -17,14 +18,25 @@ function App() {
   const [addTaskBtn, setaddTaskBtn] = useState(false);
 
   const displayForm = () => {
-    setShowForm(!showForm);
+    setShowForm(true);
+  };
+
+  const addTaskBtnPosition = () => {
+    if (addTaskBtn) {
+      return "added-plus";
+    } else if (showForm) {
+      return "form-plus";
+    } else {
+      return "default-plus";
+    }
   };
 
   return (
     <>
-      <Header />
-      <DateSelect />
-
+      <div className={showForm ? "background-blur" : ""}>
+        {<Header />}
+        <DateSelect />
+      </div>
       {showForm && (
         <TaskForm
           task={task}
@@ -37,13 +49,18 @@ function App() {
           setaddTaskBtn={setaddTaskBtn}
         />
       )}
-      <TaskContainer task={task} tasks={tasks} />
-      <IoAddCircleOutline
-        className={`${addTaskBtn ? "test" : "plus-icon"}`}
-        onClick={displayForm}
-      />
+      <div className={showForm ? "background-blur" : ""}>
+        <TaskContainer task={task} tasks={tasks} />
+        <IoAddCircleOutline
+          className={addTaskBtnPosition()}
+          onClick={displayForm}
+        />
+      </div>
     </>
   );
 }
 
 export default App;
+
+/* Ternary operator for plus icon
+`${addTaskBtn || showForm ? "added-plus" : "default-plus"}` */

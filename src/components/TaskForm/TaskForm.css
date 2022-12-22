@@ -1,6 +1,23 @@
+/* .modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200);
+  filter: blur(4px);
+} */
+
 .add-task-form {
-  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 30vmin;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 25px;
+  color: black;
+  z-index: 5;
 }
 
 .add-task-input {
@@ -10,5 +27,23 @@
 .add-task-btn {
   display: block;
   width: 100%;
+  cursor: pointer;
+}
+
+.modal-title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.modal-close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-close button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
   cursor: pointer;
 }

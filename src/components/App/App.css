@@ -2,9 +2,9 @@
   font-family: "Comfortaa", cursive;
   box-sizing: border-box;
 }
-*:not(input, button) {
+/* *:not(input, button) {
   color: white;
-}
+} */
 
 body {
   margin: 0px;
@@ -12,6 +12,15 @@ body {
   height: 100vh;
   overflow: hidden;
   text-align: center;
+  color: white;
+}
+
+/* When task form is open */
+
+.background-blur {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Tasks container */
@@ -22,10 +31,4 @@ body {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-/* Add task form */
-
-.add-task-form {
-  color: red;
 }
