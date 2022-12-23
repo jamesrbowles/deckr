@@ -33,17 +33,13 @@ function App() {
 
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const displayTaskBtns = () => {
-    console.log(tasks[0].id);
-    setShowTaskBtns(true);
-  };
-
-  const hideTaskBtns = () => {
-    setShowTaskBtns(false);
+    console.log(tasks[0]);
+    setShowTaskBtns(!showTaskBtns);
   };
 
   return (
     <>
-      <div className={showForm ? "background-blur" : ""} onClick={hideTaskBtns}>
+      <div className={showForm ? "background-blur" : ""}>
         <Header />
         <DateSelect />
       </div>

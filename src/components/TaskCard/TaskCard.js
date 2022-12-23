@@ -13,21 +13,17 @@ const TaskCard = ({ task, tasks, displayTaskBtns, showTaskBtns, id }) => {
   const stagger = useRef({
     transform: `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg)`,
   });
-  const firstKey = tasks[0].id;
+  const firstKey = tasks[tasks.length - 1].id;
   return (
     <div
       className="task-card"
       style={stagger.current}
-      onMouseOver={() => (firstKey == task.id ? displayTaskBtns() : "")}
+      onClick={displayTaskBtns}
     >
       <div className="task-text">{task.text}</div>
-      <TaskBtns showTaskBtns={showTaskBtns} />
+      {firstKey === task.id && <TaskBtns showTaskBtns={showTaskBtns} />}
     </div>
   );
 };
 
 export default TaskCard;
-
-/*       onMouseOver={() => (firstKey === task.id ? displayTaskBtns() : "")} */
-
-/*     onClick={() => console.log(firstKey + " " + task.id)} */

@@ -1,5 +1,5 @@
 .task-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(87, 112, 205);
   border-radius: 1vmin;
   position: absolute;
   transition: transform 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
@@ -7,6 +7,7 @@
   padding-top: 2em;
   display: flex;
   justify-content: center;
+  z-index: 5;
 }
 
 .task-text {
@@ -14,22 +15,23 @@
 
 /* task card staggered stacking */
 
-.task-card:nth-child(1) {
+/* .task-card:nth-child(1) {
   background-color: rgba(255, 223, 22, 0.5);
-  /*   transform: translateX(-5%) rotate(-1deg); */
+     transform: translateX(-5%) rotate(-1deg); 
 }
 
 .task-card:nth-child(2) {
   background-color: rgba(255, 0, 0, 0.5);
-  /*   transform: rotate(2deg); */
+  /  transform: rotate(2deg); 
 }
 
 .task-card:nth-child(3) {
   background-color: rgba(0, 255, 0, 0.5);
-  /*   transform: translateX(-6%) rotate(-3deg); */
+  /  transform: translateX(-6%) rotate(-3deg); 
 }
 
 .task-card:nth-child(4) {
   background-color: rgba(0, 0, 255, 0.5);
-  /*   transform: translate(10%, 3%) rotate(5deg); */
+    transform: translate(10%, 3%) rotate(5deg); 
 }
+ */

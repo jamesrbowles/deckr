@@ -1,7 +1,7 @@
 import TaskCard from "../TaskCard/TaskCard";
 import "./TaskContainer.css";
 
-const TaskContainer = ({ tasks, displayTaskBtns, showTaskBtns }) => {
+const TaskContainer = ({ tasks, task, displayTaskBtns, showTaskBtns }) => {
   return (
     <div className="task-container">
       {tasks.map((task) => (
