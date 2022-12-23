@@ -14,13 +14,13 @@ import DateSelect from "../DateSelect/DateSelect";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
-  const [showForm, setShowForm] = useState(false);
-  const [addTaskBtn, setaddTaskBtn] = useState(false);
 
+  const [showForm, setShowForm] = useState(false);
   const displayForm = () => {
     setShowForm(true);
   };
 
+  const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (addTaskBtn) {
       return "added-plus";
@@ -31,10 +31,20 @@ function App() {
     }
   };
 
+  const [showTaskBtns, setShowTaskBtns] = useState(false);
+  const displayTaskBtns = () => {
+    console.log(tasks[0].id);
+    setShowTaskBtns(true);
+  };
+
+  const hideTaskBtns = () => {
+    setShowTaskBtns(false);
+  };
+
   return (
     <>
-      <div className={showForm ? "background-blur" : ""}>
-        {<Header />}
+      <div className={showForm ? "background-blur" : ""} onClick={hideTaskBtns}>
+        <Header />
         <DateSelect />
       </div>
       {showForm && (
@@ -50,7 +60,12 @@ function App() {
         />
       )}
       <div className={showForm ? "background-blur" : ""}>
-        <TaskContainer task={task} tasks={tasks} />
+        <TaskContainer
+          task={task}
+          tasks={tasks}
+          displayTaskBtns={displayTaskBtns}
+          showTaskBtns={showTaskBtns}
+        />
         <IoAddCircleOutline
           className={addTaskBtnPosition()}
           onClick={displayForm}

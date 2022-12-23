@@ -1,0 +1,43 @@
+.fa {
+  font-size: 3.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: top 800ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    left 800ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: -5;
+}
+
+.fa-edit {
+}
+
+.fa-complete {
+}
+
+.fa-delete {
+}
+
+.fa-expand {
+}
+
+.fa-edit-expanded {
+  top: -10%;
+  left: 120%;
+}
+
+.fa-complete-expanded {
+  top: 110%;
+  left: 120%;
+}
+
+.fa-delete-expanded {
+  top: 110%;
+  left: -20%;
+}
+
+.fa-expand-expanded {
+  top: -8%;
+  left: -15%;
+}
