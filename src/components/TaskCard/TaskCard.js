@@ -15,13 +15,17 @@ const TaskCard = ({ task, tasks, displayTaskBtns, showTaskBtns, id }) => {
   });
   const firstKey = tasks[tasks.length - 1].id;
   return (
-    <div
-      className="task-card"
-      style={stagger.current}
-      onClick={displayTaskBtns}
-    >
-      <div className="task-text">{task.text}</div>
-      {firstKey === task.id && <TaskBtns showTaskBtns={showTaskBtns} />}
+    <div>
+      <div
+        className="task-card"
+        style={stagger.current}
+        onClick={displayTaskBtns}
+      >
+        <div className="task-text">{task.text}</div>
+      </div>
+      <div className="task-card-container-copy" style={stagger.current}>
+        {firstKey === task.id && <TaskBtns showTaskBtns={showTaskBtns} />}
+      </div>
     </div>
   );
 };
