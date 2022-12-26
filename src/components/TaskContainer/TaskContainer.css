@@ -5,6 +5,10 @@
   margin: 0 auto;
 }
 
+/* .task-container {
+  position: relative;
+  z-index: 5;
+} */
 /* hover effects with task cards */
 
 /* .task-container:hover > .task-card:nth-child(1) {
