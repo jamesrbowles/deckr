@@ -2,7 +2,14 @@ import { useRef } from "react";
 import "./TaskCard.css";
 import TaskBtns from "../TaskBtns/TaskBtns";
 
-const TaskCard = ({ task, tasks, displayTaskBtns, showTaskBtns, id }) => {
+const TaskCard = ({
+  task,
+  tasks,
+  displayTaskBtns,
+  showTaskBtns,
+  deleteTask,
+  completeTask,
+}) => {
   const translateX =
     Math.floor(Math.random() * 12) * (Math.round(Math.random()) ? 1 : -1);
   const translateY =
@@ -14,6 +21,7 @@ const TaskCard = ({ task, tasks, displayTaskBtns, showTaskBtns, id }) => {
     transform: `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg)`,
   });
   const firstKey = tasks[tasks.length - 1].id;
+
   return (
     <div>
       <div
@@ -21,10 +29,20 @@ const TaskCard = ({ task, tasks, displayTaskBtns, showTaskBtns, id }) => {
         style={stagger.current}
         onClick={displayTaskBtns}
       >
-        <div className="task-text">{task.text}</div>
+        <div className="task-text">
+          {task.name}
+          {task.description}
+        </div>
       </div>
       <div className="task-card-container-copy" style={stagger.current}>
-        {firstKey === task.id && <TaskBtns showTaskBtns={showTaskBtns} />}
+        {firstKey === task.id && (
+          <TaskBtns
+            showTaskBtns={showTaskBtns}
+            deleteTask={deleteTask}
+            task={task}
+            completeTask={completeTask}
+          />
+        )}
       </div>
     </div>
   );

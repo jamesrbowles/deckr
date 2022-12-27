@@ -1,26 +1,24 @@
 import "./TaskForm.css";
 import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
 
-const TaskForm = ({
-  task,
-  tasks,
-  setTask,
-  setTasks,
-  showForm,
-  setShowForm,
-  setaddTaskBtn,
-}) => {
+const TaskForm = ({ setTasks, showForm, setShowForm, setaddTaskBtn }) => {
+  const taskNameRef = useRef();
+  const taskDescRef = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newTask = {
-      id: uuidv4(),
-      text: task,
-      completed: false,
-    };
-
-    setTasks((prev) => [...prev, newTask]);
-    setTask("");
+    const name = taskNameRef.current.value;
+    const desc = taskDescRef.current.value;
+    setTasks((prev) => {
+      return [
+        ...prev,
+        { id: uuidv4(), name: name, description: desc, complete: false },
+      ];
+    });
+    taskNameRef.current.value = null;
+    taskDescRef.current.value = null;
     setShowForm(!showForm);
     setaddTaskBtn(true);
   };
@@ -35,12 +33,28 @@ const TaskForm = ({
           <div className="modal-title">
             <h1>Add your task</h1>
           </div>
+          {/* <label htmlFor="name" className="form-labels">
+            Name
+          </label> */}
           <input
             type="text"
-            onChange={(e) => setTask(e.target.value)}
-            value={task}
+            id="name"
+            ref={taskNameRef}
             className="add-task-input"
+            placeholder="Task name"
+            required
           />
+
+          {/* <label htmlFor="desc" className="form-labels">
+            Description
+          </label> */}
+          <textarea
+            id="desc"
+            ref={taskDescRef}
+            className="add-task-input"
+            placeholder="Task details"
+            rows="8"
+          ></textarea>
           <button type="submit" className="add-task-btn">
             Submit
           </button>

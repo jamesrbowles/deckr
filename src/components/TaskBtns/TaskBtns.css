@@ -8,18 +8,7 @@
   transition: top 800ms cubic-bezier(0.075, 0.82, 0.165, 1),
     left 800ms cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: -2;
-}
-
-.fa-edit {
-}
-
-.fa-complete {
-}
-
-.fa-delete {
-}
-
-.fa-expand {
+  cursor: pointer;
 }
 
 .fa-edit-expanded {
@@ -32,9 +21,17 @@
   left: 120%;
 }
 
+.fa-complete-expanded:hover {
+  color: rgb(5, 172, 5);
+}
+
 .fa-delete-expanded {
   top: 110%;
   left: -20%;
+}
+
+.fa-delete-expanded:hover {
+  color: rgb(255, 33, 33);
 }
 
 .fa-expand-expanded {

@@ -6,20 +6,18 @@ import {
   FaExpandAlt,
 } from "react-icons/fa";
 
-const TaskBtns = ({ showTaskBtns }) => {
+const TaskBtns = ({ showTaskBtns, deleteTask, task, completeTask }) => {
   return (
     <div>
-      <FaExpandAlt
-        className={showTaskBtns ? "fa fa-expand-expanded" : "fa fa-expand"}
-      />
-      <FaRegEdit
-        className={showTaskBtns ? "fa fa-edit-expanded" : "fa fa-edit"}
-      />
+      <FaExpandAlt className={showTaskBtns ? "fa fa-expand-expanded" : "fa"} />
+      <FaRegEdit className={showTaskBtns ? "fa fa-edit-expanded" : "fa"} />
       <FaRegTimesCircle
-        className={showTaskBtns ? "fa fa-delete-expanded" : "fa fa-delete"}
+        className={showTaskBtns ? "fa fa-delete-expanded" : "fa"}
+        onClick={() => deleteTask(task.id)}
       />
       <FaRegCheckCircle
-        className={showTaskBtns ? "fa fa-complete-expanded" : "fa fa-complete"}
+        className={showTaskBtns ? "fa fa-complete-expanded" : "fa"}
+        onClick={() => completeTask(task.id)}
       />
     </div>
   );

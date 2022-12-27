@@ -1,10 +1,3 @@
-/* .modal-background {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(200, 200, 200);
-  filter: blur(4px);
-} */
-
 .add-task-form {
   position: absolute;
   top: 50%;
@@ -22,12 +15,21 @@
 
 .add-task-input {
   width: 100%;
+  margin-bottom: 1em;
+  resize: none;
+  height: auto;
+}
+
+.form-labels {
+  float: left;
+  margin-bottom: 0.3em;
 }
 
 .add-task-btn {
   display: block;
   width: 100%;
   cursor: pointer;
+  padding: 0.5em;
 }
 
 .modal-title {

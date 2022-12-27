@@ -1,14 +1,12 @@
-import "./App.css";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+import "./App.css";
 import "../TaskForm/TaskForm.css";
 import "../icons.css";
 import Header from "../Header/Header";
 import TaskForm from "../TaskForm/TaskForm";
 import TaskContainer from "../TaskContainer/TaskContainer";
-import TaskCard from "../TaskCard/TaskCard";
 import DateSelect from "../DateSelect/DateSelect";
 
 function App() {
@@ -23,18 +21,27 @@ function App() {
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (addTaskBtn) {
-      return "added-plus";
+      return "plus added-plus";
     } else if (showForm) {
       return "form-plus";
     } else {
-      return "default-plus";
+      return "plus default-plus";
     }
   };
 
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const displayTaskBtns = () => {
-    console.log(tasks[0]);
     setShowTaskBtns(!showTaskBtns);
+  };
+
+  const deleteTask = (id) => {
+    const updatedTasks = [...tasks].filter((task) => task.id != id);
+    setTasks(updatedTasks);
+  };
+
+  const completeTask = (id) => {
+    const updatedTasks = [...tasks].filter((task) => task.id != id);
+    setTasks(updatedTasks);
   };
 
   return (
@@ -45,11 +52,7 @@ function App() {
       </div>
       {showForm && (
         <TaskForm
-          task={task}
-          tasks={tasks}
-          setTask={setTask}
           setTasks={setTasks}
-          displayForm={displayForm}
           showForm={showForm}
           setShowForm={setShowForm}
           setaddTaskBtn={setaddTaskBtn}
@@ -61,6 +64,8 @@ function App() {
           tasks={tasks}
           displayTaskBtns={displayTaskBtns}
           showTaskBtns={showTaskBtns}
+          deleteTask={deleteTask}
+          completeTask={completeTask}
         />
         <IoAddCircleOutline
           className={addTaskBtnPosition()}
@@ -72,6 +77,3 @@ function App() {
 }
 
 export default App;
-
-/* Ternary operator for plus icon
-`${addTaskBtn || showForm ? "added-plus" : "default-plus"}` */
