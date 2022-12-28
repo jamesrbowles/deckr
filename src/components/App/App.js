@@ -20,6 +20,10 @@ function App() {
 
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
+    if (tasks.length == 0) {
+      return "plus default-plus";
+    }
+
     if (addTaskBtn) {
       return "plus added-plus";
     } else if (showForm) {

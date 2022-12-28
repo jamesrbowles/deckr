@@ -30,8 +30,8 @@ const TaskCard = ({
         onClick={displayTaskBtns}
       >
         <div className="task-text">
-          {task.name}
-          {task.description}
+          <h1>{task.name}</h1>
+          <p>{task.description}</p>
         </div>
       </div>
       <div className="task-card-container-copy" style={stagger.current}>

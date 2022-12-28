@@ -21,6 +21,10 @@
 }
 
 .task-text {
+  width: 100%;
+  word-wrap: break-word;
+  margin: 1em 1em;
+  overflow: scroll;
 }
 
 /* task card staggered stacking */
