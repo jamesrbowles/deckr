@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import "./TaskCard.css";
 import TaskBtns from "../TaskBtns/TaskBtns";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const TaskCard = ({
   task,
@@ -22,7 +23,8 @@ const TaskCard = ({
     transform: `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg)`,
   });
   const firstKey = tasks[tasks.length - 1].id;
-
+  console.log(firstKey);
+  console.log(tasks);
   return (
     <div>
       <div

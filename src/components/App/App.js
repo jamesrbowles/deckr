@@ -33,15 +33,10 @@ function App() {
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
-    if (tasks.length == 0) {
+    if (localStorage.length == 0) {
       return "plus default-plus";
-    }
-    if (addTaskBtn) {
-      return "plus added-plus";
-    } else if (showForm) {
-      return "form-plus";
     } else {
-      return "plus default-plus";
+      return "plus added-plus";
     }
   };
 
