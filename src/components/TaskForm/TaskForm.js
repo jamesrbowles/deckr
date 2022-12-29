@@ -1,24 +1,22 @@
 import "./TaskForm.css";
 import { v4 as uuidv4 } from "uuid";
-import { useRef } from "react";
+import { useState } from "react";
 
-const TaskForm = ({ setTasks, showForm, setShowForm, setaddTaskBtn }) => {
-  const taskNameRef = useRef();
-  const taskDescRef = useRef();
+const TaskForm = ({ addTask, showForm, setShowForm, setaddTaskBtn }) => {
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const name = taskNameRef.current.value;
-    const desc = taskDescRef.current.value;
-    setTasks((prev) => {
-      return [
-        ...prev,
-        { id: uuidv4(), name: name, description: desc, complete: false },
-      ];
+    addTask({
+      id: uuidv4(),
+      name: name,
+      description: desc,
+      completed: false,
     });
-    taskNameRef.current.value = null;
-    taskDescRef.current.value = null;
+    setName("");
+    setDesc("");
     setShowForm(!showForm);
     setaddTaskBtn(true);
   };
@@ -38,21 +36,22 @@ const TaskForm = ({ setTasks, showForm, setShowForm, setaddTaskBtn }) => {
           </label> */}
           <input
             type="text"
-            id="name"
-            ref={taskNameRef}
             className="add-task-input"
+            value={name}
             placeholder="Task name"
+            onInput={(e) => setName(e.target.value)}
             required
+            autoFocus
           />
 
           {/* <label htmlFor="desc" className="form-labels">
             Description
           </label> */}
           <textarea
-            id="desc"
-            ref={taskDescRef}
             className="add-task-input"
+            value={desc}
             placeholder="Task details"
+            onInput={(e) => setDesc(e.target.value)}
             rows="8"
           ></textarea>
           <button type="submit" className="add-task-btn">

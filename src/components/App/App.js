@@ -38,13 +38,19 @@ function App() {
     setShowTaskBtns(!showTaskBtns);
   };
 
+  const addTask = (task) => {
+    setTasks((prev) => [...prev, task]);
+  };
+
   const deleteTask = (id) => {
     const updatedTasks = [...tasks].filter((task) => task.id != id);
     setTasks(updatedTasks);
   };
 
   const completeTask = (id) => {
-    const updatedTasks = [...tasks].filter((task) => task.id != id);
+    const updatedTasks = [...tasks].map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
     setTasks(updatedTasks);
   };
 
@@ -56,7 +62,7 @@ function App() {
       </div>
       {showForm && (
         <TaskForm
-          setTasks={setTasks}
+          addTask={addTask}
           showForm={showForm}
           setShowForm={setShowForm}
           setaddTaskBtn={setaddTaskBtn}
