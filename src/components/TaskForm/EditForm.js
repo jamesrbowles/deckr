@@ -1,30 +1,19 @@
 import "./TaskForm.css";
-import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 
-const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
+  const [updatedName, setUpdatedName] = useState(editedTask.name);
+  const [updatedDesc, setUpdatedDesc] = useState(editedTask.description);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    addTask({
-      id: uuidv4(),
-      name: name,
-      description: desc,
-      completed: false,
-    });
-    setName("");
-    setDesc("");
-    closeForm();
-    setaddTaskBtn(true);
+    updateTask({ ...editedTask, name: updatedName, description: updatedDesc });
   };
 
   /*   Ability to close form with escape key */
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-      e.key === "Escape" && closeForm();
+      e.key === "Escape" && closeEditMode();
     };
 
     window.addEventListener("keydown", closeModalIfEscaped);
@@ -32,17 +21,17 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
     return () => {
       window.removeEventListener("keydown", closeModalIfEscaped);
     };
-  }, [closeForm]);
+  }, [closeEditMode]);
 
   return (
     <div className="modal-background">
       <div className="add-task-form">
         <form onSubmit={handleSubmit}>
           <div className="modal-close">
-            <button onClick={closeForm}> X </button>
+            <button onClick={closeEditMode}> X </button>
           </div>
           <div className="modal-title">
-            <h1>Add your task</h1>
+            <h1>Edit your task</h1>
           </div>
           {/* <label htmlFor="name" className="form-labels">
             Name
@@ -50,9 +39,9 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
           <input
             type="text"
             className="add-task-input"
-            value={name}
+            value={updatedName}
             placeholder="Task name"
-            onInput={(e) => setName(e.target.value)}
+            onInput={(e) => setUpdatedName(e.target.value)}
             required
             autoFocus
           />
@@ -62,9 +51,9 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
           </label> */}
           <textarea
             className="add-task-input"
-            value={desc}
+            value={updatedDesc}
             placeholder="Task details"
-            onInput={(e) => setDesc(e.target.value)}
+            onInput={(e) => setUpdatedDesc(e.target.value)}
             rows="8"
           ></textarea>
           <button type="submit" className="add-task-btn">
@@ -76,4 +65,4 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
   );
 };
 
-export default TaskForm;
+export default EditForm;

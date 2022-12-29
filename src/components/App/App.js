@@ -8,22 +8,28 @@ import Header from "../Header/Header";
 import TaskForm from "../TaskForm/TaskForm";
 import TaskContainer from "../TaskContainer/TaskContainer";
 import DateSelect from "../DateSelect/DateSelect";
+import EditForm from "../TaskForm/EditForm";
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
 
+  /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
   const displayForm = () => {
     setShowForm(true);
   };
 
+  const closeForm = () => {
+    setShowForm(false);
+  };
+
+  /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (tasks.length == 0) {
       return "plus default-plus";
     }
-
     if (addTaskBtn) {
       return "plus added-plus";
     } else if (showForm) {
@@ -33,6 +39,7 @@ function App() {
     }
   };
 
+  /*   Task buttons and functionality */
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const displayTaskBtns = () => {
     setShowTaskBtns(!showTaskBtns);
@@ -54,21 +61,50 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const [editedTask, setEditedTask] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const updateTask = (task) => {
+    setTasks((prev) =>
+      prev.map((t) =>
+        t.id === task.id
+          ? { ...t, name: task.name, description: task.description }
+          : task
+      )
+    );
+    closeEditMode();
+  };
+
+  const enterEditMode = (task) => {
+    setEditedTask(task);
+    setIsEditing(true);
+  };
+
+  const closeEditMode = () => {
+    setIsEditing(false);
+  };
+
   return (
     <>
-      <div className={showForm ? "background-blur" : ""}>
+      <div className={showForm || isEditing ? "background-blur" : ""}>
         <Header />
         <DateSelect />
       </div>
       {showForm && (
         <TaskForm
           addTask={addTask}
-          showForm={showForm}
-          setShowForm={setShowForm}
+          closeForm={closeForm}
           setaddTaskBtn={setaddTaskBtn}
         />
       )}
-      <div className={showForm ? "background-blur" : ""}>
+      {isEditing && (
+        <EditForm
+          editedTask={editedTask}
+          updateTask={updateTask}
+          closeEditMode={closeEditMode}
+        />
+      )}
+      <div className={showForm || isEditing ? "background-blur" : ""}>
         <TaskContainer
           task={task}
           tasks={tasks}
@@ -76,6 +112,7 @@ function App() {
           showTaskBtns={showTaskBtns}
           deleteTask={deleteTask}
           completeTask={completeTask}
+          enterEditMode={enterEditMode}
         />
         <IoAddCircleOutline
           className={addTaskBtnPosition()}

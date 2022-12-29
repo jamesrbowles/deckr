@@ -9,6 +9,7 @@ const TaskCard = ({
   showTaskBtns,
   deleteTask,
   completeTask,
+  enterEditMode,
 }) => {
   const translateX =
     Math.floor(Math.random() * 12) * (Math.round(Math.random()) ? 1 : -1);
@@ -41,6 +42,7 @@ const TaskCard = ({
             deleteTask={deleteTask}
             task={task}
             completeTask={completeTask}
+            enterEditMode={enterEditMode}
           />
         )}
       </div>

@@ -10,6 +10,7 @@ const TaskContainer = ({
   completeTask,
   taskName,
   taskDesc,
+  enterEditMode,
 }) => {
   return (
     <div className="task-container">
@@ -24,6 +25,7 @@ const TaskContainer = ({
           tasks={tasks}
           deleteTask={deleteTask}
           completeTask={completeTask}
+          enterEditMode={enterEditMode}
         />
       ))}
     </div>

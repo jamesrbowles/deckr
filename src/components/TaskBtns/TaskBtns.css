@@ -11,9 +11,15 @@
   cursor: pointer;
 }
 
+/* Icons when expanded with hover effects */
+
 .fa-edit-expanded {
   top: -10%;
   left: 120%;
+}
+
+.fa-edit-expanded:hover {
+  color: rgb(0, 212, 235);
 }
 
 .fa-complete-expanded {
@@ -37,4 +43,8 @@
 .fa-expand-expanded {
   top: -8%;
   left: -15%;
+}
+
+.fa-expand-expanded:hover {
+  color: rgb(242, 255, 0);
 }
