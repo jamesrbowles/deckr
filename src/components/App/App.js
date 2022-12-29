@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+// custom hooks
+import useLocalStorage from "../../hooks/useLocalStorage";
+
+// CSS
 import "./App.css";
 import "../TaskForm/TaskForm.css";
 import "../icons.css";
+
+// components
 import Header from "../Header/Header";
 import TaskForm from "../TaskForm/TaskForm";
 import TaskContainer from "../TaskContainer/TaskContainer";
@@ -11,7 +17,7 @@ import DateSelect from "../DateSelect/DateSelect";
 import EditForm from "../TaskForm/EditForm";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage("deckr.tasks", []);
   const [task, setTask] = useState("");
 
   /* Add a new task form display and close */
