@@ -29,13 +29,13 @@ function App() {
   const closeForm = () => {
     setShowForm(false);
   };
-  let temp = JSON.parse(localStorage["deckr.tasks"]);
-  console.log(temp);
+  /*   let temp = JSON.parse(localStorage["deckr.tasks"]); */
+  /*   console.log(temp); */
   console.log(localStorage.length);
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
-    if (temp.length == 0) {
+    if (localStorage.length == 0) {
       return "plus default-plus";
     } else {
       return "plus added-plus";
@@ -75,14 +75,13 @@ function App() {
       prev.map((t) =>
         t.id === task.id
           ? { ...t, name: task.name, description: task.description }
-          : task
+          : t
       )
     );
     closeEditMode();
   };
 
   const enterEditMode = (task) => {
-    console.log(task);
     setEditedTask(task);
     setIsEditing(true);
   };
