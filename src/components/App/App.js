@@ -29,21 +29,16 @@ function App() {
   const closeForm = () => {
     setShowForm(false);
   };
-  /*   let temp = JSON.parse(localStorage["deckr.tasks"]); */
-  /*   console.log(temp); */
-  console.log(localStorage.length);
+
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
-    if (localStorage.length == 0) {
+    if (tasks.length == 0) {
       return "plus default-plus";
     } else {
       return "plus added-plus";
     }
   };
-
-  /*   TODO fix plus icon positioning above (useEffect as it changes on refresh?)
-  TODO fix how inputting text into editmode makes all of the tasks the same */
 
   /*   Task buttons and functionality */
   const [showTaskBtns, setShowTaskBtns] = useState(false);
