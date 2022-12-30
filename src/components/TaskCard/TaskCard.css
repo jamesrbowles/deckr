@@ -11,6 +11,14 @@
   z-index: 2;
 }
 
+/* if task is completed */
+.completed {
+  background-color: rgb(169, 169, 169);
+  text-decoration: line-through;
+}
+
+/* necessary for buttons to follow the stagger and size of card
+ */
 .task-card-container-copy {
   border-radius: 1vmin;
   position: absolute;

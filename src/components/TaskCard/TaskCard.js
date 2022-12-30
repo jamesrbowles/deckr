@@ -26,7 +26,7 @@ const TaskCard = ({
   return (
     <div>
       <div
-        className="task-card"
+        className={task.completed ? "task-card completed" : "task-card"}
         style={stagger.current}
         onClick={displayTaskBtns}
       >

@@ -2,9 +2,6 @@
   font-family: "Comfortaa", cursive;
   box-sizing: border-box;
 }
-/* *:not(input, button) {
-  color: white;
-} */
 
 body {
   margin: 0px;
@@ -16,7 +13,6 @@ body {
 }
 
 /* When task form is open */
-
 .background-blur {
   filter: blur(4px);
   pointer-events: none;
