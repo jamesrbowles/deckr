@@ -55,10 +55,30 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const [completed, setCompleted] = useState(false);
   const completeTask = (id) => {
-    const updatedTasks = [...tasks].map((task) =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    );
+    let updatedTasks = [...tasks].map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      } else {
+        return task;
+      }
+    });
+
+    setCompleted(!completed);
+
+    /*   const shiftedTasks = updatedTasks.filter((task) => {
+    if (task.completed) {
+      console.log(task);
+      console.log(updatedTasks.indexOf(task));
+      return updatedTasks.unshift(
+        updatedTasks.splice(updatedTasks.indexOf(task), 1)[0]
+      );
+    } else {
+      return task;
+    }
+  }); */
+
     setTasks(updatedTasks);
   };
 

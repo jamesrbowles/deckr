@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import "./TaskCard.css";
 import TaskBtns from "../TaskBtns/TaskBtns";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
 const TaskCard = ({
   task,
