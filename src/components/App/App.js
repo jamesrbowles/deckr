@@ -40,7 +40,7 @@ function App() {
     }
   };
 
-  /*   Task buttons and functionality */
+  /*   Task buttons and their functionality */
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const displayTaskBtns = () => {
     setShowTaskBtns(!showTaskBtns);
@@ -67,17 +67,12 @@ function App() {
 
     setCompleted(!completed);
 
-    /*   const shiftedTasks = updatedTasks.filter((task) => {
-    if (task.completed) {
-      console.log(task);
-      console.log(updatedTasks.indexOf(task));
-      return updatedTasks.unshift(
-        updatedTasks.splice(updatedTasks.indexOf(task), 1)[0]
-      );
-    } else {
-      return task;
-    }
-  }); */
+    updatedTasks.forEach((task, i) => {
+      if (task.completed) {
+        updatedTasks.splice(i, 1);
+        updatedTasks.unshift(task);
+      }
+    });
 
     setTasks(updatedTasks);
   };
