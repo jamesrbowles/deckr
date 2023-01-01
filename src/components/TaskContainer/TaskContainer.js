@@ -11,6 +11,8 @@ const TaskContainer = ({
   taskName,
   taskDesc,
   enterEditMode,
+  spreadTasks,
+  taskSpread,
 }) => {
   return (
     <div className="task-container">
@@ -26,6 +28,8 @@ const TaskContainer = ({
           deleteTask={deleteTask}
           completeTask={completeTask}
           enterEditMode={enterEditMode}
+          spreadTasks={spreadTasks}
+          taskSpread={taskSpread}
         />
       ))}
     </div>

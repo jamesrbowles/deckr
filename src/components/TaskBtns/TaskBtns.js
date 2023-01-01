@@ -13,10 +13,14 @@ const TaskBtns = ({
   task,
   completeTask,
   enterEditMode,
+  spreadTasks,
 }) => {
   return (
     <div>
-      <FaExpandAlt className={showTaskBtns ? "fa fa-expand-expanded" : "fa"} />
+      <FaExpandAlt
+        className={showTaskBtns ? "fa fa-expand-expanded" : "fa"}
+        onClick={spreadTasks}
+      />
       <FaRegEdit
         className={showTaskBtns ? "fa fa-edit-expanded" : "fa"}
         onClick={() => enterEditMode(task)}

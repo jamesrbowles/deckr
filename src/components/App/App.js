@@ -100,6 +100,11 @@ function App() {
     setIsEditing(false);
   };
 
+  const [taskSpread, setTaskSpread] = useState(false);
+  const spreadTasks = () => {
+    setTaskSpread(!taskSpread);
+  };
+
   return (
     <>
       <div className={showForm || isEditing ? "background-blur" : ""}>
@@ -129,6 +134,8 @@ function App() {
           deleteTask={deleteTask}
           completeTask={completeTask}
           enterEditMode={enterEditMode}
+          spreadTasks={spreadTasks}
+          taskSpread={taskSpread}
         />
         <IoAddCircleOutline
           className={addTaskBtnPosition()}

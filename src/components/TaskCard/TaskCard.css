@@ -35,25 +35,28 @@
   overflow: scroll;
 }
 
-/* task card staggered stacking */
-
-/* .task-card:nth-child(1) {
-  background-color: rgba(255, 223, 22, 0.5);
-     transform: translateX(-5%) rotate(-1deg); 
+.each-card:nth-child(1) .spread-task {
+  background-color: red;
 }
 
-.task-card:nth-child(2) {
-  background-color: rgba(255, 0, 0, 0.5);
-  /  transform: rotate(2deg); 
+.each-card:nth-child(2) .spread-task {
+  background-color: green;
 }
 
-.task-card:nth-child(3) {
-  background-color: rgba(0, 255, 0, 0.5);
-  /  transform: translateX(-6%) rotate(-3deg); 
+/* task card staggered stacking on click */
+
+/* .task-container:hover > .task-card:nth-child(1) {
+  transform: translate(-75%, 16%) rotate(-24deg);
 }
 
-.task-card:nth-child(4) {
-  background-color: rgba(0, 0, 255, 0.5);
-    transform: translate(10%, 3%) rotate(5deg); 
+.task-container:hover > .task-card:nth-child(2) {
+  transform: translate(-25%, 8%) rotate(-8deg);
 }
- */
+
+.task-container:hover > .task-card:nth-child(3) {
+  transform: translate(25%, 8%) rotate(8deg);
+}
+
+.task-container:hover > .task-card:nth-child(4) {
+  transform: translate(75%, 16%) rotate(24deg);
+} */
