@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   box-shadow: -1px 1px 20px rgb(0, 0, 0);
-  z-index: 2;
+  z-index: 1;
 }
 
 /* if task is completed */
@@ -36,11 +36,55 @@
 }
 
 .each-card:nth-child(1) .spread-task {
-  background-color: red;
+  transform: translate(0%, 0%) rotate(-27.5deg) !important;
 }
 
 .each-card:nth-child(2) .spread-task {
-  background-color: green;
+  transform: translate(0%, 0%) rotate(0deg) !important;
+}
+
+.each-card:nth-child(3) .spread-task {
+  transform: translate(0%, 0%) rotate(27.5deg) !important;
+}
+
+.each-card:nth-child(4) .spread-task {
+  transform: translate(0%, 0%) rotate(55deg) !important;
+}
+
+.each-card:nth-child(5) .spread-task {
+  transform: translate(0%, 0%) rotate(82.5deg) !important;
+}
+
+.each-card:nth-child(6) .spread-task {
+  transform: translate(0%, 0%) rotate(110deg) !important;
+}
+
+.each-card:nth-child(7) .spread-task {
+  transform: translate(0%, 0%) rotate(137.5deg) !important;
+}
+
+.each-card:nth-child(8) .spread-task {
+  transform: translate(0%, 0%) rotate(165deg) !important;
+}
+
+.each-card:nth-child(9) .spread-task {
+  transform: translate(0%, 0%) rotate(192.5deg) !important;
+}
+
+.each-card:nth-child(10) .spread-task {
+  transform: translate(0%, 0%) rotate(220deg) !important;
+}
+
+.each-card:nth-child(11) .spread-task {
+  transform: translate(0%, 0%) rotate(247.5deg) !important;
+}
+
+.each-card:nth-child(12) .spread-task {
+  transform: translate(0%, 0%) rotate(275deg) !important;
+}
+
+.each-card:nth-child(13) .spread-task {
+  transform: translate(0%, 0%) rotate(302.5deg) !important;
 }
 
 /* task card staggered stacking on click */
