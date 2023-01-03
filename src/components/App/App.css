@@ -4,10 +4,10 @@
 }
 
 body {
-  margin: 0px;
+  /*  margin: 5em; */
   background-color: rgba(32, 32, 32, 0.9);
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-align: center;
   color: white;
 }
@@ -17,6 +17,10 @@ body {
   filter: blur(4px);
   pointer-events: none;
   user-select: none;
+}
+
+.test {
+  display: none;
 }
 
 /* Tasks container */

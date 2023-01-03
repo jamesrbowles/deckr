@@ -11,7 +11,7 @@
 .added-plus {
   font-size: 5rem;
   display: inline-block;
-  margin-top: 0.3em;
+  margin: 0.3em;
   cursor: pointer;
 }
 

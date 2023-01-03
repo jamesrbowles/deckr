@@ -4,7 +4,7 @@
   position: absolute;
   transition: transform 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
   cursor: pointer;
-  padding-top: 2em;
+  padding-top: 1em;
   display: flex;
   justify-content: center;
   box-shadow: -1px 1px 20px rgb(0, 0, 0);
@@ -25,7 +25,8 @@
   aspect-ratio: 5 / 7;
   width: 30vmin;
   margin: 0 auto;
-  padding-top: 2em;
+  /*   margin: 2.5em auto; */
+  padding-top: 1em;
 }
 
 .task-text {
@@ -35,56 +36,60 @@
   overflow: scroll;
 }
 
-.each-card:nth-child(1) .spread-task {
-  transform: translate(0%, 0%) rotate(-27.5deg) !important;
+/* 143% total vertical change */
+/* -108%?, 71.5% -90deg for furthest left and in the middle down card */
+
+.each-card:nth-last-child(1) .spread-task {
+  background-color: red;
+  transform: translate(0%, 0%) rotate(0) !important;
 }
 
-.each-card:nth-child(2) .spread-task {
-  transform: translate(0%, 0%) rotate(0deg) !important;
+.each-card:nth-last-child(2) .spread-task {
+  transform: translate(-36%, 10%) rotate(-27.5deg) !important;
 }
 
-.each-card:nth-child(3) .spread-task {
-  transform: translate(0%, 0%) rotate(27.5deg) !important;
+.each-card:nth-last-child(3) .spread-task {
+  transform: translate(-72%, 30%) rotate(-55deg) !important;
 }
 
-.each-card:nth-child(4) .spread-task {
-  transform: translate(0%, 0%) rotate(55deg) !important;
+.each-card:nth-last-child(4) .spread-task {
+  transform: translate(-108%, 71.4%) rotate(-82.5deg) !important;
 }
 
-.each-card:nth-child(5) .spread-task {
-  transform: translate(0%, 0%) rotate(82.5deg) !important;
+.each-card:nth-last-child(5) .spread-task {
+  transform: translate(-108%, 95.2%) rotate(-110deg) !important;
 }
 
-.each-card:nth-child(6) .spread-task {
-  transform: translate(0%, 0%) rotate(110deg) !important;
+.each-card:nth-last-child(6) .spread-task {
+  transform: translate(0%, 0%) rotate(-137.5deg) !important;
 }
 
-.each-card:nth-child(7) .spread-task {
-  transform: translate(0%, 0%) rotate(137.5deg) !important;
+.each-card:nth-last-child(7) .spread-task {
+  transform: translate(0%, 0%) rotate(-165deg) !important;
 }
 
-.each-card:nth-child(8) .spread-task {
-  transform: translate(0%, 0%) rotate(165deg) !important;
+.each-card:nth-last-child(8) .spread-task {
+  transform: translate(0%, 0%) rotate(-192.5deg) !important;
 }
 
-.each-card:nth-child(9) .spread-task {
-  transform: translate(0%, 0%) rotate(192.5deg) !important;
+.each-card:nth-last-child(9) .spread-task {
+  transform: translate(0%, 0%) rotate(-220deg) !important;
 }
 
-.each-card:nth-child(10) .spread-task {
-  transform: translate(0%, 0%) rotate(220deg) !important;
+.each-card:nth-last-child(10) .spread-task {
+  transform: translate(0%, 0%) rotate(-247.5deg) !important;
 }
 
-.each-card:nth-child(11) .spread-task {
-  transform: translate(0%, 0%) rotate(247.5deg) !important;
+.each-card:nth-last-child(11) .spread-task {
+  transform: translate(0%, 0%) rotate(-275deg) !important;
 }
 
-.each-card:nth-child(12) .spread-task {
-  transform: translate(0%, 0%) rotate(275deg) !important;
+.each-card:nth-last-child(12) .spread-task {
+  transform: translate(0%, 0%) rotate(-302.5deg) !important;
 }
 
-.each-card:nth-child(13) .spread-task {
-  transform: translate(0%, 0%) rotate(302.5deg) !important;
+.each-card:nth-last-child(13) .spread-task {
+  transform: translate(0%, 0%) rotate(-330deg) !important;
 }
 
 /* task card staggered stacking on click */

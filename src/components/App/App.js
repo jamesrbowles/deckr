@@ -107,7 +107,12 @@ function App() {
 
   return (
     <>
-      <div className={showForm || isEditing ? "background-blur" : ""}>
+      <div
+        className={showForm || isEditing ? "background-blur" : ""}
+        /*     className={
+          showForm || isEditing ? "background-blur" : taskSpread ? "test" : ""
+        } */
+      >
         <Header />
         <DateSelect />
       </div>
