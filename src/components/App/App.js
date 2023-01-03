@@ -19,6 +19,7 @@ import EditForm from "../TaskForm/EditForm";
 function App() {
   const [tasks, setTasks] = useLocalStorage("deckr.tasks", []);
   const [task, setTask] = useState("");
+  const [taskSpread, setTaskSpread] = useState(false);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -53,6 +54,10 @@ function App() {
   const deleteTask = (id) => {
     const updatedTasks = [...tasks].filter((task) => task.id != id);
     setTasks(updatedTasks);
+    console.log(tasks.length);
+    if (tasks.length < 3) {
+      setTaskSpread(false);
+    }
   };
 
   const [completed, setCompleted] = useState(false);
@@ -100,9 +105,12 @@ function App() {
     setIsEditing(false);
   };
 
-  const [taskSpread, setTaskSpread] = useState(false);
   const spreadTasks = () => {
-    setTaskSpread(!taskSpread);
+    if (tasks.length < 2) {
+      setTaskSpread(false);
+    } else {
+      setTaskSpread(!taskSpread);
+    }
   };
 
   return (
@@ -146,6 +154,7 @@ function App() {
           className={addTaskBtnPosition()}
           onClick={displayForm}
         />
+        <div className="added-plus2"></div>
       </div>
     </>
   );

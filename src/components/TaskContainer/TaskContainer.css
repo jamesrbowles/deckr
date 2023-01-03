@@ -1,9 +1,11 @@
-.task-container,
-.task-card {
+.task-container {
   aspect-ratio: 5 / 7;
-  width: 30vmin;
+  width: 25vmin;
   margin: 0 auto;
-  /*  margin: 2.5em auto; */
+}
+
+.task-container-spread {
+  width: 15vmin !important;
 }
 
 /* .task-container {

@@ -2,7 +2,10 @@
   background-color: rgb(87, 112, 205);
   border-radius: 1vmin;
   position: absolute;
-  transition: transform 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
+  aspect-ratio: 5 / 7;
+  width: 25vmin;
+  margin: 0 auto;
+  transition: all 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
   cursor: pointer;
   padding-top: 1em;
   display: flex;
@@ -11,22 +14,22 @@
   z-index: 1;
 }
 
-/* if task is completed */
-.completed {
-  background-color: rgb(169, 169, 169);
-  text-decoration: line-through;
-}
-
 /* necessary for buttons to follow the stagger and size of card
  */
 .task-card-container-copy {
   border-radius: 1vmin;
   position: absolute;
   aspect-ratio: 5 / 7;
-  width: 30vmin;
+  width: 25vmin;
   margin: 0 auto;
-  /*   margin: 2.5em auto; */
   padding-top: 1em;
+  transition: all 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
+}
+
+/* if task is completed */
+.completed {
+  background-color: rgb(169, 169, 169);
+  text-decoration: line-through;
 }
 
 .task-text {
@@ -36,76 +39,93 @@
   overflow: scroll;
 }
 
-/* 143% total vertical change */
-/* -108%?, 71.5% -90deg for furthest left and in the middle down card */
+/* 155% total vertical change */
+/* -108%?, 77.5% -90deg for furthest left and in the middle down card */
+/* 27.69deg for each card rotation */
+
+.task-card-size-spread {
+  width: 15vmin !important;
+  z-index: 0;
+}
 
 .each-card:nth-last-child(1) .spread-task {
-  background-color: red;
   transform: translate(0%, 0%) rotate(0) !important;
 }
 
 .each-card:nth-last-child(2) .spread-task {
-  transform: translate(-36%, 10%) rotate(-27.5deg) !important;
+  transform: translate(-52%, 10%) rotate(-27.69deg) !important;
 }
 
 .each-card:nth-last-child(3) .spread-task {
-  transform: translate(-72%, 30%) rotate(-55deg) !important;
+  transform: translate(-91%, 35%) rotate(-55.38deg) !important;
 }
 
 .each-card:nth-last-child(4) .spread-task {
-  transform: translate(-108%, 71.4%) rotate(-82.5deg) !important;
+  transform: translate(-109%, 70%) rotate(-83.07deg) !important;
 }
 
 .each-card:nth-last-child(5) .spread-task {
-  transform: translate(-108%, 95.2%) rotate(-110deg) !important;
+  transform: translate(-101%, 107%) rotate(-110.76deg) !important;
 }
 
 .each-card:nth-last-child(6) .spread-task {
-  transform: translate(0%, 0%) rotate(-137.5deg) !important;
+  transform: translate(-71%, 137%) rotate(-138.45deg) !important;
 }
 
 .each-card:nth-last-child(7) .spread-task {
-  transform: translate(0%, 0%) rotate(-165deg) !important;
+  transform: translate(-26%, 153%) rotate(-166.14deg) !important;
 }
 
 .each-card:nth-last-child(8) .spread-task {
-  transform: translate(0%, 0%) rotate(-192.5deg) !important;
+  transform: translate(26%, 153%) rotate(-193.83deg) !important;
 }
 
 .each-card:nth-last-child(9) .spread-task {
-  transform: translate(0%, 0%) rotate(-220deg) !important;
+  transform: translate(71%, 137%) rotate(-221.52deg) !important;
 }
 
 .each-card:nth-last-child(10) .spread-task {
-  transform: translate(0%, 0%) rotate(-247.5deg) !important;
+  transform: translate(101%, 107%) rotate(-249.21deg) !important;
 }
 
 .each-card:nth-last-child(11) .spread-task {
-  transform: translate(0%, 0%) rotate(-275deg) !important;
+  transform: translate(109%, 70%) rotate(-276.9deg) !important;
 }
 
 .each-card:nth-last-child(12) .spread-task {
-  transform: translate(0%, 0%) rotate(-302.5deg) !important;
+  transform: translate(91%, 35%) rotate(-304.59deg) !important;
 }
 
 .each-card:nth-last-child(13) .spread-task {
-  transform: translate(0%, 0%) rotate(-330deg) !important;
+  transform: translate(52%, 10%) rotate(-332.28deg) !important;
 }
 
-/* task card staggered stacking on click */
+/* this was used as a guide to set the stagger correctly on spread
+.center-line {
+  width: 5px;
+  height: 23px;
+  background-color: yellow;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  z-index: 5;
+}  */
 
-/* .task-container:hover > .task-card:nth-child(1) {
-  transform: translate(-75%, 16%) rotate(-24deg);
+/* card suit styling */
+
+.card-suit-top {
+  position: relative;
+  top: 3%;
+  left: 5%;
+  color: black;
+  font-size: 2rem;
 }
 
-.task-container:hover > .task-card:nth-child(2) {
-  transform: translate(-25%, 8%) rotate(-8deg);
+.card-suit-bottom {
+  position: relative;
+  top: 82%;
+  right: 5%;
+  color: black;
+  font-size: 2rem;
+  rotate: 180deg;
 }
-
-.task-container:hover > .task-card:nth-child(3) {
-  transform: translate(25%, 8%) rotate(8deg);
-}
-
-.task-container:hover > .task-card:nth-child(4) {
-  transform: translate(75%, 16%) rotate(24deg);
-} */

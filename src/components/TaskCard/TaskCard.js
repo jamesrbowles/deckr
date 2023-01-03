@@ -1,5 +1,8 @@
 import { useRef } from "react";
+import { BsSuitSpadeFill } from "react-icons/bs";
+
 import "./TaskCard.css";
+
 import TaskBtns from "../TaskBtns/TaskBtns";
 
 const TaskCard = ({
@@ -31,9 +34,9 @@ const TaskCard = ({
       <div
         className={
           taskSpread && task.completed
-            ? "spread-task task-card completed"
+            ? "spread-task task-card task-card-size-spread completed"
             : taskSpread
-            ? "spread-task task-card"
+            ? "spread-task task-card task-card-size-spread"
             : task.completed
             ? "task-card completed"
             : "task-card"
@@ -42,12 +45,21 @@ const TaskCard = ({
         style={stagger.current}
         onClick={displayTaskBtns}
       >
+        <BsSuitSpadeFill className="card-suit-top" />
         <div className="task-text">
           <h1>{task.name}</h1>
           <p>{task.description}</p>
         </div>
+        <BsSuitSpadeFill className="card-suit-bottom" />
       </div>
-      <div className="task-card-container-copy" style={stagger.current}>
+      <div
+        className={
+          taskSpread
+            ? "task-card-container-copy task-card-size-spread"
+            : "task-card-container-copy"
+        }
+        style={stagger.current}
+      >
         {firstKey === task.id && (
           <TaskBtns
             showTaskBtns={showTaskBtns}

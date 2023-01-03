@@ -14,9 +14,14 @@ const TaskContainer = ({
   spreadTasks,
   taskSpread,
 }) => {
+  let suitValue;
   return (
-    <div className="task-container">
-      {tasks.map((task) => (
+    <div
+      className={
+        taskSpread ? "task-container task-container-spread" : "task-container"
+      }
+    >
+      {tasks.map((task, index) => (
         <TaskCard
           task={task}
           taskName={taskName}
@@ -37,3 +42,23 @@ const TaskContainer = ({
 };
 
 export default TaskContainer;
+
+/* 
+     {
+       tasks.map((task, index) => (
+         <TaskCard
+           task={task}
+           taskName={taskName}
+           taskDesc={taskDesc}
+           key={task.id}
+           displayTaskBtns={displayTaskBtns}
+           showTaskBtns={showTaskBtns}
+           tasks={tasks}
+           deleteTask={deleteTask}
+           completeTask={completeTask}
+           enterEditMode={enterEditMode}
+           spreadTasks={spreadTasks}
+           taskSpread={taskSpread}
+         />
+       ));
+     } */

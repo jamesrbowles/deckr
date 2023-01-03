@@ -19,6 +19,21 @@
   display: none;
 }
 
+/* this was used as a guide to set the stagger of the cards on spread
+.added-plus2 {
+  margin-top: 0.3em;
+  width: 127px;
+  height: 127px;
+  border: 2px solid green;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -2;
+} */
+
 /* .plus:hover {
-  color: rgb(142, 140, 140);
+  color: gray;
 } */
