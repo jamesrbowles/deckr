@@ -1,6 +1,9 @@
 import TaskCard from "../TaskCard/TaskCard";
 import "./TaskContainer.css";
 
+import { IoAddCircleOutline } from "react-icons/io5";
+import "../icons.css";
+
 const TaskContainer = ({
   task,
   tasks,
@@ -13,6 +16,8 @@ const TaskContainer = ({
   enterEditMode,
   spreadTasks,
   taskSpread,
+  addTaskBtnPosition,
+  displayForm,
 }) => {
   let suitValue;
   return (
@@ -37,6 +42,11 @@ const TaskContainer = ({
           taskSpread={taskSpread}
         />
       ))}
+      <IoAddCircleOutline
+        className={addTaskBtnPosition()}
+        onClick={displayForm}
+      />
+      <div className="added-plus2"></div>
     </div>
   );
 };

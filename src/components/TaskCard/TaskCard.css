@@ -48,55 +48,55 @@
   z-index: 0;
 }
 
-.each-card:nth-last-child(1) .spread-task {
+.each-card:nth-last-child(2) .spread-task {
   transform: translate(0%, 0%) rotate(0) !important;
 }
 
-.each-card:nth-last-child(2) .spread-task {
+.each-card:nth-last-child(3) .spread-task {
   transform: translate(-52%, 10%) rotate(-27.69deg) !important;
 }
 
-.each-card:nth-last-child(3) .spread-task {
+.each-card:nth-last-child(4) .spread-task {
   transform: translate(-91%, 35%) rotate(-55.38deg) !important;
 }
 
-.each-card:nth-last-child(4) .spread-task {
+.each-card:nth-last-child(5) .spread-task {
   transform: translate(-109%, 70%) rotate(-83.07deg) !important;
 }
 
-.each-card:nth-last-child(5) .spread-task {
+.each-card:nth-last-child(6) .spread-task {
   transform: translate(-101%, 107%) rotate(-110.76deg) !important;
 }
 
-.each-card:nth-last-child(6) .spread-task {
+.each-card:nth-last-child(7) .spread-task {
   transform: translate(-71%, 137%) rotate(-138.45deg) !important;
 }
 
-.each-card:nth-last-child(7) .spread-task {
+.each-card:nth-last-child(8) .spread-task {
   transform: translate(-26%, 153%) rotate(-166.14deg) !important;
 }
 
-.each-card:nth-last-child(8) .spread-task {
+.each-card:nth-last-child(9) .spread-task {
   transform: translate(26%, 153%) rotate(-193.83deg) !important;
 }
 
-.each-card:nth-last-child(9) .spread-task {
+.each-card:nth-last-child(10) .spread-task {
   transform: translate(71%, 137%) rotate(-221.52deg) !important;
 }
 
-.each-card:nth-last-child(10) .spread-task {
+.each-card:nth-last-child(11) .spread-task {
   transform: translate(101%, 107%) rotate(-249.21deg) !important;
 }
 
-.each-card:nth-last-child(11) .spread-task {
+.each-card:nth-last-child(12) .spread-task {
   transform: translate(109%, 70%) rotate(-276.9deg) !important;
 }
 
-.each-card:nth-last-child(12) .spread-task {
+.each-card:nth-last-child(13) .spread-task {
   transform: translate(91%, 35%) rotate(-304.59deg) !important;
 }
 
-.each-card:nth-last-child(13) .spread-task {
+.each-card:nth-last-child(14) .spread-task {
   transform: translate(52%, 10%) rotate(-332.28deg) !important;
 }
 
@@ -113,12 +113,12 @@
 
 /* card suit styling */
 
-.card-suit-top {
+/* .card-suit-top {
   position: relative;
   top: 3%;
   left: 5%;
   color: black;
-  font-size: 2rem;
+  font-size: 7vmin;
 }
 
 .card-suit-bottom {
@@ -126,6 +126,6 @@
   top: 82%;
   right: 5%;
   color: black;
-  font-size: 2rem;
+  font-size: 7vmin;
   rotate: 180deg;
-}
+} */

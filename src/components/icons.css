@@ -1,5 +1,5 @@
 .default-plus {
-  font-size: 5rem;
+  font-size: 13vmin;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9,9 +9,10 @@
 }
 
 .added-plus {
-  font-size: 5rem;
-  display: inline-block;
-  margin: 0.3em;
+  font-size: 13vmin;
+  position: absolute;
+  top: 130%;
+  /* margin: 0.3em; */
   cursor: pointer;
 }
 
@@ -19,20 +20,20 @@
   display: none;
 }
 
-/* this was used as a guide to set the stagger of the cards on spread
+/*  this was used as a guide to set the stagger of the cards on spread
+ */
 .added-plus2 {
-  margin-top: 0.3em;
   width: 127px;
   height: 127px;
   border: 2px solid green;
   position: absolute;
-  top: 50%;
+  top: 130%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  z-index: -2;
-} */
+  z-index: 5;
+}
 
 /* .plus:hover {
   color: gray;

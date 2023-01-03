@@ -1,7 +1,11 @@
 .task-container {
   aspect-ratio: 5 / 7;
   width: 25vmin;
-  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .task-container-spread {

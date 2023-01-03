@@ -37,7 +37,7 @@ function App() {
     if (tasks.length == 0) {
       return "plus default-plus";
     } else {
-      return "plus added-plus";
+      return "plus default-plus added-plus";
     }
   };
 
@@ -149,15 +149,19 @@ function App() {
           enterEditMode={enterEditMode}
           spreadTasks={spreadTasks}
           taskSpread={taskSpread}
+          addTaskBtnPosition={addTaskBtnPosition}
+          displayForm={displayForm}
         />
-        <IoAddCircleOutline
+        {/*     <IoAddCircleOutline
           className={addTaskBtnPosition()}
           onClick={displayForm}
-        />
-        <div className="added-plus2"></div>
+        /> */}
+        {/*   <div className="added-plus2"></div> */}
       </div>
     </>
   );
 }
 
 export default App;
+
+/* add plus icon to task container and put position absolute - play around with getting it and keeping it same distance to card */
