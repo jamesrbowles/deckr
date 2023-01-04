@@ -13,6 +13,12 @@ body {
   /*   position: relative; */
 }
 
+@media screen and (min-width: 300px) {
+  body {
+    margin: 0;
+  }
+}
+
 /* When task form is open */
 .background-blur {
   filter: blur(4px);
