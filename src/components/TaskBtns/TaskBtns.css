@@ -48,3 +48,37 @@
 .fa-expand-expanded:hover {
   color: rgb(242, 255, 0);
 }
+
+/* styling when tasks are spread out */
+.spread-spread-btn {
+  top: 0%;
+  left: -140%;
+}
+
+.spread-spread-btn:hover {
+  color: rgb(242, 255, 0);
+}
+
+.spread-edit-btn {
+  top: 0%;
+  left: 240%;
+}
+.spread-edit-btn:hover {
+  color: rgb(0, 212, 235);
+}
+
+.spread-delete-btn {
+  top: 250%;
+  left: -140%;
+}
+.spread-delete-btn:hover {
+  color: rgb(255, 33, 33);
+}
+
+.spread-complete-btn {
+  top: 250%;
+  left: 240%;
+}
+.spread-complete-btn:hover {
+  color: rgb(5, 172, 5);
+}

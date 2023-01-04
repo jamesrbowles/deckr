@@ -46,7 +46,6 @@
 .task-card-size-spread {
   width: 15.25vmin !important;
   top: -40%;
-  z-index: 0;
 }
 
 /* .each-card:nth-last-child(2) .spread-task {

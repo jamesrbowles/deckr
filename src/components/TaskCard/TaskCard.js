@@ -58,7 +58,7 @@ const TaskCard = ({
             ? "task-card-container-copy task-card-size-spread"
             : "task-card-container-copy"
         }
-        style={stagger.current}
+        style={!taskSpread ? stagger.current : {}}
       >
         {firstKey === task.id && (
           <TaskBtns
@@ -68,6 +68,7 @@ const TaskCard = ({
             completeTask={completeTask}
             enterEditMode={enterEditMode}
             spreadTasks={spreadTasks}
+            taskSpread={taskSpread}
           />
         )}
       </div>

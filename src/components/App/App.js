@@ -56,7 +56,7 @@ function App() {
   const deleteTask = (id) => {
     const updatedTasks = [...tasks].filter((task) => task.id != id);
     setTasks(updatedTasks);
-    console.log(tasks.length);
+
     if (tasks.length < 3) {
       setTaskSpread(false);
     }
