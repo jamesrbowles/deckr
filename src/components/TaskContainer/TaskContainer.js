@@ -43,6 +43,7 @@ const TaskContainer = ({
       ))}
       <IoAddCircleOutline
         className={addTaskBtnPosition()}
+        style={tasks.length > 12 && { color: "gray" }}
         onClick={displayForm}
       />
       <div className="added-plus2"></div>
