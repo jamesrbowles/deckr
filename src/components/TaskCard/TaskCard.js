@@ -41,7 +41,6 @@ const TaskCard = ({
             ? "task-card completed"
             : "task-card"
         }
-        /*         className={task.completed ? "task-card completed" : "task-card"} */
         style={stagger.current}
         onClick={displayTaskBtns}
       >
@@ -49,6 +48,7 @@ const TaskCard = ({
         <div className="task-text">
           <h1>{task.name}</h1>
           <p>{task.description}</p>
+          {/*      <div className="center-line"></div> */}
         </div>
         {/*         <BsSuitSpadeFill className="card-suit-bottom" /> */}
       </div>

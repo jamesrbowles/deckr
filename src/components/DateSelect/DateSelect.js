@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 const DateSelect = () => {
   return (
-    <div className="date-section">
+    <div>
       <h2 className="date">{format(new Date(), "EE dd MMMM")}</h2>
     </div>
   );

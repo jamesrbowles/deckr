@@ -44,10 +44,98 @@
 /* 27.69deg for each card rotation */
 
 .task-card-size-spread {
-  width: 15vmin !important;
+  width: 15.25vmin !important;
+  top: -40%;
   z-index: 0;
 }
 
+/* .each-card:nth-last-child(2) .spread-task {
+  transform: translate(0%, 0%) rotate(0) !important;
+} */
+
+.each-card:nth-last-child(3) .spread-task {
+  transform: translate(0%, -9%) rotate(0deg) !important;
+}
+
+.each-card:nth-last-child(4) .spread-task {
+  transform: translate(-60%, 2%) rotate(-27.69deg) !important;
+}
+
+.each-card:nth-last-child(5) .spread-task {
+  transform: translate(-99%, 27%) rotate(-55.38deg) !important;
+}
+
+.each-card:nth-last-child(6) .spread-task {
+  transform: translate(-121%, 65%) rotate(-83.07deg) !important;
+}
+
+.each-card:nth-last-child(7) .spread-task {
+  transform: translate(-114%, 109%) rotate(-110.76deg) !important;
+}
+
+.each-card:nth-last-child(8) .spread-task {
+  transform: translate(-79%, 145%) rotate(-138.45deg) !important;
+}
+
+.each-card:nth-last-child(9) .spread-task {
+  transform: translate(-28%, 163%) rotate(-166.14deg) !important;
+}
+
+.each-card:nth-last-child(10) .spread-task {
+  transform: translate(28%, 163%) rotate(-193.83deg) !important;
+}
+
+.each-card:nth-last-child(11) .spread-task {
+  transform: translate(79%, 145%) rotate(-221.52deg) !important;
+}
+
+.each-card:nth-last-child(12) .spread-task {
+  transform: translate(114%, 109%) rotate(-249.21deg) !important;
+}
+
+.each-card:nth-last-child(13) .spread-task {
+  transform: translate(121%, 65%) rotate(-276.9deg) !important;
+}
+
+.each-card:nth-last-child(14) .spread-task {
+  transform: translate(99%, 27%) rotate(-304.59deg) !important;
+}
+
+.each-card:nth-last-child(15) .spread-task {
+  transform: translate(60%, 2%) rotate(-332.28deg) !important;
+}
+
+/* this was used as a guide to set the stagger correctly on spread  */
+/* .center-line {
+  width: 5px;
+  height: 23px;
+  background-color: yellow;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  z-index: 5;
+} */
+
+/* card suit styling */
+
+/* .card-suit-top {
+  position: relative;
+  top: 3%;
+  left: 5%;
+  color: black;
+  font-size: 7vmin;
+}
+
+.card-suit-bottom {
+  position: relative;
+  top: 82%;
+  right: 5%;
+  color: black;
+  font-size: 7vmin;
+  rotate: 180deg;
+} */
+
+/* 
 .each-card:nth-last-child(2) .spread-task {
   transform: translate(0%, 0%) rotate(0) !important;
 }
@@ -98,34 +186,4 @@
 
 .each-card:nth-last-child(14) .spread-task {
   transform: translate(52%, 10%) rotate(-332.28deg) !important;
-}
-
-/* this was used as a guide to set the stagger correctly on spread
-.center-line {
-  width: 5px;
-  height: 23px;
-  background-color: yellow;
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  z-index: 5;
-}  */
-
-/* card suit styling */
-
-/* .card-suit-top {
-  position: relative;
-  top: 3%;
-  left: 5%;
-  color: black;
-  font-size: 7vmin;
-}
-
-.card-suit-bottom {
-  position: relative;
-  top: 82%;
-  right: 5%;
-  color: black;
-  font-size: 7vmin;
-  rotate: 180deg;
 } */

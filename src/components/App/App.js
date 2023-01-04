@@ -34,8 +34,10 @@ function App() {
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
-    if (tasks.length == 0) {
+    if (tasks.length === 0) {
       return "plus default-plus";
+    } else if (taskSpread) {
+      return "plus default-plus spread-plus";
     } else {
       return "plus default-plus added-plus";
     }
@@ -115,14 +117,9 @@ function App() {
 
   return (
     <>
-      <div
-        className={showForm || isEditing ? "background-blur" : ""}
-        /*     className={
-          showForm || isEditing ? "background-blur" : taskSpread ? "test" : ""
-        } */
-      >
+      <div className={showForm || isEditing ? "background-blur" : ""}>
         <Header />
-        <DateSelect />
+        <DateSelect taskSpread={taskSpread} />
       </div>
       {showForm && (
         <TaskForm
@@ -152,10 +149,6 @@ function App() {
           addTaskBtnPosition={addTaskBtnPosition}
           displayForm={displayForm}
         />
-        {/*     <IoAddCircleOutline
-          className={addTaskBtnPosition()}
-          onClick={displayForm}
-        /> */}
         {/*   <div className="added-plus2"></div> */}
       </div>
     </>

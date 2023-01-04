@@ -4,12 +4,13 @@
 }
 
 body {
-  /*  margin: 5em; */
+  margin: 5em;
   background-color: rgba(32, 32, 32, 0.9);
   height: 100vh;
   overflow: hidden;
   text-align: center;
   color: white;
+  /*   position: relative; */
 }
 
 /* When task form is open */

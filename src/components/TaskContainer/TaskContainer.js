@@ -19,7 +19,6 @@ const TaskContainer = ({
   addTaskBtnPosition,
   displayForm,
 }) => {
-  let suitValue;
   return (
     <div
       className={
