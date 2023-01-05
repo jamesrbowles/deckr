@@ -1,5 +1,5 @@
 .task-card {
-  background-color: rgb(87, 112, 205);
+  background-color: rgb(96, 174, 196);
   border-radius: 1vmin;
   position: absolute;
   aspect-ratio: 5 / 7;
@@ -33,10 +33,12 @@
 }
 
 .task-text {
-  width: 100%;
+  width: 70%;
   word-wrap: break-word;
   margin: 1em 1em;
   overflow: scroll;
+  /*   color: black;
+  border: 1px solid black; */
 }
 
 /* 155% total vertical change */
@@ -117,22 +119,58 @@
 
 /* card suit styling */
 
-/* .card-suit-top {
-  position: relative;
-  top: 3%;
-  left: 5%;
+.card-suit-top {
+  position: absolute;
+  top: 4%;
+  left: 3%;
   color: black;
-  font-size: 7vmin;
 }
 
 .card-suit-bottom {
-  position: relative;
-  top: 82%;
-  right: 5%;
+  position: absolute;
+  top: 79%;
+  right: 3%;
   color: black;
-  font-size: 7vmin;
   rotate: 180deg;
-} */
+}
+
+.card-suit-icon {
+  font-size: 2vmin;
+}
+
+.card-suit-value {
+  margin: 0;
+  padding: 0;
+  font-size: 3vmin;
+  font-weight: normal;
+}
+
+/* in spread mode */
+.card-suit-top-spread {
+  position: absolute;
+  top: 4%;
+  left: 3%;
+  color: black;
+}
+
+.card-suit-bottom-spread {
+  position: absolute;
+  top: 79%;
+  right: 3%;
+  color: black;
+  rotate: 180deg;
+}
+
+.card-suit-icon-spread {
+  font-size: 1.22vmin;
+}
+
+.card-suit-value-spread {
+  margin: 0;
+  padding: 0;
+  font-size: 1.83vmin;
+  font-weight: normal;
+}
 
 /* 
 .each-card:nth-last-child(2) .spread-task {

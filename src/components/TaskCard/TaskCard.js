@@ -36,6 +36,36 @@ const TaskCard = ({
     setShowTaskBtns(!showTaskBtns);
   };
 
+  const cardValue = (indexTest) => {
+    if (tasks[tasks.length - 1].id == tasks[indexTest].id) {
+      return "A";
+    } else if (tasks[tasks.length - 2].id == tasks[indexTest].id) {
+      return "K";
+    } else if (tasks[tasks.length - 3].id == tasks[indexTest].id) {
+      return "Q";
+    } else if (tasks[tasks.length - 4].id == tasks[indexTest].id) {
+      return "J";
+    } else if (tasks[tasks.length - 5].id == tasks[indexTest].id) {
+      return "10";
+    } else if (tasks[tasks.length - 6].id == tasks[indexTest].id) {
+      return "9";
+    } else if (tasks[tasks.length - 7].id == tasks[indexTest].id) {
+      return "8";
+    } else if (tasks[tasks.length - 8].id == tasks[indexTest].id) {
+      return "7";
+    } else if (tasks[tasks.length - 9].id == tasks[indexTest].id) {
+      return "6";
+    } else if (tasks[tasks.length - 10].id == tasks[indexTest].id) {
+      return "5";
+    } else if (tasks[tasks.length - 11].id == tasks[indexTest].id) {
+      return "4";
+    } else if (tasks[tasks.length - 12].id == tasks[indexTest].id) {
+      return "3";
+    } else if (tasks[tasks.length - 13].id == tasks[indexTest].id) {
+      return "2";
+    }
+  };
+
   const translateX =
     Math.floor(Math.random() * 12) * (Math.round(Math.random()) ? 1 : -1);
   const translateY =
@@ -63,13 +93,35 @@ const TaskCard = ({
         id={index}
         onClick={findIndex}
       >
-        {/*         <BsSuitSpadeFill className="card-suit-top" /> */}
+        <div className="card-suit-top">
+          <h3
+            className={
+              taskSpread ? "card-suit-value-spread" : "card-suit-value"
+            }
+          >
+            {cardValue(index)}
+          </h3>
+          <BsSuitSpadeFill
+            className={taskSpread ? "card-suit-icon-spread" : "card-suit-icon"}
+          />
+        </div>
         <div className="task-text">
           <h1>{task.name}</h1>
           <p>{task.description}</p>
           {/*      <div className="center-line"></div> */}
         </div>
-        {/*         <BsSuitSpadeFill className="card-suit-bottom" /> */}
+        <div className="card-suit-bottom">
+          <h3
+            className={
+              taskSpread ? "card-suit-value-spread" : "card-suit-value"
+            }
+          >
+            {cardValue(index)}
+          </h3>
+          <BsSuitSpadeFill
+            className={taskSpread ? "card-suit-icon-spread" : "card-suit-icon"}
+          />
+        </div>
       </div>
       <div
         className={
