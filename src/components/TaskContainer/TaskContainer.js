@@ -39,6 +39,7 @@ const TaskContainer = ({
           enterEditMode={enterEditMode}
           spreadTasks={spreadTasks}
           taskSpread={taskSpread}
+          index={index}
         />
       ))}
       <IoAddCircleOutline

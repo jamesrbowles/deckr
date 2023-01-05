@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BsSuitSpadeFill } from "react-icons/bs";
 
 import "./TaskCard.css";
@@ -15,7 +15,18 @@ const TaskCard = ({
   enterEditMode,
   spreadTasks,
   taskSpread,
+  index,
 }) => {
+  /*   const [taskIndex, setTaskIndex] = useState("");
+
+
+  const findIndex = (e) => {
+    const newIndex = e.currentTarget.id;
+    console.log(newIndex);
+    console.log(tasks[newIndex].id);
+    setTaskIndex(tasks[newIndex].id);
+  }; */
+
   const firstKey = tasks[tasks.length - 1].id;
 
   const translateX =
@@ -43,6 +54,8 @@ const TaskCard = ({
         }
         style={stagger.current}
         onClick={displayTaskBtns}
+        /*         id={index}
+        onClick={findIndex} */
       >
         {/*         <BsSuitSpadeFill className="card-suit-top" /> */}
         <div className="task-text">
