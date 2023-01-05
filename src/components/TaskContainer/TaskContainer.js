@@ -7,7 +7,6 @@ import "../icons.css";
 const TaskContainer = ({
   task,
   tasks,
-
   showTaskBtns,
   deleteTask,
   completeTask,
@@ -56,7 +55,7 @@ const TaskContainer = ({
         style={tasks.length > 12 && { color: "gray" }}
         onClick={displayForm}
       />
-      <div className="added-plus2"></div>
+      {/*   <div className="added-plus2"></div> */}
     </div>
   );
 };

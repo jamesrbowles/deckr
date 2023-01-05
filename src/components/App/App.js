@@ -21,13 +21,15 @@ function App() {
   const [task, setTask] = useState("");
   const [taskSpread, setTaskSpread] = useState(false);
   const [showTaskBtns, setShowTaskBtns] = useState(false);
-  const [taskIndex, setTaskIndex] = useState(tasks.length - 1);
+  const [taskIndex, setTaskIndex] = useState(0);
   const [taskChangeStyle, setTaskChangeStyle] = useState(false);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
   const displayForm = () => {
-    setShowForm(true);
+    if (tasks.length < 13) {
+      setShowForm(true);
+    }
   };
 
   const closeForm = () => {
@@ -56,7 +58,11 @@ function App() {
     const updatedTasks = [...tasks].filter((task) => task.id != id);
 
     setTasks(updatedTasks);
-    setTaskIndex(tasks.length - 1);
+    if (tasks.length == 1) {
+      setTaskIndex(0);
+    } else {
+      setTaskIndex(tasks.length - 2);
+    }
 
     if (tasks.length < 3) {
       setTaskSpread(false);
