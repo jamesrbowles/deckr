@@ -8,26 +8,33 @@ import TaskBtns from "../TaskBtns/TaskBtns";
 const TaskCard = ({
   task,
   tasks,
-  displayTaskBtns,
   showTaskBtns,
+  setShowTaskBtns,
   deleteTask,
   completeTask,
   enterEditMode,
   spreadTasks,
   taskSpread,
   index,
+  taskIndex,
+  setTaskIndex,
+  taskChangeStyle,
+  setTaskChangeStyle,
 }) => {
-  /*   const [taskIndex, setTaskIndex] = useState("");
-
-
   const findIndex = (e) => {
     const newIndex = e.currentTarget.id;
-    console.log(newIndex);
-    console.log(tasks[newIndex].id);
-    setTaskIndex(tasks[newIndex].id);
-  }; */
-
-  const firstKey = tasks[tasks.length - 1].id;
+    if (taskSpread) {
+      setTaskIndex(newIndex);
+    } else {
+      setTaskIndex(tasks.length - 1);
+    }
+    if (taskIndex != newIndex) {
+      setTaskChangeStyle(true);
+    } else {
+      setTaskChangeStyle(false);
+    }
+    setShowTaskBtns(!showTaskBtns);
+  };
 
   const translateX =
     Math.floor(Math.random() * 12) * (Math.round(Math.random()) ? 1 : -1);
@@ -53,9 +60,8 @@ const TaskCard = ({
             : "task-card"
         }
         style={stagger.current}
-        onClick={displayTaskBtns}
-        /*         id={index}
-        onClick={findIndex} */
+        id={index}
+        onClick={findIndex}
       >
         {/*         <BsSuitSpadeFill className="card-suit-top" /> */}
         <div className="task-text">
@@ -73,7 +79,7 @@ const TaskCard = ({
         }
         style={!taskSpread ? stagger.current : {}}
       >
-        {firstKey === task.id && (
+        {tasks[taskIndex].id == task.id && (
           <TaskBtns
             showTaskBtns={showTaskBtns}
             deleteTask={deleteTask}
@@ -82,6 +88,7 @@ const TaskCard = ({
             enterEditMode={enterEditMode}
             spreadTasks={spreadTasks}
             taskSpread={taskSpread}
+            taskChangeStyle={taskChangeStyle}
           />
         )}
       </div>

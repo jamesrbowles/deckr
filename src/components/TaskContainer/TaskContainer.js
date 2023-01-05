@@ -7,7 +7,7 @@ import "../icons.css";
 const TaskContainer = ({
   task,
   tasks,
-  displayTaskBtns,
+
   showTaskBtns,
   deleteTask,
   completeTask,
@@ -18,6 +18,11 @@ const TaskContainer = ({
   taskSpread,
   addTaskBtnPosition,
   displayForm,
+  setShowTaskBtns,
+  taskIndex,
+  setTaskIndex,
+  taskChangeStyle,
+  setTaskChangeStyle,
 }) => {
   return (
     <div
@@ -31,7 +36,6 @@ const TaskContainer = ({
           taskName={taskName}
           taskDesc={taskDesc}
           key={task.id}
-          displayTaskBtns={displayTaskBtns}
           showTaskBtns={showTaskBtns}
           tasks={tasks}
           deleteTask={deleteTask}
@@ -40,6 +44,11 @@ const TaskContainer = ({
           spreadTasks={spreadTasks}
           taskSpread={taskSpread}
           index={index}
+          setShowTaskBtns={setShowTaskBtns}
+          taskIndex={taskIndex}
+          setTaskIndex={setTaskIndex}
+          taskChangeStyle={taskChangeStyle}
+          setTaskChangeStyle={setTaskChangeStyle}
         />
       ))}
       <IoAddCircleOutline
@@ -53,23 +62,3 @@ const TaskContainer = ({
 };
 
 export default TaskContainer;
-
-/* 
-     {
-       tasks.map((task, index) => (
-         <TaskCard
-           task={task}
-           taskName={taskName}
-           taskDesc={taskDesc}
-           key={task.id}
-           displayTaskBtns={displayTaskBtns}
-           showTaskBtns={showTaskBtns}
-           tasks={tasks}
-           deleteTask={deleteTask}
-           completeTask={completeTask}
-           enterEditMode={enterEditMode}
-           spreadTasks={spreadTasks}
-           taskSpread={taskSpread}
-         />
-       ));
-     } */

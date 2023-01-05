@@ -20,6 +20,9 @@ function App() {
   const [tasks, setTasks] = useLocalStorage("deckr.tasks", []);
   const [task, setTask] = useState("");
   const [taskSpread, setTaskSpread] = useState(false);
+  const [showTaskBtns, setShowTaskBtns] = useState(false);
+  const [taskIndex, setTaskIndex] = useState(tasks.length - 1);
+  const [taskChangeStyle, setTaskChangeStyle] = useState(false);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -44,10 +47,6 @@ function App() {
   };
 
   /*   Task buttons and their functionality */
-  const [showTaskBtns, setShowTaskBtns] = useState(false);
-  const displayTaskBtns = () => {
-    setShowTaskBtns(!showTaskBtns);
-  };
 
   const addTask = (task) => {
     setTasks((prev) => [...prev, task]);
@@ -55,7 +54,9 @@ function App() {
 
   const deleteTask = (id) => {
     const updatedTasks = [...tasks].filter((task) => task.id != id);
+
     setTasks(updatedTasks);
+    setTaskIndex(tasks.length - 1);
 
     if (tasks.length < 3) {
       setTaskSpread(false);
@@ -139,7 +140,6 @@ function App() {
         <TaskContainer
           task={task}
           tasks={tasks}
-          displayTaskBtns={displayTaskBtns}
           showTaskBtns={showTaskBtns}
           deleteTask={deleteTask}
           completeTask={completeTask}
@@ -148,6 +148,11 @@ function App() {
           taskSpread={taskSpread}
           addTaskBtnPosition={addTaskBtnPosition}
           displayForm={displayForm}
+          setShowTaskBtns={setShowTaskBtns}
+          taskIndex={taskIndex}
+          setTaskIndex={setTaskIndex}
+          taskChangeStyle={taskChangeStyle}
+          setTaskChangeStyle={setTaskChangeStyle}
         />
         {/*   <div className="added-plus2"></div> */}
       </div>
@@ -156,5 +161,3 @@ function App() {
 }
 
 export default App;
-
-/* add plus icon to task container and put position absolute - play around with getting it and keeping it same distance to card */

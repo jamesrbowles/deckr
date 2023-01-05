@@ -82,3 +82,30 @@
 .spread-complete-btn:hover {
   color: rgb(5, 172, 5);
 }
+
+/* when a user clicks on a different card in spread - to signal the button target has changed */
+
+.btn-shake {
+  animation: btn-shake 800ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes btn-shake {
+  0% {
+    opacity: 50%;
+  }
+  5% {
+    opacity: 60%;
+  }
+  10% {
+    opacity: 70%;
+  }
+  15% {
+    opacity: 80%;
+  }
+  20% {
+    opacity: 90%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

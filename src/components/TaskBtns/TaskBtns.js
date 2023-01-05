@@ -15,13 +15,16 @@ const TaskBtns = ({
   enterEditMode,
   spreadTasks,
   taskSpread,
+  taskChangeStyle,
 }) => {
   return (
     <div>
       <FaExpandAlt
         /*    className={showTaskBtns ? "fa fa-expand-expanded" : "fa"} */
         className={
-          taskSpread
+          taskSpread && taskChangeStyle
+            ? "fa spread-spread-btn btn-shake"
+            : taskSpread
             ? "fa spread-spread-btn"
             : showTaskBtns
             ? "fa fa-expand-expanded"
@@ -31,8 +34,11 @@ const TaskBtns = ({
       />
       <FaRegEdit
         /*    className={showTaskBtns ? "fa fa-edit-expanded" : "fa"} */
+
         className={
-          taskSpread
+          taskSpread && taskChangeStyle
+            ? "fa spread-edit-btn btn-shake"
+            : taskSpread
             ? "fa spread-edit-btn"
             : showTaskBtns
             ? "fa fa-edit-expanded"
@@ -42,8 +48,11 @@ const TaskBtns = ({
       />
       <FaRegTimesCircle
         /*  className={showTaskBtns ? "fa fa-delete-expanded" : "fa"} */
+
         className={
-          taskSpread
+          taskSpread && taskChangeStyle
+            ? "fa spread-delete-btn btn-shake"
+            : taskSpread
             ? "fa spread-delete-btn"
             : showTaskBtns
             ? "fa fa-delete-expanded"
@@ -53,8 +62,11 @@ const TaskBtns = ({
       />
       <FaRegCheckCircle
         /*  className={showTaskBtns ? "fa fa-complete-expanded" : "fa"} */
+
         className={
-          taskSpread
+          taskSpread && taskChangeStyle
+            ? "fa spread-complete-btn btn-shake"
+            : taskSpread
             ? "fa spread-complete-btn"
             : showTaskBtns
             ? "fa fa-complete-expanded"
