@@ -1,5 +1,5 @@
 .task-card {
-  background-color: rgb(96, 174, 196);
+  background-color: hsl(var(--hue), 50%, 50%);
   border-radius: 1vmin;
   position: absolute;
   aspect-ratio: 5 / 7;
@@ -37,6 +37,7 @@
   word-wrap: break-word;
   margin: 1em 1em;
   overflow: scroll;
+  font-size: 2vmin;
   /*   color: black;
   border: 1px solid black; */
 }

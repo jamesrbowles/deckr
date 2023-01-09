@@ -1,0 +1,65 @@
+.color-area {
+  position: fixed;
+  bottom: -3%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /*   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  width: 80%;
+}
+
+.close-color-picker {
+  margin: 0.8em;
+  border-radius: 5px;
+  border: 1px solid rgba(32, 32, 32, 0.9);
+  padding: 0.3em 0.6em;
+  font-weight: bold;
+  background-color: hsl(var(--hue), 50%, 50%);
+  cursor: pointer;
+}
+
+.color-icon {
+  font-size: 3.5vmin;
+}
+
+.color-btn {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 1em;
+}
+
+.range-picker {
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  border: 0.2em solid rgb(255, 255, 255, 0.2);
+  border-radius: 100vmax;
+  background: linear-gradient(
+    to right,
+    hsl(0, 50%, 50%),
+    hsl(25, 50%, 50%),
+    hsl(50, 50%, 50%),
+    hsl(75, 50%, 50%),
+    hsl(100, 50%, 50%),
+    hsl(125, 50%, 50%),
+    hsl(150, 50%, 50%),
+    hsl(175, 50%, 50%),
+    hsl(200, 50%, 50%),
+    hsl(225, 50%, 50%),
+    hsl(250, 50%, 50%),
+    hsl(275, 50%, 50%),
+    hsl(300, 50%, 50%),
+    hsl(325, 50%, 50%),
+    hsl(350, 50%, 50%)
+  );
+  width: 45%;
+  height: 1.75vmin;
+  box-shadow: 0 0 0.8em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}

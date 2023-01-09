@@ -15,6 +15,7 @@ import TaskForm from "../TaskForm/TaskForm";
 import TaskContainer from "../TaskContainer/TaskContainer";
 import DateSelect from "../DateSelect/DateSelect";
 import EditForm from "../TaskForm/EditForm";
+import ColorSwitcher from "../ColorSwitcher/ColorSwitcher";
 
 function App() {
   const [tasks, setTasks] = useLocalStorage("deckr.tasks", []);
@@ -161,6 +162,7 @@ function App() {
           setTaskChangeStyle={setTaskChangeStyle}
         />
         {/*   <div className="added-plus2"></div> */}
+        <ColorSwitcher />
       </div>
     </>
   );

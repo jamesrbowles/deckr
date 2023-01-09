@@ -2,6 +2,18 @@
   color: white;
   font-weight: 600;
   text-align: center;
-  font-size: 5rem;
+  font-size: 11vmin;
   margin-bottom: 0;
+}
+
+@media only screen and (max-height: 600px) {
+  .logo {
+    margin-top: 0.2em;
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .logo {
+    margin-top: 0.3em;
+  }
 }
