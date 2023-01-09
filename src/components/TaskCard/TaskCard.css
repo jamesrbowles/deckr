@@ -41,6 +41,10 @@
 }
 
 .task-text-spread {
+  width: 80%;
+  word-wrap: break-word;
+  margin: 0em 1em 1em 1em;
+  overflow: scroll;
   font-size: 1vmin;
 }
 
