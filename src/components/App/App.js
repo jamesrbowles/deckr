@@ -162,7 +162,7 @@ function App() {
           setTaskChangeStyle={setTaskChangeStyle}
         />
         {/*   <div className="added-plus2"></div> */}
-        <ColorSwitcher showForm={showForm} />
+        {!showForm && <ColorSwitcher />}
       </div>
     </>
   );

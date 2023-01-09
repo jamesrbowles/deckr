@@ -105,7 +105,7 @@ const TaskCard = ({
             className={taskSpread ? "card-suit-icon-spread" : "card-suit-icon"}
           />
         </div>
-        <div className="task-text">
+        <div className={taskSpread ? "task-text-spread" : "task-text"}>
           <h1>{task.name}</h1>
           <p>{task.description}</p>
           {/*      <div className="center-line"></div> */}

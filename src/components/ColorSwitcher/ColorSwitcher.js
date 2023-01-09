@@ -7,7 +7,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 // Icons
 import { IoMdColorPalette } from "react-icons/io";
 
-const ColorSwitcher = ({ showForm }) => {
+const ColorSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false);
   const [hue, setHue] = useLocalStorage("deckr.tasks.color", "166");
 
@@ -17,7 +17,7 @@ const ColorSwitcher = ({ showForm }) => {
 
   return (
     <aside className="color-area">
-      {isColorPicking && !showForm ? (
+      {isColorPicking ? (
         <>
           <button
             className="close-color-picker"

@@ -38,8 +38,10 @@
   margin: 1em 1em;
   overflow: scroll;
   font-size: 2vmin;
-  /*   color: black;
-  border: 1px solid black; */
+}
+
+.task-text-spread {
+  font-size: 1vmin;
 }
 
 /* Task spread styling */
