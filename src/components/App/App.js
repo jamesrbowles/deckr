@@ -143,7 +143,9 @@ function App() {
           closeEditMode={closeEditMode}
         />
       )}
-      <div className={showForm || isEditing ? "background-blur" : ""}>
+      <div
+        className={showForm || isEditing ? "test2 background-blur" : "test2"}
+      >
         <TaskContainer
           task={task}
           tasks={tasks}
@@ -162,7 +164,9 @@ function App() {
           setTaskChangeStyle={setTaskChangeStyle}
         />
         {/*   <div className="added-plus2"></div> */}
-        {!showForm && <ColorSwitcher />}
+      </div>
+      <div className={showForm || isEditing ? "background-blur" : ""}>
+        <ColorSwitcher />
       </div>
     </>
   );

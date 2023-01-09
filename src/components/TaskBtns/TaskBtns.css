@@ -14,8 +14,8 @@
 /* Icons when expanded with hover effects */
 
 .fa-edit-expanded {
-  top: -10%;
-  left: 120%;
+  top: -15%;
+  left: 125%;
 }
 
 .fa-edit-expanded:hover {
@@ -23,8 +23,8 @@
 }
 
 .fa-complete-expanded {
-  top: 110%;
-  left: 120%;
+  top: 115%;
+  left: 125%;
 }
 
 .fa-complete-expanded:hover {
@@ -32,8 +32,8 @@
 }
 
 .fa-delete-expanded {
-  top: 110%;
-  left: -20%;
+  top: 115%;
+  left: -25%;
 }
 
 .fa-delete-expanded:hover {
@@ -41,8 +41,8 @@
 }
 
 .fa-expand-expanded {
-  top: -8%;
-  left: -15%;
+  top: -11%;
+  left: -19%;
 }
 
 .fa-expand-expanded:hover {
