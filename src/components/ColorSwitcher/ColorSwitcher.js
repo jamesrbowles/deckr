@@ -9,7 +9,7 @@ import { IoMdColorPalette } from "react-icons/io";
 
 const ColorSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false);
-  const [hue, setHue] = useLocalStorage("deckr.tasks.color", "245");
+  const [hue, setHue] = useLocalStorage("deckr.tasks.color", "166");
 
   useEffect(() => {
     document.documentElement.style.setProperty("--hue", hue);
