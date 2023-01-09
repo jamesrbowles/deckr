@@ -83,6 +83,8 @@ const TaskCard = ({
         className={
           taskSpread && task.completed
             ? "spread-task task-card task-card-size-spread completed"
+            : taskSpread && tasks[taskIndex].id == task.id
+            ? "spread-task task-card task-card-size-spread selected"
             : taskSpread
             ? "spread-task task-card task-card-size-spread"
             : task.completed

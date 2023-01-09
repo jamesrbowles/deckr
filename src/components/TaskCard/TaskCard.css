@@ -48,6 +48,15 @@
   font-size: 1vmin;
 }
 
+.selected {
+  background-color: hsl(var(--hue), 50%, 35%);
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  z-index: 2;
+}
+
 /* Task spread styling */
 
 .task-card-size-spread {
