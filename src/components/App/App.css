@@ -11,12 +11,10 @@ body {
   margin: 5em 5em 5em 5em;
   padding: 0;
   background-color: rgba(32, 32, 32, 0.9);
-  /*   background-color: hsl(var(--hue), 50%, 50%); */
   height: 100vh;
   overflow: hidden;
   text-align: center;
   color: white;
-  /*   position: relative; */
 }
 
 @media screen and (min-width: 300px) {
