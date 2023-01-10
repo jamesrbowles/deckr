@@ -25,7 +25,14 @@
 }
 
 .color-icon {
+  color: black;
   font-size: 3.5vmin;
+}
+
+@media screen and (max-width: 500px) {
+  .color-icon {
+    font-size: 5.25vmin;
+  }
 }
 
 .color-btn {
@@ -34,6 +41,7 @@
   border-radius: 5px;
   cursor: pointer;
   margin: 1em;
+  padding: 0.5em;
 }
 
 .range-picker {

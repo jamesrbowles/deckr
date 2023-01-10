@@ -9,12 +9,18 @@
   transform: translate(-50%, -50%); */
 }
 
+@media screen and (max-width: 500px) {
+  .task-container {
+    width: 37.5vmin;
+  }
+}
+
 .task-container-spread {
   width: 15vmin !important;
 }
 
-/* .task-container {
-  position: relative;
-  z-index: 5;
-} */
-/* hover effects with task cards */
+@media screen and (max-width: 500px) {
+  .task-container-spread {
+    width: 22.5vmin;
+  }
+}

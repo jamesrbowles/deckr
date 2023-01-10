@@ -3,6 +3,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 500px) {
+  .plus {
+    font-size: 15vmin;
+  }
+}
+
 .default-plus {
   position: absolute;
   top: 50%;
