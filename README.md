@@ -1,6 +1,6 @@
 # Deckr App
 
-This is a task app that focuses on priority. As the user adds a task it gets added to the forefront of a deck of previously added tasks.
+This is a task app that focuses on priority built with React. As the user adds a task it gets added to the forefront of a deck of previously added tasks.
 
 ## Functionality
 
