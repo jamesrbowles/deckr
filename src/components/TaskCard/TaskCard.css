@@ -223,4 +223,10 @@
   .card-suit-value-spread {
     font-size: 2.75vmin;
   }
+  .card-suit-icon {
+    font-size: 3vmin;
+  }
+  .card-suit-value {
+    font-size: 4.5vmin;
+  }
 }
