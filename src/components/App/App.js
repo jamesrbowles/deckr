@@ -53,6 +53,8 @@ function App() {
 
   const addTask = (task) => {
     setTasks((prev) => [...prev, task]);
+    // ensures if task added in spread mode - user is selected at the front again
+    setTaskIndex(tasks.length);
   };
 
   const deleteTask = (id) => {
@@ -64,11 +66,14 @@ function App() {
     } else {
       setTaskIndex(tasks.length - 2);
     }
+  };
 
-    if (tasks.length < 3) {
+  // takes user out of spread mode if only one task left
+  useEffect(() => {
+    if (tasks.length < 2) {
       setTaskSpread(false);
     }
-  };
+  });
 
   const [completed, setCompleted] = useState(false);
   const completeTask = (id) => {
@@ -165,9 +170,7 @@ function App() {
         />
         {/*   <div className="added-plus2"></div> */}
       </div>
-      <div className={showForm || isEditing ? "background-blur" : ""}>
-        <ColorSwitcher />
-      </div>
+      {!showForm && !isEditing && <ColorSwitcher />}
     </>
   );
 }

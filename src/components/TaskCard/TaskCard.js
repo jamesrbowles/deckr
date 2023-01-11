@@ -36,6 +36,7 @@ const TaskCard = ({
     setShowTaskBtns(!showTaskBtns);
   };
 
+  //Getting the card suit value on the correct cards
   const cardValue = (indexTest) => {
     if (tasks[tasks.length - 1].id == tasks[indexTest].id) {
       return "A";
