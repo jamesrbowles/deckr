@@ -18,6 +18,7 @@
   margin-bottom: 1em;
   resize: none;
   height: auto;
+  font-size: 1.8vmin;
 }
 
 .form-labels {
@@ -44,7 +45,7 @@
 .modal-title {
   display: inline-block;
   text-align: center;
-  font-size: 2.5vmin;
+  font-size: 2.4vmin;
 }
 
 .modal-close {
@@ -65,7 +66,20 @@
 }
 
 @media screen and (max-width: 500px) {
+  .add-task-form {
+    width: 50%;
+  }
+  .modal-title {
+    font-size: 3.4vmin;
+  }
   .modal-close button {
     font-size: 4vmin;
+    padding: 0;
+  }
+  .add-task-input {
+    font-size: 2.7vmin;
+  }
+  .add-task-btn {
+    font-size: 3.75vmin;
   }
 }
