@@ -7,20 +7,9 @@
   margin-top: 4vmin;
 }
 
-@media only screen and (max-height: 600px) {
-  .logo {
-    margin-top: 0.2em;
-  }
-}
-
-@media only screen and (max-height: 700px) {
-  .logo {
-    margin-top: 0.3em;
-  }
-}
-
 @media screen and (max-width: 500px) {
   .logo {
     font-size: 16.5vmin;
+    margin-top: 7vmin;
   }
 }
