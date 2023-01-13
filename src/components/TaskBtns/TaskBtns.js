@@ -16,11 +16,13 @@ const TaskBtns = ({
   spreadTasks,
   taskSpread,
   taskChangeStyle,
+  tasks,
 }) => {
   return (
     <div>
       <FaExpandAlt
         /*    className={showTaskBtns ? "fa fa-expand-expanded" : "fa"} */
+        style={{ opacity: tasks.length < 2 && "40%" }}
         className={
           taskSpread && taskChangeStyle
             ? "fa spread-spread-btn btn-shake"

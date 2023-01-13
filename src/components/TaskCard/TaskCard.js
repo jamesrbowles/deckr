@@ -144,6 +144,7 @@ const TaskCard = ({
             spreadTasks={spreadTasks}
             taskSpread={taskSpread}
             taskChangeStyle={taskChangeStyle}
+            tasks={tasks}
           />
         )}
       </div>
