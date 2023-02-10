@@ -1,24 +1,9 @@
-import { useEffect, useState, useContext } from 'react';
-import { IoAddCircleOutline } from 'react-icons/io5';
+import { createContext, useState, useEffect } from 'react';
+import useLocalStorage from './hooks/useLocalStorage';
 
-// custom hooks
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { CardProvider } from '../../Context';
+const CardContext = createContext();
 
-// CSS
-import './App.css';
-import '../TaskForm/TaskForm.css';
-import '../icons.css';
-
-// components
-import Header from '../Header/Header';
-import TaskForm from '../TaskForm/TaskForm';
-import TaskContainer from '../TaskContainer/TaskContainer';
-import DateSelect from '../DateSelect/DateSelect';
-import EditForm from '../TaskForm/EditForm';
-import ColorSwitcher from '../ColorSwitcher/ColorSwitcher';
-
-function App() {
+export function CardProvider({ children }) {
   const [tasks, setTasks] = useLocalStorage('deckr.tasks', []);
   const [task, setTask] = useState('');
   const [taskSpread, setTaskSpread] = useState(false);
@@ -130,52 +115,45 @@ function App() {
   };
 
   return (
-    <>
-      <CardProvider>
-        <div className={showForm || isEditing ? 'background-blur' : ''}>
-          <Header />
-          <DateSelect taskSpread={taskSpread} />
-        </div>
-        {showForm && (
-          <TaskForm
-            addTask={addTask}
-            closeForm={closeForm}
-            setaddTaskBtn={setaddTaskBtn}
-          />
-        )}
-        {isEditing && (
-          <EditForm
-            editedTask={editedTask}
-            updateTask={updateTask}
-            closeEditMode={closeEditMode}
-          />
-        )}
-        <div
-          className={showForm || isEditing ? 'test2 background-blur' : 'test2'}
-        >
-          <TaskContainer
-            task={task}
-            tasks={tasks}
-            showTaskBtns={showTaskBtns}
-            deleteTask={deleteTask}
-            completeTask={completeTask}
-            enterEditMode={enterEditMode}
-            spreadTasks={spreadTasks}
-            taskSpread={taskSpread}
-            addTaskBtnPosition={addTaskBtnPosition}
-            displayForm={displayForm}
-            setShowTaskBtns={setShowTaskBtns}
-            taskIndex={taskIndex}
-            setTaskIndex={setTaskIndex}
-            taskChangeStyle={taskChangeStyle}
-            setTaskChangeStyle={setTaskChangeStyle}
-          />
-          {/*   <div className="added-plus2"></div> */}
-        </div>
-        {!showForm && !isEditing && <ColorSwitcher />}
-      </CardProvider>
-    </>
+    <CardContext.Provider
+      value={{
+        tasks,
+        setTasks,
+        task,
+        setTask,
+        taskSpread,
+        setTaskSpread,
+        showTaskBtns,
+        setShowTaskBtns,
+        taskIndex,
+        setTaskIndex,
+        taskChangeStyle,
+        setTaskChangeStyle,
+        showForm,
+        setShowForm,
+        displayForm,
+        closeForm,
+        addTaskBtn,
+        setaddTaskBtn,
+        addTaskBtnPosition,
+        addTask,
+        deleteTask,
+        completed,
+        setCompleted,
+        completeTask,
+        editedTask,
+        setEditedTask,
+        isEditing,
+        setIsEditing,
+        updateTask,
+        enterEditMode,
+        closeEditMode,
+        spreadTasks,
+      }}
+    >
+      {children}
+    </CardContext.Provider>
   );
 }
 
-export default App;
+export default CardContext;
