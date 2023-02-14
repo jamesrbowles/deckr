@@ -1,36 +1,38 @@
-import "./TaskBtns.css";
+import './TaskBtns.css';
 
 import {
   FaRegEdit,
   FaRegCheckCircle,
   FaRegTimesCircle,
   FaExpandAlt,
-} from "react-icons/fa";
+} from 'react-icons/fa';
+//custom hooks
+import { useCardContext } from '../../Context';
 
-const TaskBtns = ({
-  showTaskBtns,
-  deleteTask,
-  task,
-  completeTask,
-  enterEditMode,
-  spreadTasks,
-  taskSpread,
-  taskChangeStyle,
-  tasks,
-}) => {
+const TaskBtns = ({ task }) => {
+  const {
+    showTaskBtns,
+    deleteTask,
+    completeTask,
+    enterEditMode,
+    spreadTasks,
+    taskSpread,
+    taskChangeStyle,
+    tasks,
+  } = useCardContext();
   return (
     <div>
       <FaExpandAlt
         /*    className={showTaskBtns ? "fa fa-expand-expanded" : "fa"} */
-        style={{ opacity: tasks.length < 2 && "40%" }}
+        style={{ opacity: tasks.length < 2 && '40%' }}
         className={
           taskSpread && taskChangeStyle
-            ? "fa spread-spread-btn btn-shake"
+            ? 'fa spread-spread-btn btn-shake'
             : taskSpread
-            ? "fa spread-spread-btn"
+            ? 'fa spread-spread-btn'
             : showTaskBtns
-            ? "fa fa-expand-expanded"
-            : "fa"
+            ? 'fa fa-expand-expanded'
+            : 'fa'
         }
         onClick={spreadTasks}
       />
@@ -39,12 +41,12 @@ const TaskBtns = ({
 
         className={
           taskSpread && taskChangeStyle
-            ? "fa spread-edit-btn btn-shake"
+            ? 'fa spread-edit-btn btn-shake'
             : taskSpread
-            ? "fa spread-edit-btn"
+            ? 'fa spread-edit-btn'
             : showTaskBtns
-            ? "fa fa-edit-expanded"
-            : "fa"
+            ? 'fa fa-edit-expanded'
+            : 'fa'
         }
         onClick={() => enterEditMode(task)}
       />
@@ -53,12 +55,12 @@ const TaskBtns = ({
 
         className={
           taskSpread && taskChangeStyle
-            ? "fa spread-delete-btn btn-shake"
+            ? 'fa spread-delete-btn btn-shake'
             : taskSpread
-            ? "fa spread-delete-btn"
+            ? 'fa spread-delete-btn'
             : showTaskBtns
-            ? "fa fa-delete-expanded"
-            : "fa"
+            ? 'fa fa-delete-expanded'
+            : 'fa'
         }
         onClick={() => deleteTask(task.id)}
       />
@@ -67,12 +69,12 @@ const TaskBtns = ({
 
         className={
           taskSpread && taskChangeStyle
-            ? "fa spread-complete-btn btn-shake"
+            ? 'fa spread-complete-btn btn-shake'
             : taskSpread
-            ? "fa spread-complete-btn"
+            ? 'fa spread-complete-btn'
             : showTaskBtns
-            ? "fa fa-complete-expanded"
-            : "fa"
+            ? 'fa fa-complete-expanded'
+            : 'fa'
         }
         onClick={() => completeTask(task.id)}
       />

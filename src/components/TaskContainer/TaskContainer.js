@@ -3,28 +3,12 @@ import './TaskContainer.css';
 
 import { IoAddCircleOutline } from 'react-icons/io5';
 import '../icons.css';
+//custom hooks
 import { useCardContext } from '../../Context';
 
 const TaskContainer = ({}) => {
-  const {
-    task,
-    tasks,
-    showTaskBtns,
-    deleteTask,
-    completeTask,
-    taskName,
-    taskDesc,
-    enterEditMode,
-    spreadTasks,
-    taskSpread,
-    addTaskBtnPosition,
-    displayForm,
-    setShowTaskBtns,
-    taskIndex,
-    setTaskIndex,
-    taskChangeStyle,
-    setTaskChangeStyle,
-  } = useCardContext();
+  const { tasks, taskSpread, addTaskBtnPosition, displayForm } =
+    useCardContext();
   return (
     <div
       className={
@@ -34,22 +18,8 @@ const TaskContainer = ({}) => {
       {tasks.map((task, index) => (
         <TaskCard
           task={task}
-          taskName={taskName}
-          taskDesc={taskDesc}
           key={task.id}
-          showTaskBtns={showTaskBtns}
-          tasks={tasks}
-          deleteTask={deleteTask}
-          completeTask={completeTask}
-          enterEditMode={enterEditMode}
-          spreadTasks={spreadTasks}
-          taskSpread={taskSpread}
           index={index}
-          setShowTaskBtns={setShowTaskBtns}
-          taskIndex={taskIndex}
-          setTaskIndex={setTaskIndex}
-          taskChangeStyle={taskChangeStyle}
-          setTaskChangeStyle={setTaskChangeStyle}
         />
       ))}
       <IoAddCircleOutline

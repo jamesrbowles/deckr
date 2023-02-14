@@ -4,26 +4,26 @@ import { BsSuitSpadeFill } from 'react-icons/bs';
 import './TaskCard.css';
 
 import TaskBtns from '../TaskBtns/TaskBtns';
+//custom hooks
 import { useCardContext } from '../../Context';
 
-const TaskCard = ({
-  task,
-  tasks,
-  showTaskBtns,
-  setShowTaskBtns,
-  deleteTask,
-  completeTask,
-  enterEditMode,
-  spreadTasks,
-  taskSpread,
-  index,
-  taskIndex,
-  setTaskIndex,
-  taskChangeStyle,
-  setTaskChangeStyle,
-}) => {
-  const {} = useCardContext();
+const TaskCard = ({ index, task }) => {
+  const {
+    tasks,
+    showTaskBtns,
+    setShowTaskBtns,
+    deleteTask,
+    completeTask,
+    enterEditMode,
+    spreadTasks,
+    taskSpread,
+    taskIndex,
+    setTaskIndex,
+    taskChangeStyle,
+    setTaskChangeStyle,
+  } = useCardContext();
 
+  //Functionality for selecting different cards in spread
   const findIndex = (e) => {
     const newIndex = e.currentTarget.id;
     if (taskSpread) {
@@ -31,7 +31,7 @@ const TaskCard = ({
     } else {
       setTaskIndex(tasks.length - 1);
     }
-    if (taskIndex != newIndex) {
+    if (taskIndex !== newIndex) {
       setTaskChangeStyle(true);
     } else {
       setTaskChangeStyle(false);
@@ -70,6 +70,7 @@ const TaskCard = ({
     }
   };
 
+  //styling for random stagger when not spread
   const translateX =
     Math.floor(Math.random() * 12) * (Math.round(Math.random()) ? 1 : -1);
   const translateY =
@@ -87,7 +88,7 @@ const TaskCard = ({
         className={
           taskSpread && task.completed
             ? 'spread-task task-card task-card-size-spread completed'
-            : taskSpread && tasks[taskIndex].id == task.id
+            : taskSpread && tasks[taskIndex].id === task.id
             ? 'spread-task task-card task-card-size-spread selected'
             : taskSpread
             ? 'spread-task task-card task-card-size-spread'
@@ -137,19 +138,7 @@ const TaskCard = ({
         }
         style={!taskSpread ? stagger.current : {}}
       >
-        {tasks[taskIndex].id == task.id && (
-          <TaskBtns
-            showTaskBtns={showTaskBtns}
-            deleteTask={deleteTask}
-            task={task}
-            completeTask={completeTask}
-            enterEditMode={enterEditMode}
-            spreadTasks={spreadTasks}
-            taskSpread={taskSpread}
-            taskChangeStyle={taskChangeStyle}
-            tasks={tasks}
-          />
-        )}
+        {tasks[taskIndex].id === task.id && <TaskBtns task={task} />}
       </div>
     </div>
   );
