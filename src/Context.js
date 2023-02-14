@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import useLocalStorage from './hooks/useLocalStorage';
 
 const CardContext = createContext();
 
-export function CardProvider({ children }) {
+const CardProvider = ({ children }) => {
   const [tasks, setTasks] = useLocalStorage('deckr.tasks', []);
   const [task, setTask] = useState('');
   const [taskSpread, setTaskSpread] = useState(false);
@@ -154,6 +154,8 @@ export function CardProvider({ children }) {
       {children}
     </CardContext.Provider>
   );
-}
+};
 
-export default CardContext;
+export const useCardContext = () => useContext(CardContext);
+
+export default CardProvider;

@@ -1,10 +1,12 @@
-import "./TaskForm.css";
-import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect } from "react";
+import './TaskForm.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from 'react';
+import { useCardContext } from '../../Context';
 
-const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+const TaskForm = ({}) => {
+  const { addTask, setaddTaskBtn, closeForm } = useCardContext();
+  const [name, setName] = useState('');
+  const [desc, setDesc] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +17,8 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
       description: desc,
       completed: false,
     });
-    setName("");
-    setDesc("");
+    setName('');
+    setDesc('');
     closeForm();
     setaddTaskBtn(true);
   };
@@ -24,13 +26,13 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
   /*   Ability to close form with escape key */
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-      e.key === "Escape" && closeForm();
+      e.key === 'Escape' && closeForm();
     };
 
-    window.addEventListener("keydown", closeModalIfEscaped);
+    window.addEventListener('keydown', closeModalIfEscaped);
 
     return () => {
-      window.removeEventListener("keydown", closeModalIfEscaped);
+      window.removeEventListener('keydown', closeModalIfEscaped);
     };
   }, [closeForm]);
 
@@ -67,7 +69,10 @@ const TaskForm = ({ addTask, setaddTaskBtn, closeForm }) => {
             onInput={(e) => setDesc(e.target.value)}
             rows="8"
           ></textarea>
-          <button type="submit" className="add-task-btn">
+          <button
+            type="submit"
+            className="add-task-btn"
+          >
             Submit
           </button>
         </form>

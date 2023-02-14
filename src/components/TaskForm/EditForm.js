@@ -1,7 +1,9 @@
-import "./TaskForm.css";
-import { useState, useEffect } from "react";
+import './TaskForm.css';
+import { useState, useEffect } from 'react';
+import { useCardContext } from '../../Context';
 
-const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
+const EditForm = ({}) => {
+  const { editedTask, updateTask, closeEditMode } = useCardContext();
   const [updatedName, setUpdatedName] = useState(editedTask.name);
   const [updatedDesc, setUpdatedDesc] = useState(editedTask.description);
 
@@ -13,13 +15,13 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
   /*   Ability to close form with escape key */
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-      e.key === "Escape" && closeEditMode();
+      e.key === 'Escape' && closeEditMode();
     };
 
-    window.addEventListener("keydown", closeModalIfEscaped);
+    window.addEventListener('keydown', closeModalIfEscaped);
 
     return () => {
-      window.removeEventListener("keydown", closeModalIfEscaped);
+      window.removeEventListener('keydown', closeModalIfEscaped);
     };
   }, [closeEditMode]);
 
@@ -56,7 +58,10 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
             onInput={(e) => setUpdatedDesc(e.target.value)}
             rows="8"
           ></textarea>
-          <button type="submit" className="add-task-btn">
+          <button
+            type="submit"
+            className="add-task-btn"
+          >
             Submit
           </button>
         </form>

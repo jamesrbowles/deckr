@@ -1,32 +1,34 @@
-import TaskCard from "../TaskCard/TaskCard";
-import "./TaskContainer.css";
+import TaskCard from '../TaskCard/TaskCard';
+import './TaskContainer.css';
 
-import { IoAddCircleOutline } from "react-icons/io5";
-import "../icons.css";
+import { IoAddCircleOutline } from 'react-icons/io5';
+import '../icons.css';
+import { useCardContext } from '../../Context';
 
-const TaskContainer = ({
-  task,
-  tasks,
-  showTaskBtns,
-  deleteTask,
-  completeTask,
-  taskName,
-  taskDesc,
-  enterEditMode,
-  spreadTasks,
-  taskSpread,
-  addTaskBtnPosition,
-  displayForm,
-  setShowTaskBtns,
-  taskIndex,
-  setTaskIndex,
-  taskChangeStyle,
-  setTaskChangeStyle,
-}) => {
+const TaskContainer = ({}) => {
+  const {
+    task,
+    tasks,
+    showTaskBtns,
+    deleteTask,
+    completeTask,
+    taskName,
+    taskDesc,
+    enterEditMode,
+    spreadTasks,
+    taskSpread,
+    addTaskBtnPosition,
+    displayForm,
+    setShowTaskBtns,
+    taskIndex,
+    setTaskIndex,
+    taskChangeStyle,
+    setTaskChangeStyle,
+  } = useCardContext();
   return (
     <div
       className={
-        taskSpread ? "task-container task-container-spread" : "task-container"
+        taskSpread ? 'task-container task-container-spread' : 'task-container'
       }
     >
       {tasks.map((task, index) => (
@@ -52,7 +54,7 @@ const TaskContainer = ({
       ))}
       <IoAddCircleOutline
         className={addTaskBtnPosition()}
-        style={tasks.length > 12 && { color: "gray" }}
+        style={tasks.length > 12 && { color: 'gray' }}
         onClick={displayForm}
       />
       {/*   <div className="added-plus2"></div> */}

@@ -3,7 +3,7 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 
 // custom hooks
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { CardProvider } from '../../Context';
+import { useCardContext } from '../../Context';
 
 // CSS
 import './App.css';
@@ -19,15 +19,16 @@ import EditForm from '../TaskForm/EditForm';
 import ColorSwitcher from '../ColorSwitcher/ColorSwitcher';
 
 function App() {
-  const [tasks, setTasks] = useLocalStorage('deckr.tasks', []);
+  const { showForm, isEditing } = useCardContext();
+  /*   const [tasks, setTasks] = useLocalStorage('deckr.tasks', []);
   const [task, setTask] = useState('');
   const [taskSpread, setTaskSpread] = useState(false);
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const [taskIndex, setTaskIndex] = useState(0);
-  const [taskChangeStyle, setTaskChangeStyle] = useState(false);
+  const [taskChangeStyle, setTaskChangeStyle] = useState(false); */
 
   /* Add a new task form display and close */
-  const [showForm, setShowForm] = useState(false);
+  /*   const [showForm, setShowForm] = useState(false);
   const displayForm = () => {
     if (tasks.length < 13) {
       setShowForm(true);
@@ -37,9 +38,9 @@ function App() {
   const closeForm = () => {
     setShowForm(false);
   };
-
+ */
   /*   Add task button positioning */
-  const [addTaskBtn, setaddTaskBtn] = useState(false);
+  /*   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (tasks.length === 0) {
       return 'plus default-plus';
@@ -48,14 +49,14 @@ function App() {
     } else {
       return 'plus default-plus added-plus';
     }
-  };
+  }; */
 
   /*   Task buttons and their functionality */
 
-  const addTask = (task) => {
-    setTasks((prev) => [...prev, task]);
-    // ensures if task added in spread mode - user is selected at the front again
-    setTaskIndex(tasks.length);
+  /*   const addTask = (task) => {
+    setTasks((prev) => [...prev, task]); */
+  // ensures if task added in spread mode - user is selected at the front again
+  /*     setTaskIndex(tasks.length);
   };
 
   const deleteTask = (id) => {
@@ -67,10 +68,10 @@ function App() {
     } else {
       setTaskIndex(tasks.length - 2);
     }
-  };
+  }; */
 
   // takes user out of spread mode if only one task left
-  useEffect(() => {
+  /* useEffect(() => {
     if (tasks.length < 2) {
       setTaskSpread(false);
     }
@@ -127,53 +128,23 @@ function App() {
     } else {
       setTaskSpread(!taskSpread);
     }
-  };
+  }; */
 
   return (
     <>
-      <CardProvider>
-        <div className={showForm || isEditing ? 'background-blur' : ''}>
-          <Header />
-          <DateSelect taskSpread={taskSpread} />
-        </div>
-        {showForm && (
-          <TaskForm
-            addTask={addTask}
-            closeForm={closeForm}
-            setaddTaskBtn={setaddTaskBtn}
-          />
-        )}
-        {isEditing && (
-          <EditForm
-            editedTask={editedTask}
-            updateTask={updateTask}
-            closeEditMode={closeEditMode}
-          />
-        )}
-        <div
-          className={showForm || isEditing ? 'test2 background-blur' : 'test2'}
-        >
-          <TaskContainer
-            task={task}
-            tasks={tasks}
-            showTaskBtns={showTaskBtns}
-            deleteTask={deleteTask}
-            completeTask={completeTask}
-            enterEditMode={enterEditMode}
-            spreadTasks={spreadTasks}
-            taskSpread={taskSpread}
-            addTaskBtnPosition={addTaskBtnPosition}
-            displayForm={displayForm}
-            setShowTaskBtns={setShowTaskBtns}
-            taskIndex={taskIndex}
-            setTaskIndex={setTaskIndex}
-            taskChangeStyle={taskChangeStyle}
-            setTaskChangeStyle={setTaskChangeStyle}
-          />
-          {/*   <div className="added-plus2"></div> */}
-        </div>
-        {!showForm && !isEditing && <ColorSwitcher />}
-      </CardProvider>
+      <div className={showForm || isEditing ? 'background-blur' : ''}>
+        <Header />
+        <DateSelect />
+      </div>
+      {showForm && <TaskForm />}
+      {isEditing && <EditForm />}
+      <div
+        className={showForm || isEditing ? 'test2 background-blur' : 'test2'}
+      >
+        <TaskContainer />
+        {/*   <div className="added-plus2"></div> */}
+      </div>
+      {!showForm && !isEditing && <ColorSwitcher />}
     </>
   );
 }
