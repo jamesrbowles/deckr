@@ -1,0 +1,35 @@
+nav {
+  transition: all 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
+}
+
+.nav-icon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0;
+  padding: 2em 0;
+  width: 20%;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: black;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: white;
+}

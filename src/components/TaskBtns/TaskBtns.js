@@ -7,7 +7,7 @@ import {
   FaExpandAlt,
 } from 'react-icons/fa';
 //custom hooks
-import { useCardContext } from '../../Context';
+import { useCardContext } from '../../hooks/Context';
 
 const TaskBtns = ({ task }) => {
   const {

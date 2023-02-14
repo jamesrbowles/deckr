@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-import useLocalStorage from './hooks/useLocalStorage';
+import useLocalStorage from './useLocalStorage';
 
 const CardContext = createContext();
 

@@ -4,7 +4,7 @@ import './TaskContainer.css';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import '../icons.css';
 //custom hooks
-import { useCardContext } from '../../Context';
+import { useCardContext } from '../../hooks/Context';
 
 const TaskContainer = ({}) => {
   const { tasks, taskSpread, addTaskBtnPosition, displayForm } =

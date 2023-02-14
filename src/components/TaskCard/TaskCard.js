@@ -5,7 +5,7 @@ import './TaskCard.css';
 
 import TaskBtns from '../TaskBtns/TaskBtns';
 //custom hooks
-import { useCardContext } from '../../Context';
+import { useCardContext } from '../../hooks/Context';
 
 const TaskCard = ({ index, task }) => {
   const {
