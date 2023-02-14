@@ -1,5 +1,5 @@
 * {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   box-sizing: border-box;
 }
 
@@ -30,25 +30,11 @@ body {
   user-select: none;
 }
 
-.test {
-  display: none;
-}
-
-.test2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
 /* Tasks container */
-
-/* .center-container {
+.container-position {
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
- */

@@ -28,7 +28,11 @@ function App() {
       {showForm && <TaskForm />}
       {isEditing && <EditForm />}
       <div
-        className={showForm || isEditing ? 'test2 background-blur' : 'test2'}
+        className={
+          showForm || isEditing
+            ? 'container-position background-blur'
+            : 'container-position'
+        }
       >
         <TaskContainer />
         {/*   <div className="added-plus2"></div> */}
