@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/deckr/static/css/main.62fd41d2.css",
-    "main.js": "/deckr/static/js/main.ec638fcc.js",
-    "static/js/787.7d0e5a66.chunk.js": "/deckr/static/js/787.7d0e5a66.chunk.js",
+    "main.css": "/deckr/static/css/main.cd2d391c.css",
+    "main.js": "/deckr/static/js/main.7f966306.js",
     "index.html": "/deckr/index.html",
-    "main.62fd41d2.css.map": "/deckr/static/css/main.62fd41d2.css.map",
-    "main.ec638fcc.js.map": "/deckr/static/js/main.ec638fcc.js.map",
-    "787.7d0e5a66.chunk.js.map": "/deckr/static/js/787.7d0e5a66.chunk.js.map"
+    "main.cd2d391c.css.map": "/deckr/static/css/main.cd2d391c.css.map",
+    "main.7f966306.js.map": "/deckr/static/js/main.7f966306.js.map"
   },
   "entrypoints": [
-    "static/css/main.62fd41d2.css",
-    "static/js/main.ec638fcc.js"
+    "static/css/main.cd2d391c.css",
+    "static/js/main.7f966306.js"
   ]
 }
