@@ -10,6 +10,7 @@ const CardProvider = ({ children }) => {
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const [taskIndex, setTaskIndex] = useState(0);
   const [taskChangeStyle, setTaskChangeStyle] = useState(false);
+  const [isMenuToggled, setIsMenuToggled] = useState(false);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -149,6 +150,8 @@ const CardProvider = ({ children }) => {
         enterEditMode,
         closeEditMode,
         spreadTasks,
+        isMenuToggled,
+        setIsMenuToggled,
       }}
     >
       {children}

@@ -12,14 +12,9 @@ const TaskCard = ({ index, task }) => {
     tasks,
     showTaskBtns,
     setShowTaskBtns,
-    deleteTask,
-    completeTask,
-    enterEditMode,
-    spreadTasks,
     taskSpread,
     taskIndex,
     setTaskIndex,
-    taskChangeStyle,
     setTaskChangeStyle,
   } = useCardContext();
 

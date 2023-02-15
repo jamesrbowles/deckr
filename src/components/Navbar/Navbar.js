@@ -2,24 +2,27 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Spin as Hamburger } from 'hamburger-react';
 import './Navbar.css';
+import { useCardContext } from '../../hooks/Context';
 
 const Navbar = () => {
-  const [isMenuToggled, setIsMenuToggled] = useState(false);
+  const { isMenuToggled, setIsMenuToggled } = useCardContext();
   return (
     <nav>
-      <div
-        onClick={() => setIsMenuToggled(!isMenuToggled)}
-        className="nav-icon"
-      >
-        <Hamburger />
+      <div className={isMenuToggled ? 'close-nav nav-icon' : 'nav-icon'}>
+        <Hamburger
+          label="Show menu"
+          toggled={isMenuToggled}
+          toggle={setIsMenuToggled}
+        />
       </div>
 
       {isMenuToggled && (
-        <ul className="navbar">
+        <ul className="navbar-open">
           <li>
             <Link
               to="/"
-              className="nav-links"
+              className="nav-links fancy word"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
               Home
             </Link>
@@ -27,7 +30,8 @@ const Navbar = () => {
           <li>
             <Link
               to="/about"
-              className="nav-links"
+              className="nav-links fancy word"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
               About
             </Link>
@@ -35,9 +39,19 @@ const Navbar = () => {
           <li>
             <Link
               to="/contact"
-              className="nav-links"
+              className="nav-links fancy word"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
             >
               Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/sign-out"
+              className="nav-links fancy word signout"
+              onClick={() => setIsMenuToggled(!isMenuToggled)}
+            >
+              Sign Out
             </Link>
           </li>
         </ul>

@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // custom hooks
 import { useCardContext } from '../../hooks/Context';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 // CSS
 import './App.css';
@@ -23,7 +24,8 @@ import Contact from '../../pages/Contact/Contact';
 import Navbar from '../Navbar/Navbar';
 
 function App() {
-  const { showForm, isEditing } = useCardContext();
+  const { showForm, isEditing, isMenuToggled } = useCardContext();
+  const isAboveSmallScreens = useMediaQuery('(min-width: 650px)');
 
   return (
     <>
@@ -46,7 +48,7 @@ function App() {
                     : 'container-position'
                 }
               >
-                <TaskContainer />
+                {isAboveSmallScreens | !isMenuToggled ? <TaskContainer /> : ''}
                 {/*   <div className="added-plus2"></div> */}
               </div>
               {!showForm && !isEditing && <ColorSwitcher />}
