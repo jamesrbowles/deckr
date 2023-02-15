@@ -22,6 +22,8 @@ import ColorSwitcher from '../ColorSwitcher/ColorSwitcher';
 import About from '../../pages/About/About';
 import Contact from '../../pages/Contact/Contact';
 import Navbar from '../Navbar/Navbar';
+import Login from '../../pages/Login/Login';
+import Signup from '../../pages/Signup/Signup';
 
 function App() {
   const { showForm, isEditing, isMenuToggled } = useCardContext();
@@ -63,6 +65,14 @@ function App() {
         <Route
           path="/contact"
           element={<Contact />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+        <Route
+          path="/sign-up"
+          element={<Signup />}
         />
       </Routes>
     </>

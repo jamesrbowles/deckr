@@ -2,25 +2,42 @@ nav {
   transition: all 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
   position: fixed;
   top: 0;
-  right: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   cursor: pointer;
   z-index: 1;
 }
 
+.top-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav-link {
+  margin-right: 1em;
+}
+
 .nav-icon {
   z-index: 10;
-  position: fixed;
-  top: 0;
-  right: 0;
 }
 
 .navbar-open {
   position: fixed;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 2em;
   margin: 0;
-  padding: 4em 0;
+  padding: 5em 0;
   width: 17%;
   right: 0;
   bottom: 0;
@@ -46,7 +63,19 @@ ul {
 .nav-links {
   text-decoration: none;
   color: white;
-  font-size: 1.3em;
+  font-size: 1.2em;
+}
+
+.nav-main-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.nav-account-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 /* Navbar hover opacity */
