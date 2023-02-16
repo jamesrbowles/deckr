@@ -77,6 +77,15 @@ const Navbar = () => {
           <div className="nav-account-links">
             <li>
               <Link
+                to="/account"
+                className="nav-links fancy word signout"
+                onClick={() => setIsMenuToggled(!isMenuToggled)}
+              >
+                Account
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/login"
                 className="nav-links fancy word signout"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}

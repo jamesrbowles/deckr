@@ -24,6 +24,7 @@ import Contact from '../../pages/Contact/Contact';
 import Navbar from '../Navbar/Navbar';
 import Login from '../../pages/Login/Login';
 import Signup from '../../pages/Signup/Signup';
+import Account from '../../pages/Account/Account';
 
 function App() {
   const { showForm, isEditing, isMenuToggled } = useCardContext();
@@ -73,6 +74,10 @@ function App() {
         <Route
           path="/sign-up"
           element={<Signup />}
+        />
+        <Route
+          path="/account"
+          element={<Account />}
         />
       </Routes>
     </>
