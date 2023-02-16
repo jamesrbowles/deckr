@@ -1,7 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../hooks/AuthContext';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { login } = useUserContext();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await login(email, password);
+      navigate('/account');
+    } catch (err) {
+      setError(err.message);
+      console.log(err.message);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -10,7 +29,7 @@ const Login = () => {
           Don't have an account yet? <Link to="/sign-up">Get started here</Link>
         </p>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Email Address</label>
           <input type="email" />
