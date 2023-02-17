@@ -32,11 +32,17 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email Address</label>
-          <input type="email" />
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div>
           <label>Password</label>
-          <input type="password" />
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <button>Login</button>
       </form>
