@@ -3,9 +3,21 @@ import { Link } from 'react-router-dom';
 import { Spin as Hamburger } from 'hamburger-react';
 import './Navbar.css';
 import { useCardContext } from '../../hooks/Context';
+import { useUserContext } from '../../hooks/AuthContext';
 
 const Navbar = () => {
   const { isMenuToggled, setIsMenuToggled } = useCardContext();
+  const { user, logout } = useUserContext();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      console.log('You are logged out');
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <nav>
       <div className="top-nav">
@@ -18,12 +30,17 @@ const Navbar = () => {
         <div className="top-nav-right">
           {!isMenuToggled && (
             <>
-              <Link
-                to="/login"
-                className="top-nav-link nav-links fancy word"
-              >
-                Login
-              </Link>
+              {user ? (
+                <button onClick={handleLogout}>Logout</button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="top-nav-link nav-links fancy word"
+                >
+                  Login
+                </Link>
+              )}
+
               <Link
                 to="/sign-up"
                 className="top-nav-link nav-links fancy word"

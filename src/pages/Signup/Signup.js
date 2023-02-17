@@ -1,26 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../hooks/AuthContext';
+import { FcGoogle } from 'react-icons/fc';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const { createUser } = useUserContext();
+  const { createUser, googleSignIn, user } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
       await createUser(email, password);
-      navigate('/account');
+      /*       navigate('/account'); */
     } catch (err) {
       setError(err.message);
       console.log(err.message);
     }
   };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      /*      navigate('/account'); */
+    } catch (err) {
+      setError(err.message);
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <div>
@@ -47,6 +63,10 @@ const Signup = () => {
         </div>
         <button>Sign Up</button>
       </form>
+      <div>
+        <FcGoogle onClick={handleGoogleSignIn} />
+        <div>Continue with Google</div>
+      </div>
     </div>
   );
 };

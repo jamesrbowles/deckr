@@ -18,7 +18,7 @@ const Account = () => {
 
   return (
     <div>
-      <h1>Account</h1>
+      <h1>Account: {user?.displayName}</h1>
       <p>User Email: {user && user.email}</p>
       <button onClick={handleLogout}>Logout</button>
     </div>
