@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Spin as Hamburger } from 'hamburger-react';
-import './Navbar.css';
-import { useCardContext } from '../../hooks/Context';
-import { useUserContext } from '../../hooks/AuthContext';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Spin as Hamburger } from "hamburger-react";
+import "./Navbar.css";
+import { useCardContext } from "../../hooks/Context";
+import { useUserContext } from "../../hooks/AuthContext";
 
 const Navbar = () => {
   const { isMenuToggled, setIsMenuToggled } = useCardContext();
@@ -12,45 +12,41 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      console.log('You are logged out');
+      console.log("You are logged out");
     } catch (err) {
       console.log(err.message);
     }
   };
 
   return (
-    <nav>
-      <div className="top-nav">
-        <Link
-          to="/"
-          className="nav-logo nav-links"
-        >
+    <nav className="fixed top-0 flex justify-between w-full z-10">
+      <div className="w-full flex justify-between">
+        <Link to="/" className="">
           Logo
         </Link>
-        <div className="top-nav-right">
+        <div className="flex items-center">
           {!isMenuToggled && (
             <>
               {user ? (
-                <button onClick={handleLogout}>Logout</button>
-              ) : (
-                <Link
-                  to="/login"
-                  className="top-nav-link nav-links fancy word"
+                <div
+                  className="cursor-pointer mr-3 fancy word text-lg"
+                  onClick={handleLogout}
                 >
+                  Logout
+                </div>
+              ) : (
+                <Link to="/login" className="mr-3 fancy word text-lg">
                   Login
                 </Link>
               )}
 
-              <Link
-                to="/sign-up"
-                className="top-nav-link nav-links fancy word"
-              >
+              <Link to="/sign-up" className="mr-3 fancy word text-lg">
                 Get Started
               </Link>
             </>
           )}
 
-          <div className={isMenuToggled ? 'close-nav nav-icon' : 'nav-icon'}>
+          <div className={isMenuToggled ? "close-nav nav-icon" : "nav-icon"}>
             <Hamburger
               label="Show menu"
               toggled={isMenuToggled}
@@ -66,7 +62,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/"
-                className="nav-links fancy word"
+                className="fancy word text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Home
@@ -75,7 +71,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="nav-links fancy word"
+                className="fancy word text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 About
@@ -84,7 +80,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contact"
-                className="nav-links fancy word"
+                className="fancy word text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Contact
@@ -95,7 +91,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/account"
-                className="nav-links fancy word signout"
+                className="fancy word signout text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Account
@@ -104,16 +100,16 @@ const Navbar = () => {
             <li>
               <Link
                 to="/login"
-                className="nav-links fancy word signout"
+                className="fancy word signout text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Login
               </Link>
             </li>
-            <li>
+            <li className="sidebar-links">
               <Link
                 to="/sign-up"
-                className="nav-links fancy word signout"
+                className="sidebar-links fancy word signout text-lg"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Get Started
