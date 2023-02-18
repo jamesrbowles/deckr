@@ -1,10 +1,10 @@
 * {
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   box-sizing: border-box;
 }
 
 :root {
-  --hue: 166;
+  --hue: 156;
 }
 
 body {

@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import "./ColorSwitcher.css";
+import { useEffect, useState } from 'react';
+import './ColorSwitcher.css';
 
 // Custom hooks
-import useLocalStorage from "../../hooks/useLocalStorage";
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 // Icons
-import { IoMdColorPalette } from "react-icons/io";
+import { IoMdColorPalette } from 'react-icons/io';
 
 const ColorSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false);
-  const [hue, setHue] = useLocalStorage("deckr.tasks.color", "166");
+  const [hue, setHue] = useLocalStorage('deckr.tasks.color', '156');
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--hue", hue);
+    document.documentElement.style.setProperty('--hue', hue);
   }, [hue]);
 
   return (
@@ -35,7 +35,10 @@ const ColorSwitcher = () => {
           />
         </>
       ) : (
-        <button className="color-btn" onClick={() => setIsColorPicking(true)}>
+        <button
+          className="color-btn"
+          onClick={() => setIsColorPicking(true)}
+        >
           <IoMdColorPalette className="color-icon" />
         </button>
       )}

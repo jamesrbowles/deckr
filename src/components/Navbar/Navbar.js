@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Spin as Hamburger } from "hamburger-react";
-import "./Navbar.css";
-import { useCardContext } from "../../hooks/Context";
-import { useUserContext } from "../../hooks/AuthContext";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Spin as Hamburger } from 'hamburger-react';
+import './Navbar.css';
+import { useCardContext } from '../../hooks/Context';
+import { useUserContext } from '../../hooks/AuthContext';
 
 const Navbar = () => {
   const { isMenuToggled, setIsMenuToggled } = useCardContext();
@@ -12,41 +12,49 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      console.log("You are logged out");
+      console.log('You are logged out');
     } catch (err) {
       console.log(err.message);
     }
   };
 
   return (
-    <nav className="fixed top-0 flex justify-between w-full z-10">
+    <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
       <div className="w-full flex justify-between">
-        <Link to="/" className="">
+        <Link
+          to="/"
+          className=""
+        >
           Logo
         </Link>
         <div className="flex items-center">
           {!isMenuToggled && (
             <>
-              {user ? (
-                <div
-                  className="cursor-pointer mr-3 fancy word text-lg"
-                  onClick={handleLogout}
+              {!user && (
+                <Link
+                  to="/login"
+                  className="mr-3 fancy word text-lg"
                 >
-                  Logout
-                </div>
-              ) : (
-                <Link to="/login" className="mr-3 fancy word text-lg">
                   Login
                 </Link>
               )}
 
-              <Link to="/sign-up" className="mr-3 fancy word text-lg">
-                Get Started
-              </Link>
+              {!user && (
+                <Link
+                  to="/sign-up"
+                  className="mr-3 fancy word text-lg"
+                >
+                  Get Started
+                </Link>
+              )}
             </>
           )}
 
-          <div className={isMenuToggled ? "close-nav nav-icon" : "nav-icon"}>
+          <div
+            className={
+              isMenuToggled ? 'hover:opacity-50 transition-all z-10' : 'z-10'
+            }
+          >
             <Hamburger
               label="Show menu"
               toggled={isMenuToggled}
@@ -58,11 +66,11 @@ const Navbar = () => {
 
       {isMenuToggled && (
         <ul className="navbar-open">
-          <div className="nav-main-links">
+          <div className="flex flex-col">
             <li>
               <Link
                 to="/"
-                className="fancy word text-lg"
+                className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Home
@@ -71,7 +79,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="fancy word text-lg"
+                className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 About
@@ -80,41 +88,54 @@ const Navbar = () => {
             <li>
               <Link
                 to="/contact"
-                className="fancy word text-lg"
+                className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
                 Contact
               </Link>
             </li>
           </div>
-          <div className="nav-account-links">
+          <div className="flex flex-col">
+            {user && (
+              <li>
+                <Link
+                  to="/account"
+                  className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
+                  onClick={() => setIsMenuToggled(!isMenuToggled)}
+                >
+                  Account
+                </Link>
+              </li>
+            )}
             <li>
-              <Link
-                to="/account"
-                className="fancy word signout text-lg"
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
-              >
-                Account
-              </Link>
+              {user ? (
+                <div
+                  className="cursor-pointer fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
+                  onClick={() => setIsMenuToggled(!isMenuToggled)}
+                >
+                  Login
+                </Link>
+              )}
             </li>
-            <li>
-              <Link
-                to="/login"
-                className="fancy word signout text-lg"
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
-              >
-                Login
-              </Link>
-            </li>
-            <li className="sidebar-links">
-              <Link
-                to="/sign-up"
-                className="sidebar-links fancy word signout text-lg"
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
-              >
-                Get Started
-              </Link>
-            </li>
+            {!user && (
+              <li>
+                <Link
+                  to="/sign-up"
+                  className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20"
+                  onClick={() => setIsMenuToggled(!isMenuToggled)}
+                >
+                  Get Started
+                </Link>
+              </li>
+            )}
           </div>
         </ul>
       )}

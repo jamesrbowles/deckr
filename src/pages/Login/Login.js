@@ -48,6 +48,7 @@ const Login = () => {
         <div>
           <label>Email Address</label>
           <input
+            className="text-dark-grey"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -55,6 +56,7 @@ const Login = () => {
         <div>
           <label>Password</label>
           <input
+            className="text-dark-grey"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
