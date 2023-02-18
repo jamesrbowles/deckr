@@ -46,7 +46,8 @@
 .modal-title {
   display: inline-block;
   text-align: center;
-  font-size: 2.4vmin;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
   color: rgba(32, 32, 32, 0.9);
 }
 
