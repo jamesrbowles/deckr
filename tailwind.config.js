@@ -8,6 +8,11 @@ module.exports = {
         "darker-grey": "#202020",
         green: "#aaffdd",
       },
+      fontFamily: {
+        comfortaa: ["Comfortaa", "cursive"],
+        roboto: ["Roboto", "sans-serif"],
+        opensans: ["Open Sans", "sans-serif"],
+      },
     },
     screens: {
       xs: "480px",

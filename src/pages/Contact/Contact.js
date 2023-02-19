@@ -33,6 +33,7 @@ const Contact = () => {
       <header>
         <h1 className="mt-[50px] text-4xl py-5 mb-5 text-left">Contact</h1>
       </header>
+
       <form
         target="_blank"
         onSubmit={onSubmit}
@@ -46,8 +47,9 @@ const Contact = () => {
           <input
             onInput={handleNameValue}
             id="nameInput"
-            className="mb-5 input-group__input"
+            className="mb-5 input-group__input font-opensans"
             type="text"
+            placeholder="Enter your name..."
             {...register("name", {
               required: true,
               maxLength: 100,
@@ -69,7 +71,8 @@ const Contact = () => {
           <input
             onInput={handleEmailValue}
             id="emailInput"
-            className="mb-5 input-group__input"
+            className="mb-5 input-group__input font-opensans"
+            placeholder="Enter your email..."
             type="text"
             {...register("email", {
               required: true,
@@ -91,7 +94,8 @@ const Contact = () => {
           <textarea
             onInput={handleMessageValue}
             id="messageInput"
-            className="mb-5 input-group__input"
+            className="mb-5 input-group__input font-opensans"
+            placeholder="Enter your message..."
             type="text"
             rows="4"
             cols="50"
