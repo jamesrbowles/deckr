@@ -14,7 +14,7 @@
 .close-color-picker {
   margin: 1em;
   border-radius: 5px;
-  border: 1px solid rgba(32, 32, 32, 0.9);
+  border: 1px solid #363636;
   padding: 0.3em 0.6em;
   font-weight: bold;
   background-color: hsl(var(--hue), 50%, 50%);

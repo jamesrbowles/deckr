@@ -4,7 +4,8 @@ import { Spin as Hamburger } from "hamburger-react";
 import "./Navbar.css";
 import { useCardContext } from "../../hooks/Context";
 import { useUserContext } from "../../hooks/AuthContext";
-
+import logo from "../../util/nav-logo.png";
+/* src/util/nav-logo.png */
 const Navbar = () => {
   const { isMenuToggled, setIsMenuToggled } = useCardContext();
   const { user, logout } = useUserContext();
@@ -21,9 +22,9 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
-      <div className="w-full flex justify-between">
-        <Link to="/" className="">
-          Logo
+      <div className="w-full flex justify-between items-center">
+        <Link to="/">
+          <img src={logo} alt="logo" className="h-8 ml-3" />
         </Link>
         <div className="flex items-center">
           {!isMenuToggled && (

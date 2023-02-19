@@ -1,0 +1,42 @@
+/* Form styling */
+
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  position: relative;
+
+  &__label {
+    position: absolute;
+    left: 3em;
+    top: -0.28em;
+    background: #363636;
+    padding: 0 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.1em;
+  }
+
+  &__input {
+    font-size: 1.25rem;
+    line-height: 1;
+    border-style: none;
+    outline: none;
+    width: 100%;
+    padding: 0.8em 1em;
+    border: 0.25em solid transparent;
+    background-image: linear-gradient(#363636, #363636),
+      linear-gradient(120deg, #4b5563 0%, #aaffdd 50%, #aaffdd 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 0.5em;
+    background-size: 200% 100%;
+    transition: background-position 0.8s ease-out;
+
+    &:hover {
+      background-position: 100% 0;
+    }
+  }
+}

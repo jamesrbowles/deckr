@@ -39,36 +39,54 @@ const Signup = () => {
   }, [user]);
 
   return (
-    <div>
-      <div>
-        <h1>Sign up</h1>
+    <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">
+      <header>
+        <h1 className="mt-[50px] text-4xl py-5 mb-5 text-left">Sign up</h1>
+      </header>
+      <div
+        className="border border-gray-600 hover:bg-gray-600 rounded-md flex justify-center items-center py-3 w-full mx-auto px-10 cursor-pointer"
+        onClick={handleGoogleSignIn}
+      >
+        <FcGoogle className="text-xl" />
+        <div className="ml-3 font-bold">Continue with Google</div>
       </div>
-      <div>
-        <FcGoogle onClick={handleGoogleSignIn} />
-        <div>Continue with Google</div>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email Address</label>
+
+      <form onSubmit={handleSubmit} className="my-8">
+        <div className="input-group">
+          <label className="input-group__label" htmlFor="emailInput">
+            Email
+          </label>
           <input
+            id="emailInput"
+            className="mb-5 input-group__input"
             type="email"
-            placeholder="Enter your email..."
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email..."
           />
         </div>
-        <div>
-          <label>Password</label>
+
+        <div className="input-group">
+          <label className="input-group__label" htmlFor="passwordInput">
+            Password
+          </label>
           <input
+            id="passwordInput"
+            className="mb-4 input-group__input"
             type="password"
-            placeholder="Enter your password..."
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password..."
           />
         </div>
-        <button>Sign Up</button>
+        <button className="bg-gray-600 border border-gray-600 hover:bg-opacity-50 rounded-md w-full py-3 text-lg">
+          Sign up
+        </button>
       </form>
 
       <p>
-        Already have an account yet? <Link to="/login">Login here</Link>
+        Already have an account?{" "}
+        <Link to="/login" className="underline">
+          Log in
+        </Link>
       </p>
     </div>
   );

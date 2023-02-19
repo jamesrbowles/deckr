@@ -11,7 +11,6 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import "./App.css";
 import "../TaskForm/TaskForm.css";
 import "../icons.css";
-import "../../index.css";
 
 // components
 import Header from "../Header/Header";
