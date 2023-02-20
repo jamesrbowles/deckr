@@ -77,7 +77,7 @@ const TaskBtns = ({ task }) => {
             ? 'fa fa-complete-expanded'
             : 'fa'
         }
-        onClick={() => completeTask(task.id)}
+        onClick={() => completeTask(task)}
       />
     </div>
   );

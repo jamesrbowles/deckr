@@ -1,25 +1,25 @@
-import "./TaskForm.css";
-import { v4 as uuidv4 } from "uuid";
-import { useState, useEffect } from "react";
-import { useCardContext } from "../../hooks/Context";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
+import './TaskForm.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from 'react';
+import { useCardContext } from '../../hooks/Context';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const TaskForm = ({}) => {
   const { addTask, setaddTaskBtn, closeForm } = useCardContext();
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+  const [name, setName] = useState('');
+  const [desc, setDesc] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     addTask({
-      id: uuidv4(),
+      /*   id: uuidv4(), */
       name: name,
       description: desc,
       completed: false,
     });
-    setName("");
-    setDesc("");
+    setName('');
+    setDesc('');
     closeForm();
     setaddTaskBtn(true);
   };
@@ -27,13 +27,13 @@ const TaskForm = ({}) => {
   /*   Ability to close form with escape key */
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-      e.key === "Escape" && closeForm();
+      e.key === 'Escape' && closeForm();
     };
 
-    window.addEventListener("keydown", closeModalIfEscaped);
+    window.addEventListener('keydown', closeModalIfEscaped);
 
     return () => {
-      window.removeEventListener("keydown", closeModalIfEscaped);
+      window.removeEventListener('keydown', closeModalIfEscaped);
     };
   }, [closeForm]);
 
@@ -75,7 +75,10 @@ const TaskForm = ({}) => {
               onInput={(e) => setDesc(e.target.value)}
               rows="8"
             ></textarea>
-            <button type="submit" className="add-task-btn">
+            <button
+              type="submit"
+              className="add-task-btn"
+            >
               Submit
             </button>
           </form>
