@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, useContext } from 'react';
-import useLocalStorage from './useLocalStorage';
-import { db } from '../firebase';
+import { createContext, useState, useEffect, useContext } from "react";
+import useLocalStorage from "./useLocalStorage";
+import { db } from "../firebase";
 import {
   query,
   collection,
@@ -12,13 +12,13 @@ import {
   deleteDoc,
   orderBy,
   serverTimestamp,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 const CardContext = createContext();
 
 const CardProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState("");
   const [taskSpread, setTaskSpread] = useState(false);
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const [taskIndex, setTaskIndex] = useState(0);
@@ -27,8 +27,8 @@ const CardProvider = ({ children }) => {
 
   /* database */
   useEffect(() => {
-    const collectionRef = collection(db, 'tasks');
-    const q = query(collectionRef, orderBy('timestamp', 'asc'));
+    const collectionRef = collection(db, "tasks");
+    const q = query(collectionRef, orderBy("timestamp", "asc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let tasksArr = [];
       querySnapshot.forEach((doc) => {
@@ -55,18 +55,18 @@ const CardProvider = ({ children }) => {
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (tasks.length === 0) {
-      return 'plus default-plus';
+      return "plus default-plus";
     } else if (taskSpread) {
-      return 'plus default-plus spread-plus';
+      return "plus default-plus spread-plus";
     } else {
-      return 'plus default-plus added-plus';
+      return "plus default-plus added-plus";
     }
   };
 
   /*   Task buttons and their functionality */
 
   const addTask = async (task) => {
-    await addDoc(collection(db, 'tasks'), {
+    await addDoc(collection(db, "tasks"), {
       name: task.name,
       description: task.description,
       completed: task.completed,
@@ -78,14 +78,11 @@ const CardProvider = ({ children }) => {
   };
 
   const deleteTask = async (id) => {
-    await deleteDoc(doc(db, 'tasks', id));
-    setTaskIndex(0);
+    await deleteDoc(doc(db, "tasks", id));
 
-    /*     if (tasks.length === 1) {
+    if (taskIndex === tasks.length - 1) {
       setTaskIndex(0);
-    } else {
-      setTaskIndex(tasks.length - 2);
-    } */
+    }
   };
 
   // takes user out of spread mode if only one task left
@@ -95,9 +92,11 @@ const CardProvider = ({ children }) => {
     }
   }, [tasks.length]);
 
+  /* allow read, write: if request.auth != null; */
+
   const [completed, setCompleted] = useState(false);
   const completeTask = async (task) => {
-    await updateDoc(doc(db, 'tasks', task.id), {
+    await updateDoc(doc(db, "tasks", task.id), {
       completed: !task.completed,
       timestamp: serverTimestamp() * serverTimestamp(),
     });
@@ -124,7 +123,7 @@ const CardProvider = ({ children }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const updateTask = async (task) => {
-    await updateDoc(doc(db, 'tasks', task.id), {
+    await updateDoc(doc(db, "tasks", task.id), {
       name: task.name,
       description: task.description,
     });

@@ -1,11 +1,11 @@
-import { useRef, useState } from 'react';
-import { BsSuitSpadeFill } from 'react-icons/bs';
+import { useRef, useState } from "react";
+import { BsSuitSpadeFill } from "react-icons/bs";
 
-import './TaskCard.css';
+import "./TaskCard.css";
 
-import TaskBtns from '../TaskBtns/TaskBtns';
+import TaskBtns from "../TaskBtns/TaskBtns";
 //custom hooks
-import { useCardContext } from '../../hooks/Context';
+import { useCardContext } from "../../hooks/Context";
 
 const TaskCard = ({ index, task }) => {
   const {
@@ -39,31 +39,31 @@ const TaskCard = ({ index, task }) => {
   //Getting the card suit value on the correct cards
   const cardValue = (indexTest) => {
     if (tasks[tasks.length - 1].id == tasks[indexTest].id) {
-      return 'A';
+      return "A";
     } else if (tasks[tasks.length - 2].id == tasks[indexTest].id) {
-      return 'K';
+      return "K";
     } else if (tasks[tasks.length - 3].id == tasks[indexTest].id) {
-      return 'Q';
+      return "Q";
     } else if (tasks[tasks.length - 4].id == tasks[indexTest].id) {
-      return 'J';
+      return "J";
     } else if (tasks[tasks.length - 5].id == tasks[indexTest].id) {
-      return '10';
+      return "10";
     } else if (tasks[tasks.length - 6].id == tasks[indexTest].id) {
-      return '9';
+      return "9";
     } else if (tasks[tasks.length - 7].id == tasks[indexTest].id) {
-      return '8';
+      return "8";
     } else if (tasks[tasks.length - 8].id == tasks[indexTest].id) {
-      return '7';
+      return "7";
     } else if (tasks[tasks.length - 9].id == tasks[indexTest].id) {
-      return '6';
+      return "6";
     } else if (tasks[tasks.length - 10].id == tasks[indexTest].id) {
-      return '5';
+      return "5";
     } else if (tasks[tasks.length - 11].id == tasks[indexTest].id) {
-      return '4';
+      return "4";
     } else if (tasks[tasks.length - 12].id == tasks[indexTest].id) {
-      return '3';
+      return "3";
     } else if (tasks[tasks.length - 13].id == tasks[indexTest].id) {
-      return '2';
+      return "2";
     }
   };
 
@@ -84,14 +84,14 @@ const TaskCard = ({ index, task }) => {
       <div
         className={
           taskSpread && task.completed
-            ? 'spread-task task-card task-card-size-spread completed'
-            : taskSpread && tasks[taskIndex].id === task.id
-            ? 'spread-task task-card task-card-size-spread selected'
+            ? "spread-task task-card task-card-size-spread completed"
+            : taskSpread && tasks[taskIndex]?.id === task.id
+            ? "spread-task task-card task-card-size-spread selected"
             : taskSpread
-            ? 'spread-task task-card task-card-size-spread'
+            ? "spread-task task-card task-card-size-spread"
             : task.completed
-            ? 'task-card completed'
-            : 'task-card'
+            ? "task-card completed"
+            : "task-card"
         }
         style={stagger.current}
         id={index}
@@ -100,16 +100,16 @@ const TaskCard = ({ index, task }) => {
         <div className="card-suit-top">
           <h3
             className={
-              taskSpread ? 'card-suit-value-spread' : 'card-suit-value'
+              taskSpread ? "card-suit-value-spread" : "card-suit-value"
             }
           >
             {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
-            className={taskSpread ? 'card-suit-icon-spread' : 'card-suit-icon'}
+            className={taskSpread ? "card-suit-icon-spread" : "card-suit-icon"}
           />
         </div>
-        <div className={taskSpread ? 'task-text-spread' : 'task-text'}>
+        <div className={taskSpread ? "task-text-spread" : "task-text"}>
           <h1 className="mt-2 mb-4">{task.name}</h1>
           <p className="">{task.description}</p>
           {/*      <div className="center-line"></div> */}
@@ -117,13 +117,13 @@ const TaskCard = ({ index, task }) => {
         <div className="card-suit-bottom">
           <h3
             className={
-              taskSpread ? 'card-suit-value-spread' : 'card-suit-value'
+              taskSpread ? "card-suit-value-spread" : "card-suit-value"
             }
           >
             {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
-            className={taskSpread ? 'card-suit-icon-spread' : 'card-suit-icon'}
+            className={taskSpread ? "card-suit-icon-spread" : "card-suit-icon"}
           />
         </div>
       </div>
@@ -131,8 +131,8 @@ const TaskCard = ({ index, task }) => {
       <div
         className={
           taskSpread
-            ? 'task-card-container-copy task-card-size-spread'
-            : 'task-card-container-copy'
+            ? "task-card-container-copy task-card-size-spread"
+            : "task-card-container-copy"
         }
         style={!taskSpread ? stagger.current : {}}
       >
