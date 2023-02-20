@@ -17,10 +17,20 @@ const Account = () => {
   };
 
   return (
-    <div>
-      <h1>Account: {user?.displayName}</h1>
-      <p>User Email: {user && user.email}</p>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">
+      <header>
+        <h1 className="mt-[75px] text-4xl py-5 mb-5 text-center">
+          Account: {user.displayName && user.displayName}
+        </h1>
+      </header>
+
+      <p className="mb-5">User Email: {user && user.email}</p>
+      <button
+        onClick={handleLogout}
+        className="bg-gray-600 border border-gray-600 hover:bg-opacity-50 rounded-md w-full py-3 text-lg"
+      >
+        Logout
+      </button>
     </div>
   );
 };
