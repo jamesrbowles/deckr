@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const About = () => {
   return (
     <div className="flex flex-col justify-center w-10/12 max-w-lg  mx-auto">
       <header>
-        <h1 className="mt-[50px] text-4xl py-5 mb-2">About</h1>
+        <h1 className="mt-[75px] text-4xl py-5 mb-2">About</h1>
       </header>
       <p>
         Nulla quis lorem ut libero malesuada feugiat. Lorem ipsum dolor sit

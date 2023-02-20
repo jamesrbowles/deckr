@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useUserContext } from "../../hooks/AuthContext";
-import { FcGoogle } from "react-icons/fc";
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../hooks/AuthContext';
+import { FcGoogle } from 'react-icons/fc';
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const { createUser, googleSignIn, user } = useUserContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
     try {
       await createUser(email, password);
       /*       navigate('/account'); */
@@ -34,14 +34,14 @@ const Signup = () => {
 
   useEffect(() => {
     if (user != null) {
-      navigate("/");
+      navigate('/');
     }
   }, [user]);
 
   return (
     <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">
       <header>
-        <h1 className="mt-[50px] text-4xl py-5 mb-5 text-left">Sign up</h1>
+        <h1 className="mt-[75px] text-4xl py-5 mb-5 text-left">Sign up</h1>
       </header>
       <div
         className="border border-gray-600 hover:bg-gray-600 rounded-md flex justify-center items-center py-3 w-full mx-auto px-10 cursor-pointer"
@@ -51,9 +51,15 @@ const Signup = () => {
         <div className="ml-3 font-bold">Continue with Google</div>
       </div>
 
-      <form onSubmit={handleSubmit} className="my-8">
+      <form
+        onSubmit={handleSubmit}
+        className="my-8"
+      >
         <div className="input-group">
-          <label className="input-group__label" htmlFor="emailInput">
+          <label
+            className="input-group__label"
+            htmlFor="emailInput"
+          >
             Email
           </label>
           <input
@@ -66,7 +72,10 @@ const Signup = () => {
         </div>
 
         <div className="input-group">
-          <label className="input-group__label" htmlFor="passwordInput">
+          <label
+            className="input-group__label"
+            htmlFor="passwordInput"
+          >
             Password
           </label>
           <input
@@ -83,8 +92,11 @@ const Signup = () => {
       </form>
 
       <p>
-        Already have an account?{" "}
-        <Link to="/login" className="underline">
+        Already have an account?{' '}
+        <Link
+          to="/login"
+          className="underline"
+        >
           Log in
         </Link>
       </p>

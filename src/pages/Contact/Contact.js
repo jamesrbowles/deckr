@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const Contact = () => {
   const [nameValue, setNameValue] = useState(false);
@@ -31,7 +31,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">
       <header>
-        <h1 className="mt-[50px] text-4xl py-5 mb-5 text-left">Contact</h1>
+        <h1 className="mt-[75px] text-4xl py-5 mb-5 text-left">Contact</h1>
       </header>
 
       <form
@@ -41,7 +41,10 @@ const Contact = () => {
         method="POST"
       >
         <div className="input-group">
-          <label className="input-group__label" htmlFor="nameInput">
+          <label
+            className="input-group__label"
+            htmlFor="nameInput"
+          >
             Name
           </label>
           <input
@@ -50,22 +53,25 @@ const Contact = () => {
             className="mb-5 input-group__input font-opensans"
             type="text"
             placeholder="Enter your name..."
-            {...register("name", {
+            {...register('name', {
               required: true,
               maxLength: 100,
             })}
           />
           {errors.name && (
             <p className="text-red mt-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "maxLength" &&
-                "Max length is 100 characters."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'maxLength' &&
+                'Max length is 100 characters.'}
             </p>
           )}
         </div>
 
         <div className="input-group">
-          <label className="input-group__label" htmlFor="emailInput">
+          <label
+            className="input-group__label"
+            htmlFor="emailInput"
+          >
             Email
           </label>
           <input
@@ -74,21 +80,24 @@ const Contact = () => {
             className="mb-5 input-group__input font-opensans"
             placeholder="Enter your email..."
             type="text"
-            {...register("email", {
+            {...register('email', {
               required: true,
               pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
             })}
           />
           {errors.email && (
             <p className="text-red mt-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "pattern" && "Invalid email address."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'pattern' && 'Invalid email address.'}
             </p>
           )}
         </div>
 
         <div className="input-group">
-          <label className="input-group__label" htmlFor="messageInput">
+          <label
+            className="input-group__label"
+            htmlFor="messageInput"
+          >
             Message
           </label>
           <textarea
@@ -99,22 +108,22 @@ const Contact = () => {
             type="text"
             rows="4"
             cols="50"
-            {...register("message", {
+            {...register('message', {
               required: true,
               maxLength: 2000,
             })}
           />
           {errors.message && (
             <p className="text-red mt-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "maxLength" &&
-                "Max length is 2000 characters."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'maxLength' &&
+                'Max length is 2000 characters.'}
             </p>
           )}
         </div>
         <button
           type="submit"
-          className="bg-gray-600 border border-gray-600 hover:bg-opacity-50 rounded-md w-full py-3 text-lg"
+          className="bg-darker-green border-darker-green hover:bg-opacity-90 rounded-md w-full py-3 text-lg"
         >
           Send
         </button>
