@@ -1,34 +1,70 @@
-import { createContext, useState, useEffect, useContext } from "react";
-import useLocalStorage from "./useLocalStorage";
-import { db } from "../firebase";
+import { createContext, useState, useEffect, useContext } from 'react';
+import useLocalStorage from './useLocalStorage';
+import { db, auth } from '../firebase';
 import {
   query,
   collection,
   onSnapshot,
-  QuerySnapshot,
   updateDoc,
   doc,
   addDoc,
   deleteDoc,
   orderBy,
   serverTimestamp,
-} from "firebase/firestore";
+  where,
+} from 'firebase/firestore';
+import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
 
 const CardContext = createContext();
 
 const CardProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState('');
   const [taskSpread, setTaskSpread] = useState(false);
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const [taskIndex, setTaskIndex] = useState(0);
   const [taskChangeStyle, setTaskChangeStyle] = useState(false);
   const [isMenuToggled, setIsMenuToggled] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  /* database */
+  /* database fetching */
   useEffect(() => {
-    const collectionRef = collection(db, "tasks");
-    const q = query(collectionRef, orderBy("timestamp", "asc"));
+    const auth = getAuth();
+    const tasksCollectionRef = collection(db, 'tasks');
+
+    // Set up a listener to get the current user's ID
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // If the user is logged in, run the query for their tasks
+        const q = query(
+          tasksCollectionRef,
+          orderBy('timestamp', 'asc'),
+          where('userId', '==', user.uid)
+        );
+        const unsubscribeTasks = onSnapshot(q, (querySnapshot) => {
+          let tasksArr = [];
+          querySnapshot.forEach((doc) => {
+            tasksArr.push({ ...doc.data(), id: doc.id });
+          });
+          setTasks(tasksArr);
+          setLoading(false);
+        });
+        return () => unsubscribeTasks();
+      } else {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribeAuth();
+  }, []);
+
+  /*   useEffect(() => {
+    const tasksCollectionRef = collection(db, 'tasks');
+    const q = query(
+      tasksCollectionRef,
+      orderBy('timestamp', 'asc'),
+      where('userId', '==', auth.currentUser.uid)
+    );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let tasksArr = [];
       querySnapshot.forEach((doc) => {
@@ -37,7 +73,9 @@ const CardProvider = ({ children }) => {
       setTasks(tasksArr);
     });
     return () => unsubscribe();
-  }, []);
+  }, []); */
+
+  /* && request.auth.uid == request.resource.data.userId;  */
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -55,30 +93,35 @@ const CardProvider = ({ children }) => {
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (tasks.length === 0) {
-      return "plus default-plus";
+      return 'plus default-plus';
     } else if (taskSpread) {
-      return "plus default-plus spread-plus";
+      return 'plus default-plus spread-plus';
     } else {
-      return "plus default-plus added-plus";
+      return 'plus default-plus added-plus';
     }
   };
 
   /*   Task buttons and their functionality */
 
   const addTask = async (task) => {
-    await addDoc(collection(db, "tasks"), {
-      name: task.name,
-      description: task.description,
-      completed: task.completed,
-      timestamp: serverTimestamp(),
-    });
+    try {
+      await addDoc(collection(db, 'tasks'), {
+        name: task.name,
+        description: task.description,
+        completed: task.completed,
+        timestamp: serverTimestamp(),
+        userId: auth?.currentUser?.uid,
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
     // ensures if task added in spread mode - user is selected at the front again
     setTaskIndex(tasks.length);
   };
 
   const deleteTask = async (id) => {
-    await deleteDoc(doc(db, "tasks", id));
+    await deleteDoc(doc(db, 'tasks', id));
 
     if (taskIndex === tasks.length - 1) {
       setTaskIndex(0);
@@ -96,7 +139,7 @@ const CardProvider = ({ children }) => {
 
   const [completed, setCompleted] = useState(false);
   const completeTask = async (task) => {
-    await updateDoc(doc(db, "tasks", task.id), {
+    await updateDoc(doc(db, 'tasks', task.id), {
       completed: !task.completed,
       timestamp: serverTimestamp() * serverTimestamp(),
     });
@@ -123,7 +166,7 @@ const CardProvider = ({ children }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const updateTask = async (task) => {
-    await updateDoc(doc(db, "tasks", task.id), {
+    await updateDoc(doc(db, 'tasks', task.id), {
       name: task.name,
       description: task.description,
     });
@@ -147,6 +190,9 @@ const CardProvider = ({ children }) => {
       setTaskSpread(!taskSpread);
     }
   };
+
+  /*  temp tasks for not logged in users */
+  const [tempTasks, setTempTasks] = useState([]);
 
   return (
     <CardContext.Provider
@@ -185,6 +231,7 @@ const CardProvider = ({ children }) => {
         spreadTasks,
         isMenuToggled,
         setIsMenuToggled,
+        loading,
       }}
     >
       {children}

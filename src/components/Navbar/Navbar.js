@@ -1,21 +1,22 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Spin as Hamburger } from "hamburger-react";
-import "./Navbar.css";
-import { useCardContext } from "../../hooks/Context";
-import { useUserContext } from "../../hooks/AuthContext";
-import logo from "../../util/nav-logo.png";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Spin as Hamburger } from 'hamburger-react';
+import './Navbar.css';
+import { useCardContext } from '../../hooks/Context';
+import { useUserContext } from '../../hooks/AuthContext';
+import logo from '../../util/nav-logo.png';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const Navbar = () => {
-  const { isMenuToggled, setIsMenuToggled } = useCardContext();
+  const { isMenuToggled, setIsMenuToggled, setTasks } = useCardContext();
   const { user, logout } = useUserContext();
 
   const handleLogout = async () => {
     try {
       await logout();
-      console.log("You are logged out");
+      console.log('You are logged out');
       setIsMenuToggled(false);
+      setTasks([]);
     } catch (err) {
       console.log(err.message);
     }
@@ -30,7 +31,11 @@ const Navbar = () => {
       <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
         <div className="w-full flex justify-between items-center">
           <Link to="/">
-            <img src={logo} alt="logo" className="h-8 ml-3" />
+            <img
+              src={logo}
+              alt="logo"
+              className="h-8 ml-3"
+            />
           </Link>
           <div className="flex items-center">
             {!isMenuToggled && (
@@ -57,7 +62,7 @@ const Navbar = () => {
 
             <div
               className={
-                isMenuToggled ? "hover:opacity-50 transition-all z-10" : "z-10"
+                isMenuToggled ? 'hover:opacity-50 transition-all z-10' : 'z-10'
               }
             >
               <Hamburger

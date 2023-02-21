@@ -28,7 +28,7 @@ import Account from '../../pages/Account/Account';
 import ProtectedRoute from '../../pages/ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const { showForm, isEditing, isMenuToggled } = useCardContext();
+  const { showForm, isEditing, isMenuToggled, loading } = useCardContext();
   const isAboveSmallScreens = useMediaQuery('(min-width: 650px)');
 
   return (
@@ -52,6 +52,7 @@ function App() {
                     : 'container-position'
                 }
               >
+                {loading && <h1>Loading</h1>}
                 {isAboveSmallScreens | !isMenuToggled ? <TaskContainer /> : ''}
                 {/*   <div className="added-plus2"></div> */}
               </div>

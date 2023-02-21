@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 
 import { auth } from '../firebase';
+import { useCardContext } from './Context';
 
 const UserContext = createContext();
 
