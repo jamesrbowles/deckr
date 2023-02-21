@@ -232,6 +232,8 @@ const CardProvider = ({ children }) => {
         isMenuToggled,
         setIsMenuToggled,
         loading,
+        tempTasks,
+        setTempTasks,
       }}
     >
       {children}

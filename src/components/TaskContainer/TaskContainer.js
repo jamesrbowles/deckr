@@ -7,7 +7,7 @@ import '../icons.css';
 import { useCardContext } from '../../hooks/Context';
 
 const TaskContainer = ({}) => {
-  const { tasks, taskSpread, addTaskBtnPosition, displayForm } =
+  const { tasks, taskSpread, addTaskBtnPosition, displayForm, tempTasks } =
     useCardContext();
   return (
     <div
@@ -16,6 +16,13 @@ const TaskContainer = ({}) => {
       }
     >
       {tasks.map((task, index) => (
+        <TaskCard
+          task={task}
+          key={task.id}
+          index={index}
+        />
+      ))}
+      {tempTasks.map((task, index) => (
         <TaskCard
           task={task}
           key={task.id}
