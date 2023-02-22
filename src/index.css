@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,7 +14,7 @@ textarea {
 * {
   margin: 0;
   padding: 0;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   box-sizing: border-box;
 }
 
@@ -24,8 +24,8 @@ textarea {
 
 body {
   background-color: #363636;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  /*  overflow: hidden; */
   text-align: center;
   color: white;
 }
