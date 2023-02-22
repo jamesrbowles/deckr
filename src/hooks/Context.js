@@ -13,7 +13,8 @@ import {
   serverTimestamp,
   where,
 } from 'firebase/firestore';
-import { onAuthStateChanged, getAuth, signOut } from 'firebase/auth';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { useTempCardContext } from './TempContext';
 
 const CardContext = createContext();
 
@@ -26,6 +27,9 @@ const CardProvider = ({ children }) => {
   const [taskChangeStyle, setTaskChangeStyle] = useState(false);
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { tempTasks, tempTaskSpread } = useTempCardContext();
+
+  const user = auth.currentUser;
 
   /* database fetching */
   useEffect(() => {
@@ -58,29 +62,10 @@ const CardProvider = ({ children }) => {
     return () => unsubscribeAuth();
   }, []);
 
-  /*   useEffect(() => {
-    const tasksCollectionRef = collection(db, 'tasks');
-    const q = query(
-      tasksCollectionRef,
-      orderBy('timestamp', 'asc'),
-      where('userId', '==', auth.currentUser.uid)
-    );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let tasksArr = [];
-      querySnapshot.forEach((doc) => {
-        tasksArr.push({ ...doc.data(), id: doc.id });
-      });
-      setTasks(tasksArr);
-    });
-    return () => unsubscribe();
-  }, []); */
-
-  /* && request.auth.uid == request.resource.data.userId;  */
-
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
   const displayForm = () => {
-    if (tasks.length < 13) {
+    if (tasks.length < 13 && tempTasks.length < 13) {
       setShowForm(true);
     }
   };
@@ -92,9 +77,9 @@ const CardProvider = ({ children }) => {
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
-    if (tasks.length === 0) {
+    if (tasks.length === 0 && tempTasks.length === 0) {
       return 'plus default-plus';
-    } else if (taskSpread) {
+    } else if (taskSpread || tempTaskSpread) {
       return 'plus default-plus spread-plus';
     } else {
       return 'plus default-plus added-plus';
@@ -121,12 +106,15 @@ const CardProvider = ({ children }) => {
   };
 
   const deleteTask = async (id) => {
+    let newIndex = tasks.length;
     await deleteDoc(doc(db, 'tasks', id));
 
-    if (taskIndex === tasks.length - 1) {
+    /*     if (taskIndex === tasks.length - 1) {
       setTaskIndex(0);
-    }
+    } */
+    setTaskIndex(newIndex - 2);
   };
+  console.log(tasks.length);
 
   // takes user out of spread mode if only one task left
   useEffect(() => {
@@ -143,23 +131,6 @@ const CardProvider = ({ children }) => {
       completed: !task.completed,
       timestamp: serverTimestamp() * serverTimestamp(),
     });
-    /*  setCompleted(!completed);
-        let updatedTasks = [...tasks].map((task) => {
-      if (task.id === id) {
-        return { ...task, completed: !task.completed };
-      } else {
-        return task;
-      }
-    });
-
-    updatedTasks.forEach((task, i) => {
-      if (task.completed) {
-        updatedTasks.splice(i, 1);
-        updatedTasks.unshift(task);
-      }
-    });
-
-    setTasks(updatedTasks);  */
   };
 
   const [editedTask, setEditedTask] = useState(null);
@@ -190,9 +161,6 @@ const CardProvider = ({ children }) => {
       setTaskSpread(!taskSpread);
     }
   };
-
-  /*  temp tasks for not logged in users */
-  const [tempTasks, setTempTasks] = useState([]);
 
   return (
     <CardContext.Provider
@@ -232,8 +200,7 @@ const CardProvider = ({ children }) => {
         isMenuToggled,
         setIsMenuToggled,
         loading,
-        tempTasks,
-        setTempTasks,
+        user,
       }}
     >
       {children}

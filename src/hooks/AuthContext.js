@@ -11,14 +11,17 @@ import {
 
 import { auth } from '../firebase';
 import { useCardContext } from './Context';
+import { useTempCardContext } from './TempContext';
 
 const UserContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const { setTempTasks } = useTempCardContext();
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
+    setTempTasks([]);
     /* signInWithPopup(auth, provider); */
     signInWithRedirect(auth, provider);
   };
@@ -28,6 +31,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const login = (email, password) => {
+    setTempTasks([]);
     return signInWithEmailAndPassword(auth, email, password);
   };
 

@@ -1,14 +1,17 @@
 import TaskCard from '../TaskCard/TaskCard';
+import TempTaskCard from '../TempTasks/TempTasks';
 import './TaskContainer.css';
 
 import { IoAddCircleOutline } from 'react-icons/io5';
 import '../icons.css';
 //custom hooks
 import { useCardContext } from '../../hooks/Context';
+import { useTempCardContext } from '../../hooks/TempContext';
 
 const TaskContainer = ({}) => {
-  const { tasks, taskSpread, addTaskBtnPosition, displayForm, tempTasks } =
+  const { tasks, taskSpread, addTaskBtnPosition, displayForm } =
     useCardContext();
+  const { tempTasks } = useTempCardContext();
   return (
     <div
       className={
@@ -23,7 +26,7 @@ const TaskContainer = ({}) => {
         />
       ))}
       {tempTasks.map((task, index) => (
-        <TaskCard
+        <TempTaskCard
           task={task}
           key={task.id}
           index={index}
@@ -31,7 +34,9 @@ const TaskContainer = ({}) => {
       ))}
       <IoAddCircleOutline
         className={addTaskBtnPosition()}
-        style={tasks.length > 12 && { color: 'gray' }}
+        style={
+          tasks.length > 12 || tempTasks.length > 12 ? { color: 'gray' } : ''
+        }
         onClick={displayForm}
       />
       {/*   <div className="added-plus2"></div> */}

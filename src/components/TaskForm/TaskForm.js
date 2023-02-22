@@ -3,21 +3,32 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { useTempCardContext } from '../../hooks/TempContext';
 
 const TaskForm = ({}) => {
-  const { addTask, setaddTaskBtn, closeForm } = useCardContext();
+  const { addTask, setaddTaskBtn, closeForm, user } = useCardContext();
+  const { addTempTask } = useTempCardContext();
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!user) {
+      addTempTask({
+        id: uuidv4(),
+        name: name,
+        description: desc,
+        completed: false,
+      });
+    } else {
+      addTask({
+        id: uuidv4(),
+        name: name,
+        description: desc,
+        completed: false,
+      });
+    }
 
-    addTask({
-      /*   id: uuidv4(), */
-      name: name,
-      description: desc,
-      completed: false,
-    });
     setName('');
     setDesc('');
     closeForm();
