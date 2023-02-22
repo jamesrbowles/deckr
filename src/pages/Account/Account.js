@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../hooks/AuthContext';
+import { useCardContext } from '../../hooks/Context';
 
 const Account = () => {
+  const { setTasks } = useCardContext;
   const { user, logout } = useUserContext();
   const navigate = useNavigate();
 
@@ -11,6 +13,7 @@ const Account = () => {
       await logout();
       navigate('/');
       console.log('You are logged out');
+      setTasks([]);
     } catch (err) {
       console.log(err.message);
     }
