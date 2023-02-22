@@ -36,7 +36,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path="/deckr"
           element={
             <>
               <div className={showForm || isEditing ? 'background-blur' : ''}>
