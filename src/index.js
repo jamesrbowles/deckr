@@ -13,13 +13,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <TempCardProvider>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <TempCardProvider>
           <CardProvider>
             <App />
           </CardProvider>
-        </AuthContextProvider>
-      </TempCardProvider>
+        </TempCardProvider>
+      </AuthContextProvider>
     </HashRouter>
   </React.StrictMode>
 );

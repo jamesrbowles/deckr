@@ -4,7 +4,7 @@ import { useUserContext } from '../../hooks/AuthContext';
 import { useCardContext } from '../../hooks/Context';
 
 const Account = () => {
-  const { setTasks } = useCardContext;
+  const { setTasks } = useCardContext();
   const { user, logout } = useUserContext();
   const navigate = useNavigate();
 

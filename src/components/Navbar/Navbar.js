@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
-      <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
+      <nav className="fixed top-0 flex justify-between w-full z-10 transition-all bg-dark-grey">
         <div className="w-full flex justify-between items-center">
           <Link to="/">
             <img
