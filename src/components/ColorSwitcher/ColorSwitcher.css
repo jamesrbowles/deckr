@@ -27,12 +27,24 @@
 
 .color-icon {
   color: black;
-  font-size: 3.5vmin;
+  font-size: 1rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 450px) {
   .color-icon {
-    font-size: 5.25vmin;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 668px) {
+  .color-icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .color-icon {
+    font-size: 2rem;
   }
 }
 

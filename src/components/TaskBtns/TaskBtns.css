@@ -1,5 +1,5 @@
 .fa {
-  font-size: 6.5vmin;
+  font-size: 2.1rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11,9 +11,21 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 550px) {
   .fa {
-    font-size: 9.75vmin;
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fa {
+    font-size: 2.9rem;
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .fa {
+    font-size: 3.5rem;
   }
 }
 

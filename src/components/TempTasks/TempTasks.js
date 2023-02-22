@@ -112,8 +112,20 @@ const TempTaskCard = ({ index, task }) => {
           />
         </div>
         <div className={tempTaskSpread ? 'task-text-spread' : 'task-text'}>
-          <h1 className="mt-2 mb-4">{task.name}</h1>
-          <p className="">{task.description}</p>
+          <h1
+            className={
+              tempTaskSpread ? 'task-text-name-spread' : 'task-text-name'
+            }
+          >
+            {task.name}
+          </h1>
+          <p
+            className={
+              tempTaskSpread ? 'task-text-desc-spread' : 'task-text-desc'
+            }
+          >
+            {task.description}
+          </p>
           {/*      <div className="center-line"></div> */}
         </div>
         <div className="card-suit-bottom">

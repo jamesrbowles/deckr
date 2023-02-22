@@ -7,11 +7,12 @@ const About = () => {
         <h1 className="mt-[75px] text-4xl py-5 mb-2">About</h1>
       </header>
       <p>
-        Nulla quis lorem ut libero malesuada feugiat. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Cras ultricies ligula sed magna
-        dictum porta. Praesent sapien massa, convallis a pellentesque nec,
-        egestas non nisi. Nulla quis lorem ut libero malesuada feugiat. Quisque
-        velit nisi, pretium ut lacinia in, elementum id enim.
+        This is a unique todo app that focuses on priority.
+        <br />
+        <br />
+        Keeping your newest added task to the forefront leaves less temptation
+        to shift your focus around all of your different tasks that need to be
+        taken care of.
       </p>
     </div>
   );

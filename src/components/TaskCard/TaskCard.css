@@ -44,16 +44,12 @@
   text-decoration: line-through;
 }
 
+/* Text */
 .task-text {
   width: 70%;
   word-wrap: break-word;
-  /*   margin: 1em 1em; */
   overflow: scroll;
-  font-size: 2.2vmin;
-}
-
-.task-desc-text {
-  font-size: 2vmin;
+  margin-bottom: 0.6em;
 }
 
 .task-text-spread {
@@ -61,15 +57,92 @@
   word-wrap: break-word;
   margin: 0em 1em 1em 1em;
   overflow: scroll;
-  font-size: 1.2vmin;
 }
 
+/* name/title sizes */
+.task-text-name {
+  font-size: 1rem;
+  margin: 1em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .task-text-name {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .task-text-name {
+    font-size: 1.6rem;
+  }
+}
+
+.task-text-name-spread {
+  font-size: 0.8rem;
+  margin: 0.1em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .task-text-name-spread {
+    font-size: 0.9rem;
+    margin: 0.2em 0.3em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .task-text-name-spread {
+    font-size: 1.2rem;
+    margin: 0.5em 0.7em;
+  }
+}
+
+/* description sizes */
+.task-text-desc {
+  font-size: 0.8rem;
+  padding-top: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .task-text-desc {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .task-text-desc {
+    font-size: 1.2rem;
+  }
+}
+
+.task-text-desc-spread {
+  font-size: 0.7rem;
+  padding-top: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .task-text-desc-spread {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .task-text-desc-spread {
+    font-size: 1rem;
+    margin: 0.3em;
+  }
+}
+
+/* Selected card styling */
 .selected {
   background-color: hsl(var(--hue), 50%, 35%);
   z-index: 2;
 }
 
-/* Task spread styling */
+/* Task spread size and position styling */
 
 .task-card-size-spread {
   width: 15.25vmin;
