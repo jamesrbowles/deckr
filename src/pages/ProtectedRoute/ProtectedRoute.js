@@ -6,7 +6,7 @@ const ProtectedRoute = ({ children }) => {
   const { user } = useUserContext();
 
   if (!user) {
-    return <Navigate to="/" />;
+    return <Navigate to="#/deckr" />;
   }
 
   return children;
