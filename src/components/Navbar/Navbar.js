@@ -30,7 +30,7 @@ const Navbar = () => {
     <ClickAwayListener onClickAway={handleClickAway}>
       <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
         <div className="w-full flex justify-between items-center">
-          <Link to="/">
+          <Link to="/deckr">
             <img
               src={logo}
               alt="logo"
@@ -79,7 +79,7 @@ const Navbar = () => {
             <div className="flex flex-col">
               <li>
                 <Link
-                  to="/"
+                  to="/deckr"
                   className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                   onClick={() => setIsMenuToggled(!isMenuToggled)}
                 >
