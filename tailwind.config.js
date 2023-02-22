@@ -8,6 +8,7 @@ module.exports = {
         'darker-grey': '#202020',
         green: '#aaffdd',
         'darker-green': '#77b39b',
+        red: '#FF2121',
       },
       fontFamily: {
         comfortaa: ['Comfortaa', 'cursive'],
