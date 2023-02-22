@@ -4,7 +4,7 @@ This is a task app that focuses on priority built with React. As the user adds a
 
 ## Functionality
 
-Each task can be edited, completed or deleted. And the spread button (top left) fans the deck of tasks in a circle with a maximum of 13 tasks. This allows the user to see what other tasks are in the deck and they can be edited, completed or deleted from here as well but when the user clicks out of spread mode the deck is returned to its default stacked placing. Users can also change the color of the cards to their chosen color using the picker at the bottom. All tasks and color choices are saved to local storage.
+Each task can be edited, completed or deleted. And the spread button (top left) fans the deck of tasks in a circle with a maximum of 13 tasks. This allows the user to see what other tasks are in the deck and they can be edited, completed or deleted from here as well but when the user clicks out of spread mode the deck is returned to its default stacked placing. Users can also change the color of the cards to their chosen color using the picker at the bottom. All tasks and color choices won't be saved unless the user is logged in.
 
 ## Key design aspects
 
