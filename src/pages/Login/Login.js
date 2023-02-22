@@ -93,7 +93,7 @@ const Login = () => {
       <p>
         Don't have an account yet?{' '}
         <Link
-          to="#/sign-up"
+          to="/sign-up"
           className="underline"
         >
           Sign up

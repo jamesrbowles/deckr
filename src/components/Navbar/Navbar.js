@@ -30,7 +30,7 @@ const Navbar = () => {
     <ClickAwayListener onClickAway={handleClickAway}>
       <nav className="fixed top-0 flex justify-between w-full z-10 transition all">
         <div className="w-full flex justify-between items-center">
-          <Link to="#/deckr">
+          <Link to="/">
             <img
               src={logo}
               alt="logo"
@@ -42,7 +42,7 @@ const Navbar = () => {
               <>
                 {!user && (
                   <Link
-                    to="#/login"
+                    to="/login"
                     className="mr-3 fancy word text-lg font-opensans"
                   >
                     Login
@@ -51,7 +51,7 @@ const Navbar = () => {
 
                 {!user && (
                   <Link
-                    to="#/sign-up"
+                    to="/sign-up"
                     className="mr-3 fancy word text-lg font-opensans"
                   >
                     Get Started
@@ -79,7 +79,7 @@ const Navbar = () => {
             <div className="flex flex-col">
               <li>
                 <Link
-                  to="#/deckr"
+                  to="/"
                   className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                   onClick={() => setIsMenuToggled(!isMenuToggled)}
                 >
@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="#/about"
+                  to="/about"
                   className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                   onClick={() => setIsMenuToggled(!isMenuToggled)}
                 >
@@ -97,7 +97,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="#/contact"
+                  to="/contact"
                   className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                   onClick={() => setIsMenuToggled(!isMenuToggled)}
                 >
@@ -109,7 +109,7 @@ const Navbar = () => {
               {user && (
                 <li>
                   <Link
-                    to="#/account"
+                    to="/account"
                     className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                     onClick={() => setIsMenuToggled(!isMenuToggled)}
                   >
@@ -127,7 +127,7 @@ const Navbar = () => {
                   </div>
                 ) : (
                   <Link
-                    to="#/login"
+                    to="/login"
                     className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                     onClick={() => setIsMenuToggled(!isMenuToggled)}
                   >
@@ -138,7 +138,7 @@ const Navbar = () => {
               {!user && (
                 <li>
                   <Link
-                    to="#/sign-up"
+                    to="/sign-up"
                     className="fancy word text-lg py-4 block hover:bg-white hover:bg-opacity-20 font-opensans"
                     onClick={() => setIsMenuToggled(!isMenuToggled)}
                   >
