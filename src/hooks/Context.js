@@ -114,7 +114,6 @@ const CardProvider = ({ children }) => {
     } */
     setTaskIndex(newIndex - 2);
   };
-  console.log(tasks.length);
 
   // takes user out of spread mode if only one task left
   useEffect(() => {

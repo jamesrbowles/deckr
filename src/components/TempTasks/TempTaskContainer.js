@@ -1,6 +1,5 @@
-import TaskCard from '../TaskCard/TaskCard';
-import TempTaskCard from '../TempTasks/TempTasks';
-import './TaskContainer.css';
+import TempTaskCard from './TempTasks';
+import '../TaskContainer/TaskContainer.css';
 
 import { IoAddCircleOutline } from 'react-icons/io5';
 import '../icons.css';
@@ -11,22 +10,13 @@ import { useTempCardContext } from '../../hooks/TempContext';
 const TaskContainer = ({}) => {
   const { tasks, taskSpread, addTaskBtnPosition, displayForm } =
     useCardContext();
-  const { tempTasks, tempTaskSpread } = useTempCardContext();
+  const { tempTasks } = useTempCardContext();
   return (
     <div
       className={
-        taskSpread || tempTaskSpread
-          ? 'task-container task-container-spread'
-          : 'task-container'
+        taskSpread ? 'task-container task-container-spread' : 'task-container'
       }
     >
-      {tasks.map((task, index) => (
-        <TaskCard
-          task={task}
-          key={task.id}
-          index={index}
-        />
-      ))}
       {tempTasks.map((task, index) => (
         <TempTaskCard
           task={task}

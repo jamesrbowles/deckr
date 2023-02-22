@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react';
 import { BsSuitSpadeFill } from 'react-icons/bs';
 
-/* import '../TaskCard/TaskCard.css'; */
-import './TempTasks.css';
+import '../TaskCard/TaskCard.css';
 
 import TempTaskBtns from './TempTasksBtns';
 //custom hooks
@@ -22,7 +21,6 @@ const TempTaskCard = ({ index, task }) => {
 
   //Functionality for selecting different cards in spread
   const findIndex = (e) => {
-    console.log(tempTaskIndex);
     const newIndex = e.currentTarget.id;
     if (tempTaskSpread) {
       setTempTaskIndex(newIndex);
@@ -39,7 +37,7 @@ const TempTaskCard = ({ index, task }) => {
   };
 
   //Getting the card suit value on the correct cards
-  /*   const cardValue = (indexTest) => {
+  const cardValue = (indexTest) => {
     if (tempTasks[tempTasks.length - 1].id == tempTasks[indexTest].id) {
       return 'A';
     } else if (tempTasks[tempTasks.length - 2].id == tempTasks[indexTest].id) {
@@ -67,7 +65,7 @@ const TempTaskCard = ({ index, task }) => {
     } else if (tempTasks[tempTasks.length - 13].id == tempTasks[indexTest].id) {
       return '2';
     }
-  }; */
+  };
 
   //styling for random stagger when not spread
   const translateX =
@@ -105,7 +103,7 @@ const TempTaskCard = ({ index, task }) => {
               tempTaskSpread ? 'card-suit-value-spread' : 'card-suit-value'
             }
           >
-            {/*         {cardValue(index)} */}
+            {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
             className={
@@ -124,7 +122,7 @@ const TempTaskCard = ({ index, task }) => {
               tempTaskSpread ? 'card-suit-value-spread' : 'card-suit-value'
             }
           >
-            {/*     {cardValue(index)} */}
+            {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
             className={

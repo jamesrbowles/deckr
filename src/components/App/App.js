@@ -54,6 +54,7 @@ function App() {
               >
                 {loading && <h1>Loading</h1>}
                 <TaskContainer />
+
                 {/*   <div className="added-plus2"></div> */}
               </div>
               {!showForm && !isEditing && <ColorSwitcher />}
