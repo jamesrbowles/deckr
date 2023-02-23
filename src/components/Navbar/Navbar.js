@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
 
         {isMenuToggled && (
-          <ul className="navbar-open">
+          <ul className="navbar-open flex">
             <div className="flex flex-col">
               <li>
                 <Link
@@ -104,6 +104,13 @@ const Navbar = () => {
                   Contact
                 </Link>
               </li>
+            </div>
+            <div className="flex justify-center -z-10 ">
+              <img
+                src={logo}
+                alt="logo"
+                className="h-20 saturate-0 opacity-30 nav-logo-side"
+              />
             </div>
             <div className="flex flex-col">
               {user && (
