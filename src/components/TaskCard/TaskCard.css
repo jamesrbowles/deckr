@@ -2,7 +2,8 @@
   background-color: hsl(var(--hue), 50%, 50%);
   border-radius: 1vmin;
   position: absolute;
-  aspect-ratio: 5 / 7;
+  /*  aspect-ratio: 5 / 7; */
+  height: 35vmin;
   width: 25vmin;
   margin: 0 auto;
   transition: all 800ms cubic-bezier(0.09, 0.72, 0.33, 0.84);
@@ -16,6 +17,7 @@
 
 @media screen and (max-width: 500px) {
   .task-card {
+    height: 51.8vmin;
     width: 37.5vmin;
   }
 }
@@ -25,7 +27,8 @@
 .task-card-container-copy {
   border-radius: 1vmin;
   position: absolute;
-  aspect-ratio: 5 / 7;
+  /*   aspect-ratio: 5 / 7; */
+  height: 35vmin;
   width: 25vmin;
   margin: 0 auto;
   padding-top: 1em;
@@ -34,6 +37,7 @@
 
 @media screen and (max-width: 500px) {
   .task-card-container-copy {
+    height: 51.8vmin;
     width: 37.5vmin;
   }
 }
@@ -145,12 +149,14 @@
 /* Task spread size and position styling */
 
 .task-card-size-spread {
+  height: 21vmin;
   width: 15.25vmin;
   top: -40%;
 }
 
 @media screen and (max-width: 500px) {
   .task-card-size-spread {
+    height: 26.6vmin;
     width: 19vmin;
     top: -72%;
     left: -14%;

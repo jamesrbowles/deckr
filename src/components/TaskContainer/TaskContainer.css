@@ -1,5 +1,6 @@
 .task-container {
-  aspect-ratio: 5 / 7;
+  /*  aspect-ratio: 5 / 7; */
+  height: 35vmin;
   width: 25vmin;
   position: relative;
   margin-top: 2em;
@@ -11,16 +12,19 @@
 
 @media screen and (max-width: 500px) {
   .task-container {
+    height: 51.8vmin;
     width: 37.5vmin;
   }
 }
 
 .task-container-spread {
+  height: 21vmin !important;
   width: 15vmin !important;
 }
 
 @media screen and (max-width: 500px) {
   .task-container-spread {
+    height: 30.8vmin;
     width: 22.5vmin;
   }
 }

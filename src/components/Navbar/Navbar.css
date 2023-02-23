@@ -2,13 +2,12 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 2em;
-  padding-top: 50px;
   width: 17%;
   right: 0;
   bottom: 0;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #202020;
 }
 
