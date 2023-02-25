@@ -17,6 +17,9 @@ const TempTaskCard = ({ index, task }) => {
     setTempTaskIndex,
     tempTaskIndex,
     setTempTaskChangeStyle,
+    handleSort,
+    dragTempTask,
+    dragOverTempTask,
   } = useTempCardContext();
 
   //Functionality for selecting different cards in spread
@@ -96,6 +99,11 @@ const TempTaskCard = ({ index, task }) => {
         style={stagger.current}
         id={index}
         onClick={findIndex}
+        draggable
+        onDragStart={(e) => (dragTempTask.current = index)}
+        onDragEnter={(e) => (dragOverTempTask.current = index)}
+        onDragEnd={handleSort}
+        onDragOver={(e) => e.preventDefault()}
       >
         <div className="card-suit-top">
           <h3

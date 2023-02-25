@@ -10,6 +10,7 @@ import { useCardContext } from '../../hooks/Context';
 const TaskCard = ({ index, task }) => {
   const {
     tasks,
+    setTasks,
     showTaskBtns,
     setShowTaskBtns,
     taskSpread,
@@ -78,6 +79,30 @@ const TaskCard = ({ index, task }) => {
     transform: `translateX(${translateX}%) translateY(${translateY}%) rotate(${rotate}deg)`,
   });
 
+  //save reference for dragItem and dragOverItem
+  const dragItem = useRef(null);
+  const dragOverItem = useRef(null);
+
+  //const handle drag sorting
+  const handleSort = () => {
+    //duplicate items
+    let _tasks = [...tasks];
+
+    //remove and save the dragged item content
+    const draggedItemContent = _tasks.splice(dragItem.current, 1)[0];
+
+    //switch the position
+    _tasks.splice(dragOverItem.current, 0, draggedItemContent);
+
+    //reset the position ref
+    dragItem.current = null;
+    dragOverItem.current = null;
+
+    //update the actual array
+    setTasks(_tasks);
+    console.log(tasks);
+  };
+
   return (
     <div className="each-card">
       <div
@@ -95,6 +120,11 @@ const TaskCard = ({ index, task }) => {
         style={stagger.current}
         id={index}
         onClick={findIndex}
+        draggable
+        onDragStart={(e) => (dragItem.current = index)}
+        onDragEnter={(e) => (dragOverItem.current = index)}
+        onDragEnd={handleSort}
+        onDragOver={(e) => e.preventDefault()}
       >
         <div className="card-suit-top">
           <h3
@@ -134,7 +164,6 @@ const TaskCard = ({ index, task }) => {
           />
         </div>
       </div>
-
       <div
         className={
           taskSpread

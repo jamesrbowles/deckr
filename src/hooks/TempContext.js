@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext, useRef } from 'react';
 
 const TempCardContext = createContext();
 
@@ -90,6 +90,31 @@ const TempCardProvider = ({ children }) => {
     }
   };
 
+  //Drag and drop functionality
+
+  //save reference for dragTempTask and dragOverTempTask
+  const dragTempTask = useRef(null);
+  const dragOverTempTask = useRef(null);
+
+  //const handle drag sorting
+  const handleSort = () => {
+    //duplicate items
+    let _tempTasks = [...tempTasks];
+
+    //remove and save the dragged item content
+    const draggedTaskContent = _tempTasks.splice(dragTempTask.current, 1)[0];
+
+    //switch the position
+    _tempTasks.splice(dragOverTempTask.current, 0, draggedTaskContent);
+
+    //reset the position ref
+    dragTempTask.current = null;
+    dragOverTempTask.current = null;
+
+    //update the actual array
+    setTempTasks(_tempTasks);
+  };
+
   return (
     <TempCardContext.Provider
       value={{
@@ -120,6 +145,9 @@ const TempCardProvider = ({ children }) => {
         setIsMenuToggled,
         tempTasks,
         setTempTasks,
+        handleSort,
+        dragTempTask,
+        dragOverTempTask,
       }}
     >
       {children}
