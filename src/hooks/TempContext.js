@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect, useContext, useRef } from 'react';
+import { createContext, useState, useEffect, useContext, useRef } from "react";
 
 const TempCardContext = createContext();
 
 const TempCardProvider = ({ children }) => {
   const [tempTasks, setTempTasks] = useState([]);
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState("");
   const [tempTaskSpread, setTempTaskSpread] = useState(false);
   const [showTempTaskBtns, setShowTempTaskBtns] = useState(false);
   const [tempTaskIndex, setTempTaskIndex] = useState(0);
@@ -97,22 +97,24 @@ const TempCardProvider = ({ children }) => {
   const dragOverTempTask = useRef(null);
 
   //const handle drag sorting
-  const handleSort = () => {
-    //duplicate items
-    let _tempTasks = [...tempTasks];
+  const handleTempSort = () => {
+    if (tempTaskSpread) {
+      //duplicate items
+      let _tempTasks = [...tempTasks];
 
-    //remove and save the dragged item content
-    const draggedTaskContent = _tempTasks.splice(dragTempTask.current, 1)[0];
+      //remove and save the dragged item content
+      const draggedTaskContent = _tempTasks.splice(dragTempTask.current, 1)[0];
 
-    //switch the position
-    _tempTasks.splice(dragOverTempTask.current, 0, draggedTaskContent);
+      //switch the position
+      _tempTasks.splice(dragOverTempTask.current, 0, draggedTaskContent);
 
-    //reset the position ref
-    dragTempTask.current = null;
-    dragOverTempTask.current = null;
+      //reset the position ref
+      dragTempTask.current = null;
+      dragOverTempTask.current = null;
 
-    //update the actual array
-    setTempTasks(_tempTasks);
+      //update the actual array
+      setTempTasks(_tempTasks);
+    }
   };
 
   return (
@@ -145,7 +147,7 @@ const TempCardProvider = ({ children }) => {
         setIsMenuToggled,
         tempTasks,
         setTempTasks,
-        handleSort,
+        handleTempSort,
         dragTempTask,
         dragOverTempTask,
       }}
