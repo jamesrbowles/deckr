@@ -170,29 +170,31 @@ const CardProvider = ({ children }) => {
 
   //const handle drag sorting
   const handleSort = async () => {
-    //duplicate items
-    let _tasks = [...tasks];
+    if (taskSpread) {
+      //duplicate items
+      let _tasks = [...tasks];
 
-    //remove and save the dragged item content
-    const draggedTaskContent = _tasks.splice(dragTask.current, 1)[0];
+      //remove and save the dragged item content
+      const draggedTaskContent = _tasks.splice(dragTask.current, 1)[0];
 
-    //switch the position
-    _tasks.splice(dragOverTask.current, 0, draggedTaskContent);
+      //switch the position
+      _tasks.splice(dragOverTask.current, 0, draggedTaskContent);
 
-    //reset the position ref
-    dragTask.current = null;
-    dragOverTask.current = null;
+      //reset the position ref
+      dragTask.current = null;
+      dragOverTask.current = null;
 
-    // update database with new order
-    const batch = writeBatch(db);
-    _tasks.forEach((task, index) => {
-      const taskRef = doc(db, "tasks", task.id);
-      batch.update(taskRef, { order: index });
-    });
-    await batch.commit();
+      // update database with new order
+      const batch = writeBatch(db);
+      _tasks.forEach((task, index) => {
+        const taskRef = doc(db, "tasks", task.id);
+        batch.update(taskRef, { order: index });
+      });
+      await batch.commit();
 
-    //update the actual array
-    /*     setTasks(_tasks); */
+      //update the actual array
+      /*     setTasks(_tasks); */
+    }
   };
 
   return (
