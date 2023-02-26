@@ -17,7 +17,7 @@ import {
 
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { useTempCardContext } from "./TempContext";
-console.log(db);
+
 const CardContext = createContext();
 
 const CardProvider = ({ children }) => {
