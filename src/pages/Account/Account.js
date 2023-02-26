@@ -1,18 +1,18 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useUserContext } from '../../hooks/AuthContext';
-import { useCardContext } from '../../hooks/Context';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../hooks/AuthContext";
+import { useCardContext } from "../../hooks/Context";
 
 const Account = () => {
-  const { setTasks } = useCardContext();
+  const { setTasks, tasks } = useCardContext();
   const { user, logout } = useUserContext();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/');
-      console.log('You are logged out');
+      navigate("/");
+      console.log("You are logged out");
       setTasks([]);
     } catch (err) {
       console.log(err.message);
@@ -28,6 +28,8 @@ const Account = () => {
       </header>
 
       <p className="mb-5">User Email: {user && user.email}</p>
+      <p className="mb-5">Total number of tasks open: {user && tasks.length}</p>
+
       <button
         onClick={handleLogout}
         className="bg-gray-600 border border-gray-600 hover:bg-opacity-50 rounded-md w-full py-3 text-lg"
