@@ -12,10 +12,12 @@ import {
   orderBy,
   serverTimestamp,
   where,
+  writeBatch,
 } from "firebase/firestore";
+
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { useTempCardContext } from "./TempContext";
-
+console.log(db);
 const CardContext = createContext();
 
 const CardProvider = ({ children }) => {
@@ -42,7 +44,8 @@ const CardProvider = ({ children }) => {
         // If the user is logged in, run the query for their tasks
         const q = query(
           tasksCollectionRef,
-          orderBy("timestamp", "asc"),
+          orderBy("order", "asc"),
+          /*   orderBy("timestamp", "asc"), */
           where("userId", "==", user.uid)
         );
         const unsubscribeTasks = onSnapshot(q, (querySnapshot) => {
@@ -94,7 +97,9 @@ const CardProvider = ({ children }) => {
         name: task.name,
         description: task.description,
         completed: task.completed,
-        timestamp: serverTimestamp(),
+        id: task.id,
+        order: tasks.length,
+        /* timestamp: serverTimestamp(), */
         userId: auth?.currentUser?.uid,
       });
     } catch (err) {
@@ -109,9 +114,6 @@ const CardProvider = ({ children }) => {
     let newIndex = tasks.length;
     await deleteDoc(doc(db, "tasks", id));
 
-    /*     if (taskIndex === tasks.length - 1) {
-      setTaskIndex(0);
-    } */
     setTaskIndex(newIndex - 2);
   };
 
@@ -128,7 +130,8 @@ const CardProvider = ({ children }) => {
   const completeTask = async (task) => {
     await updateDoc(doc(db, "tasks", task.id), {
       completed: !task.completed,
-      timestamp: serverTimestamp() * serverTimestamp(),
+      order: serverTimestamp() * serverTimestamp(),
+      /*  timestamp: serverTimestamp() * serverTimestamp(), */
     });
   };
 
@@ -166,7 +169,7 @@ const CardProvider = ({ children }) => {
   const dragOverTask = useRef(null);
 
   //const handle drag sorting
-  const handleSort = () => {
+  const handleSort = async () => {
     //duplicate items
     let _tasks = [...tasks];
 
@@ -180,8 +183,16 @@ const CardProvider = ({ children }) => {
     dragTask.current = null;
     dragOverTask.current = null;
 
+    // update database with new order
+    const batch = writeBatch(db);
+    _tasks.forEach((task, index) => {
+      const taskRef = doc(db, "tasks", task.id);
+      batch.update(taskRef, { order: index });
+    });
+    await batch.commit();
+
     //update the actual array
-    setTasks(_tasks);
+    /*     setTasks(_tasks); */
   };
 
   return (
