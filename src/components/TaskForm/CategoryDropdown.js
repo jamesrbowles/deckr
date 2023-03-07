@@ -1,8 +1,14 @@
 import "./TaskForm.css";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
-import categories from "../Categories/categories";
+/* import categories from "../Categories/categories"; */
 
-const CategoryDropdown = ({ open, setOpen, trigger, handleSetCategory }) => {
+const CategoryDropdown = ({
+  open,
+  setOpen,
+  trigger,
+  handleSetCategory,
+  categories,
+}) => {
   const handleClickDropAway = () => {
     setOpen(false);
   };
@@ -15,10 +21,14 @@ const CategoryDropdown = ({ open, setOpen, trigger, handleSetCategory }) => {
             {categories.map((menuItem, index) => (
               <li
                 key={index}
-                style={{ backgroundColor: menuItem.color }}
-                onClick={() => handleSetCategory(menuItem.title)}
+                onClick={() => handleSetCategory(menuItem)}
+                className="bg-white flex items-center"
               >
-                {menuItem.title}
+                <div
+                  className="py-2 px-2 rounded-sm mx-3"
+                  style={{ backgroundColor: menuItem.color }}
+                />
+                <span className="py-1 flex">{menuItem.title}</span>
               </li>
             ))}
           </ul>

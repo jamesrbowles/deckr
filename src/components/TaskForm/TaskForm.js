@@ -8,11 +8,22 @@ import CategoryDropdown from "./CategoryDropdown";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const TaskForm = ({}) => {
-  const { addTask, setaddTaskBtn, closeForm, user } = useCardContext();
+  const {
+    addTask,
+    setaddTaskBtn,
+    closeForm,
+    user,
+    open,
+    setOpen,
+    handleOpen,
+    categories,
+    setCategories,
+    category,
+    setCategory,
+  } = useCardContext();
   const { addTempTask } = useTempCardContext();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [category, setCategory] = useState("Home");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +32,7 @@ const TaskForm = ({}) => {
         id: uuidv4(),
         name: name,
         description: desc,
-        category: category,
+        category: category.title,
         completed: false,
       });
     } else {
@@ -29,7 +40,7 @@ const TaskForm = ({}) => {
         id: uuidv4(),
         name: name,
         description: desc,
-        category: category,
+        category: category.title,
         completed: false,
       });
     }
@@ -55,18 +66,6 @@ const TaskForm = ({}) => {
 
   const handleClickAway = () => {
     closeForm();
-  };
-
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
-  const handleSetCategory = (category) => {
-    setCategory(category);
-
-    setOpen(false);
   };
 
   return (
@@ -102,14 +101,16 @@ const TaskForm = ({}) => {
                     type="button"
                     onClick={handleOpen}
                     className="dropdown-btn"
+                    style={{ backgroundColor: category.color }}
                   >
                     <IoIosArrowDropdownCircle className="dropdown-icon" />
                   </button>
                 }
+                categories={categories}
                 handleSetCategory={handleSetCategory}
               />
             </div>
-            <p>{category}</p>
+
             {/* <label htmlFor="desc" className="form-labels">
             Description
           </label> */}

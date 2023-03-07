@@ -77,6 +77,34 @@ const CardProvider = ({ children }) => {
     setShowForm(false);
   };
 
+  /*   Category section of form */
+  const [category, setCategory] = useState({
+    title: "Home",
+    color: "#3f75f2",
+  });
+  const handleSetCategory = (category) => {
+    setCategory(category);
+
+    setOpen(false);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const [categories, setCategories] = useState([
+    {
+      title: "Home",
+      color: "#3f75f2",
+    },
+    {
+      title: "Work",
+      color: "#32a852",
+    },
+  ]);
+
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
@@ -96,6 +124,7 @@ const CardProvider = ({ children }) => {
       await addDoc(collection(db, "tasks"), {
         name: task.name,
         description: task.description,
+        category: task.category,
         completed: task.completed,
         id: task.id,
         order: tasks.length,
@@ -239,6 +268,14 @@ const CardProvider = ({ children }) => {
         dragTask,
         dragOverTask,
         handleSort,
+        open,
+        setOpen,
+        handleOpen,
+        categories,
+        setCategories,
+        category,
+        setCategory,
+        handleSetCategory,
       }}
     >
       {children}

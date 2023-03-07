@@ -1,35 +1,36 @@
-import { IoAddCircleOutline } from 'react-icons/io5';
+import { IoAddCircleOutline } from "react-icons/io5";
 
 //Routes
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
 // custom hooks
-import { useCardContext } from '../../hooks/Context';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import { useCardContext } from "../../hooks/Context";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 // CSS
-import './App.css';
-import '../TaskForm/TaskForm.css';
-import '../icons.css';
+import "./App.css";
+import "../TaskForm/TaskForm.css";
+import "../icons.css";
 
 // components
-import Header from '../Header/Header';
-import TaskForm from '../TaskForm/TaskForm';
-import TaskContainer from '../TaskContainer/TaskContainer';
-import DateSelect from '../DateSelect/DateSelect';
-import EditForm from '../TaskForm/EditForm';
-import ColorSwitcher from '../ColorSwitcher/ColorSwitcher';
-import About from '../../pages/About/About';
-import Contact from '../../pages/Contact/Contact';
-import Navbar from '../Navbar/Navbar';
-import Login from '../../pages/Login/Login';
-import Signup from '../../pages/Signup/Signup';
-import Account from '../../pages/Account/Account';
-import ProtectedRoute from '../../pages/ProtectedRoute/ProtectedRoute';
+import Header from "../Header/Header";
+import TaskForm from "../TaskForm/TaskForm";
+import TaskContainer from "../TaskContainer/TaskContainer";
+import DateSelect from "../DateSelect/DateSelect";
+import EditForm from "../TaskForm/EditForm";
+import ColorSwitcher from "../ColorSwitcher/ColorSwitcher";
+import About from "../../pages/About/About";
+import Contact from "../../pages/Contact/Contact";
+import Navbar from "../Navbar/Navbar";
+import Login from "../../pages/Login/Login";
+import Signup from "../../pages/Signup/Signup";
+import Account from "../../pages/Account/Account";
+import ProtectedRoute from "../../pages/ProtectedRoute/ProtectedRoute";
+import CategoryHeading from "../CategoryHeading/CategoryHeading";
 
 function App() {
   const { showForm, isEditing, isMenuToggled, loading } = useCardContext();
-  const isAboveSmallScreens = useMediaQuery('(min-width: 650px)');
+  const isAboveSmallScreens = useMediaQuery("(min-width: 650px)");
 
   return (
     <>
@@ -39,17 +40,18 @@ function App() {
           path="/"
           element={
             <>
-              <div className={showForm || isEditing ? 'background-blur' : ''}>
+              <div className={showForm || isEditing ? "background-blur" : ""}>
                 <Header />
-                <DateSelect />
+                <CategoryHeading />
+                {/* <DateSelect /> */}
               </div>
               {showForm && <TaskForm />}
               {isEditing && <EditForm />}
               <div
                 className={
                   showForm || isEditing
-                    ? 'container-position background-blur'
-                    : 'container-position'
+                    ? "container-position background-blur"
+                    : "container-position"
                 }
               >
                 {loading && <h1>Loading</h1>}
@@ -61,22 +63,10 @@ function App() {
           }
         />
 
-        <Route
-          path="/about"
-          element={<About />}
-        />
-        <Route
-          path="/contact"
-          element={<Contact />}
-        />
-        <Route
-          path="/login"
-          element={<Login />}
-        />
-        <Route
-          path="/sign-up"
-          element={<Signup />}
-        />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Signup />} />
         <Route
           path="/account"
           element={
