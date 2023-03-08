@@ -79,7 +79,7 @@
 
 @media screen and (min-width: 1060px) {
   .task-text-name {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -99,26 +99,19 @@
 
 @media screen and (min-width: 1200px) {
   .task-text-name-spread {
-    font-size: 1.2rem;
-    margin: 0.5em 0.7em;
+    margin: 0.3em 0.4em;
   }
 }
 
 /* description sizes */
 .task-text-desc {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding-top: 3px;
 }
 
 @media screen and (min-width: 768px) {
   .task-text-desc {
     font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 1060px) {
-  .task-text-desc {
-    font-size: 1.2rem;
   }
 }
 
@@ -135,7 +128,6 @@
 
 @media screen and (min-width: 1200px) {
   .task-text-desc-spread {
-    font-size: 1rem;
     margin: 0.3em;
   }
 }
