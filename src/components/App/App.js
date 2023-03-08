@@ -1,11 +1,10 @@
-import { IoAddCircleOutline } from 'react-icons/io5';
+/* import { IoAddCircleOutline } from 'react-icons/io5'; */
 
 //Routes
 import { Route, Routes } from 'react-router-dom';
 
 // custom hooks
 import { useCardContext } from '../../hooks/Context';
-import useMediaQuery from '../../hooks/useMediaQuery';
 
 // CSS
 import './App.css';
@@ -28,8 +27,7 @@ import Account from '../../pages/Account/Account';
 import ProtectedRoute from '../../pages/ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const { showForm, isEditing, isMenuToggled, loading } = useCardContext();
-  const isAboveSmallScreens = useMediaQuery('(min-width: 650px)');
+  const { showForm, isEditing, loading } = useCardContext();
 
   return (
     <>

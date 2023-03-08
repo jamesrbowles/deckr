@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, useContext, useRef } from "react";
-import useLocalStorage from "./useLocalStorage";
-import { db, auth } from "../firebase";
+import { createContext, useState, useEffect, useContext, useRef } from 'react';
+
+import { db, auth } from '../firebase';
 import {
   query,
   collection,
@@ -13,16 +13,16 @@ import {
   serverTimestamp,
   where,
   writeBatch,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
-import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { useTempCardContext } from "./TempContext";
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { useTempCardContext } from './TempContext';
 
 const CardContext = createContext();
 
 const CardProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState('');
   const [taskSpread, setTaskSpread] = useState(false);
   const [showTaskBtns, setShowTaskBtns] = useState(false);
   const [taskIndex, setTaskIndex] = useState(0);
@@ -36,7 +36,7 @@ const CardProvider = ({ children }) => {
   /* database fetching */
   useEffect(() => {
     const auth = getAuth();
-    const tasksCollectionRef = collection(db, "tasks");
+    const tasksCollectionRef = collection(db, 'tasks');
 
     // Set up a listener to get the current user's ID
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
@@ -44,9 +44,9 @@ const CardProvider = ({ children }) => {
         // If the user is logged in, run the query for their tasks
         const q = query(
           tasksCollectionRef,
-          orderBy("order", "asc"),
+          orderBy('order', 'asc'),
           /*   orderBy("timestamp", "asc"), */
-          where("userId", "==", user.uid)
+          where('userId', '==', user.uid)
         );
         const unsubscribeTasks = onSnapshot(q, (querySnapshot) => {
           let tasksArr = [];
@@ -81,11 +81,11 @@ const CardProvider = ({ children }) => {
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
     if (tasks.length === 0 && tempTasks.length === 0) {
-      return "plus default-plus";
+      return 'plus default-plus';
     } else if (taskSpread || tempTaskSpread) {
-      return "plus default-plus spread-plus";
+      return 'plus default-plus spread-plus';
     } else {
-      return "plus default-plus added-plus";
+      return 'plus default-plus added-plus';
     }
   };
 
@@ -93,7 +93,7 @@ const CardProvider = ({ children }) => {
 
   const addTask = async (task) => {
     try {
-      await addDoc(collection(db, "tasks"), {
+      await addDoc(collection(db, 'tasks'), {
         name: task.name,
         description: task.description,
         completed: task.completed,
@@ -112,7 +112,7 @@ const CardProvider = ({ children }) => {
 
   const deleteTask = async (id) => {
     let newIndex = tasks.length;
-    await deleteDoc(doc(db, "tasks", id));
+    await deleteDoc(doc(db, 'tasks', id));
 
     setTaskIndex(newIndex - 2);
   };
@@ -128,7 +128,7 @@ const CardProvider = ({ children }) => {
 
   const [completed, setCompleted] = useState(false);
   const completeTask = async (task) => {
-    await updateDoc(doc(db, "tasks", task.id), {
+    await updateDoc(doc(db, 'tasks', task.id), {
       completed: !task.completed,
       order: serverTimestamp() * serverTimestamp(),
       /*  timestamp: serverTimestamp() * serverTimestamp(), */
@@ -139,7 +139,7 @@ const CardProvider = ({ children }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const updateTask = async (task) => {
-    await updateDoc(doc(db, "tasks", task.id), {
+    await updateDoc(doc(db, 'tasks', task.id), {
       name: task.name,
       description: task.description,
     });
@@ -187,7 +187,7 @@ const CardProvider = ({ children }) => {
       // update database with new order
       const batch = writeBatch(db);
       _tasks.forEach((task, index) => {
-        const taskRef = doc(db, "tasks", task.id);
+        const taskRef = doc(db, 'tasks', task.id);
         batch.update(taskRef, { order: index });
       });
       await batch.commit();

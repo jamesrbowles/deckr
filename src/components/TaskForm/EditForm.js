@@ -4,7 +4,7 @@ import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
 
-const EditForm = ({}) => {
+const EditForm = () => {
   const { editedTask, closeEditMode, updateTask } = useCardContext();
   const { updateTempTask, closeTempEditMode } = useTempCardContext();
   const [updatedName, setUpdatedName] = useState(editedTask.name);

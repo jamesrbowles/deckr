@@ -5,7 +5,7 @@ import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
 
-const TaskForm = ({}) => {
+const TaskForm = () => {
   const { addTask, setaddTaskBtn, closeForm, user } = useCardContext();
   const { addTempTask } = useTempCardContext();
   const [name, setName] = useState('');

@@ -18,7 +18,7 @@ const Login = () => {
       await login(email, password);
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 
@@ -27,7 +27,7 @@ const Login = () => {
       await googleSignIn();
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 
@@ -35,7 +35,7 @@ const Login = () => {
     if (user != null) {
       navigate('/');
     }
-  }, [user]);
+  });
 
   return (
     <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">

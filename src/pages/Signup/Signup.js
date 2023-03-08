@@ -18,7 +18,7 @@ const Signup = () => {
       /*       navigate('/account'); */
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 
@@ -28,7 +28,7 @@ const Signup = () => {
       /*      navigate('/account'); */
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 
@@ -36,7 +36,7 @@ const Signup = () => {
     if (user != null) {
       navigate('/');
     }
-  }, [user]);
+  });
 
   return (
     <div className="flex flex-col justify-center w-6/12 max-w-lg  mx-auto">

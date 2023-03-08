@@ -6,11 +6,10 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
+  /* signInWithRedirect, */
 } from 'firebase/auth';
 
 import { auth } from '../firebase';
-import { useCardContext } from './Context';
 
 const UserContext = createContext();
 
