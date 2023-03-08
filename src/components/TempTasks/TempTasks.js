@@ -1,12 +1,11 @@
-import { useRef, useState } from "react";
-import { BsSuitSpadeFill } from "react-icons/bs";
+import { useRef } from 'react';
+import { BsSuitSpadeFill } from 'react-icons/bs';
 
-import "../TaskCard/TaskCard.css";
+import '../TaskCard/TaskCard.css';
 
-import TempTaskBtns from "./TempTasksBtns";
+import TempTaskBtns from './TempTasksBtns';
 //custom hooks
-import { useCardContext } from "../../hooks/Context";
-import { useTempCardContext } from "../../hooks/TempContext";
+import { useTempCardContext } from '../../hooks/TempContext';
 
 const TempTaskCard = ({ index, task }) => {
   const {
@@ -41,32 +40,40 @@ const TempTaskCard = ({ index, task }) => {
 
   //Getting the card suit value on the correct cards
   const cardValue = (indexTest) => {
-    if (tempTasks[tempTasks.length - 1].id == tempTasks[indexTest].id) {
-      return "A";
-    } else if (tempTasks[tempTasks.length - 2].id == tempTasks[indexTest].id) {
-      return "K";
-    } else if (tempTasks[tempTasks.length - 3].id == tempTasks[indexTest].id) {
-      return "Q";
-    } else if (tempTasks[tempTasks.length - 4].id == tempTasks[indexTest].id) {
-      return "J";
-    } else if (tempTasks[tempTasks.length - 5].id == tempTasks[indexTest].id) {
-      return "10";
-    } else if (tempTasks[tempTasks.length - 6].id == tempTasks[indexTest].id) {
-      return "9";
-    } else if (tempTasks[tempTasks.length - 7].id == tempTasks[indexTest].id) {
-      return "8";
-    } else if (tempTasks[tempTasks.length - 8].id == tempTasks[indexTest].id) {
-      return "7";
-    } else if (tempTasks[tempTasks.length - 9].id == tempTasks[indexTest].id) {
-      return "6";
-    } else if (tempTasks[tempTasks.length - 10].id == tempTasks[indexTest].id) {
-      return "5";
-    } else if (tempTasks[tempTasks.length - 11].id == tempTasks[indexTest].id) {
-      return "4";
-    } else if (tempTasks[tempTasks.length - 12].id == tempTasks[indexTest].id) {
-      return "3";
-    } else if (tempTasks[tempTasks.length - 13].id == tempTasks[indexTest].id) {
-      return "2";
+    if (tempTasks[tempTasks.length - 1].id === tempTasks[indexTest].id) {
+      return 'A';
+    } else if (tempTasks[tempTasks.length - 2].id === tempTasks[indexTest].id) {
+      return 'K';
+    } else if (tempTasks[tempTasks.length - 3].id === tempTasks[indexTest].id) {
+      return 'Q';
+    } else if (tempTasks[tempTasks.length - 4].id === tempTasks[indexTest].id) {
+      return 'J';
+    } else if (tempTasks[tempTasks.length - 5].id === tempTasks[indexTest].id) {
+      return '10';
+    } else if (tempTasks[tempTasks.length - 6].id === tempTasks[indexTest].id) {
+      return '9';
+    } else if (tempTasks[tempTasks.length - 7].id === tempTasks[indexTest].id) {
+      return '8';
+    } else if (tempTasks[tempTasks.length - 8].id === tempTasks[indexTest].id) {
+      return '7';
+    } else if (tempTasks[tempTasks.length - 9].id === tempTasks[indexTest].id) {
+      return '6';
+    } else if (
+      tempTasks[tempTasks.length - 10].id === tempTasks[indexTest].id
+    ) {
+      return '5';
+    } else if (
+      tempTasks[tempTasks.length - 11].id === tempTasks[indexTest].id
+    ) {
+      return '4';
+    } else if (
+      tempTasks[tempTasks.length - 12].id === tempTasks[indexTest].id
+    ) {
+      return '3';
+    } else if (
+      tempTasks[tempTasks.length - 13].id === tempTasks[indexTest].id
+    ) {
+      return '2';
     }
   };
 
@@ -87,14 +94,14 @@ const TempTaskCard = ({ index, task }) => {
       <div
         className={
           tempTaskSpread && task.completed
-            ? "spread-task task-card task-card-size-spread completed"
+            ? 'spread-task task-card task-card-size-spread completed'
             : tempTaskSpread && tempTasks[tempTaskIndex]?.id === task.id
-            ? "spread-task task-card task-card-size-spread selected"
+            ? 'spread-task task-card task-card-size-spread selected'
             : tempTaskSpread
-            ? "spread-task task-card task-card-size-spread"
+            ? 'spread-task task-card task-card-size-spread'
             : task.completed
-            ? "task-card completed"
-            : "task-card"
+            ? 'task-card completed'
+            : 'task-card'
         }
         style={stagger.current}
         id={index}
@@ -108,28 +115,28 @@ const TempTaskCard = ({ index, task }) => {
         <div className="card-suit-top">
           <h3
             className={
-              tempTaskSpread ? "card-suit-value-spread" : "card-suit-value"
+              tempTaskSpread ? 'card-suit-value-spread' : 'card-suit-value'
             }
           >
             {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
             className={
-              tempTaskSpread ? "card-suit-icon-spread" : "card-suit-icon"
+              tempTaskSpread ? 'card-suit-icon-spread' : 'card-suit-icon'
             }
           />
         </div>
-        <div className={tempTaskSpread ? "task-text-spread" : "task-text"}>
+        <div className={tempTaskSpread ? 'task-text-spread' : 'task-text'}>
           <h1
             className={
-              tempTaskSpread ? "task-text-name-spread" : "task-text-name"
+              tempTaskSpread ? 'task-text-name-spread' : 'task-text-name'
             }
           >
             {task.name}
           </h1>
           <p
             className={
-              tempTaskSpread ? "task-text-desc-spread" : "task-text-desc"
+              tempTaskSpread ? 'task-text-desc-spread' : 'task-text-desc'
             }
           >
             {task.description}
@@ -139,14 +146,14 @@ const TempTaskCard = ({ index, task }) => {
         <div className="card-suit-bottom">
           <h3
             className={
-              tempTaskSpread ? "card-suit-value-spread" : "card-suit-value"
+              tempTaskSpread ? 'card-suit-value-spread' : 'card-suit-value'
             }
           >
             {cardValue(index)}
           </h3>
           <BsSuitSpadeFill
             className={
-              tempTaskSpread ? "card-suit-icon-spread" : "card-suit-icon"
+              tempTaskSpread ? 'card-suit-icon-spread' : 'card-suit-icon'
             }
           />
         </div>
@@ -155,8 +162,8 @@ const TempTaskCard = ({ index, task }) => {
       <div
         className={
           tempTaskSpread
-            ? "task-card-container-copy task-card-size-spread"
-            : "task-card-container-copy"
+            ? 'task-card-container-copy task-card-size-spread'
+            : 'task-card-container-copy'
         }
         style={!tempTaskSpread ? stagger.current : {}}
       >

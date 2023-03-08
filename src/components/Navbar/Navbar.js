@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Spin as Hamburger } from 'hamburger-react';
 import './Navbar.css';

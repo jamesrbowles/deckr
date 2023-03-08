@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect, useContext, useRef } from "react";
+import { createContext, useState, useContext, useRef } from 'react';
 
 const TempCardContext = createContext();
 
 const TempCardProvider = ({ children }) => {
   const [tempTasks, setTempTasks] = useState([]);
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState('');
   const [tempTaskSpread, setTempTaskSpread] = useState(false);
   const [showTempTaskBtns, setShowTempTaskBtns] = useState(false);
   const [tempTaskIndex, setTempTaskIndex] = useState(0);
@@ -20,22 +20,26 @@ const TempCardProvider = ({ children }) => {
   };
 
   const deleteTempTask = (id) => {
-    const updatedTasks = [...tempTasks].filter((task) => task.id != id);
+    const updatedTasks = [...tempTasks].filter((task) => task.id !== id);
 
     setTempTasks(updatedTasks);
-    if (tempTasks.length == 1) {
+    if (tempTasks.length === 1) {
       setTempTaskIndex(0);
     } else {
       setTempTaskIndex(tempTasks.length - 2);
     }
+
+    if (tempTasks.length < 3) {
+      setTempTaskSpread(false);
+    }
   };
 
   // takes user out of spread mode if only one task left
-  useEffect(() => {
+  /*   useEffect(() => {
     if (tempTasks.length < 2) {
       setTempTaskSpread(false);
     }
-  });
+  }); */
 
   const [completed, setCompleted] = useState(false);
   const completeTempTask = (id) => {

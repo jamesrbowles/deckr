@@ -8,7 +8,7 @@ import '../icons.css';
 import { useCardContext } from '../../hooks/Context';
 import { useTempCardContext } from '../../hooks/TempContext';
 
-const TaskContainer = ({}) => {
+const TaskContainer = () => {
   const { tasks, taskSpread, addTaskBtnPosition, displayForm } =
     useCardContext();
   const { tempTasks, tempTaskSpread } = useTempCardContext();

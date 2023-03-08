@@ -1,6 +1,6 @@
-import { useCardContext } from "../../hooks/Context";
-import { IoIosArrowDown } from "react-icons/io";
-import CategoryDropdown from "../TaskForm/CategoryDropdown";
+import { useCardContext } from '../../hooks/Context';
+import { IoIosArrowDown } from 'react-icons/io';
+import CategoryHeadDropdown from './CategoryHeadDropdown';
 
 const CategoryHeading = () => {
   const { categories, open, setOpen, handleOpen, handleSetCategory } =
@@ -9,7 +9,7 @@ const CategoryHeading = () => {
     <div className="flex justify-center items-center gap-2">
       <h2 className="text-lg sm:text-xl">{categories[0].title}</h2>
 
-      <CategoryDropdown
+      <CategoryHeadDropdown
         open={open}
         setOpen={setOpen}
         trigger={

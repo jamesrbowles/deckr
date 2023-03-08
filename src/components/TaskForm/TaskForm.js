@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
-import CategoryDropdown from './CategoryDropdown';
+import CategoryFormDropdown from './CategoryFormDropdown';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 
-const TaskForm = ({}) => {
+const TaskForm = () => {
   const {
     addTask,
     setaddTaskBtn,
@@ -94,7 +94,7 @@ const TaskForm = ({}) => {
                 autoFocus
               />
 
-              <CategoryDropdown
+              <CategoryFormDropdown
                 trigger={
                   <button
                     type="button"

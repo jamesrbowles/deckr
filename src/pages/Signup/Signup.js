@@ -18,7 +18,7 @@ const Signup = () => {
       /*       navigate('/account'); */
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 
@@ -28,7 +28,7 @@ const Signup = () => {
       /*      navigate('/account'); */
     } catch (err) {
       setError(err.message);
-      console.log(err.message);
+      console.log(error);
     }
   };
 

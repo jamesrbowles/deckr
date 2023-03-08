@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 const Contact = () => {
   const [nameValue, setNameValue] = useState(false);
@@ -8,12 +8,15 @@ const Contact = () => {
 
   const handleNameValue = (e) => {
     setNameValue(e.target.value);
+    console.log(nameValue);
   };
   const handleEmailValue = (e) => {
     setEmailValue(e.target.value);
+    console.log(emailValue);
   };
   const handleMessageValue = (e) => {
     setMessageValue(e.target.value);
+    console.log(messageValue);
   };
 
   const {
@@ -41,7 +44,10 @@ const Contact = () => {
         method="POST"
       >
         <div className="input-group text-sm">
-          <label className="input-group__label" htmlFor="nameInput">
+          <label
+            className="input-group__label"
+            htmlFor="nameInput"
+          >
             Name
           </label>
           <input
@@ -50,22 +56,25 @@ const Contact = () => {
             className="mb-5 input-group__input font-opensans"
             type="text"
             placeholder="Enter your name..."
-            {...register("name", {
+            {...register('name', {
               required: true,
               maxLength: 100,
             })}
           />
           {errors.name && (
             <p className="text-red mt-1 mb-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "maxLength" &&
-                "Max length is 100 characters."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'maxLength' &&
+                'Max length is 100 characters.'}
             </p>
           )}
         </div>
 
         <div className="input-group text-sm">
-          <label className="input-group__label" htmlFor="emailInput">
+          <label
+            className="input-group__label"
+            htmlFor="emailInput"
+          >
             Email
           </label>
           <input
@@ -74,21 +83,24 @@ const Contact = () => {
             className="mb-5 input-group__input font-opensans"
             placeholder="Enter your email..."
             type="text"
-            {...register("email", {
+            {...register('email', {
               required: true,
               pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
             })}
           />
           {errors.email && (
             <p className="text-red mt-1 mb-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "pattern" && "Invalid email address."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'pattern' && 'Invalid email address.'}
             </p>
           )}
         </div>
 
         <div className="input-group text-sm">
-          <label className="input-group__label" htmlFor="messageInput">
+          <label
+            className="input-group__label"
+            htmlFor="messageInput"
+          >
             Message
           </label>
           <textarea
@@ -99,16 +111,16 @@ const Contact = () => {
             type="text"
             rows="4"
             cols="50"
-            {...register("message", {
+            {...register('message', {
               required: true,
               maxLength: 2000,
             })}
           />
           {errors.message && (
             <p className="text-red mt-1 mb-1">
-              {errors.name.type === "required" && "This field is required."}
-              {errors.name.type === "maxLength" &&
-                "Max length is 2000 characters."}
+              {errors.name.type === 'required' && 'This field is required.'}
+              {errors.name.type === 'maxLength' &&
+                'Max length is 2000 characters.'}
             </p>
           )}
         </div>
