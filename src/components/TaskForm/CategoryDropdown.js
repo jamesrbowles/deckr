@@ -1,19 +1,16 @@
-import "./TaskForm.css";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
+import './TaskForm.css';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 /* import categories from "../Categories/categories"; */
+import { useCardContext } from '../../hooks/Context';
 
-const CategoryDropdown = ({
-  open,
-  setOpen,
-  trigger,
-  handleSetCategory,
-  categories,
-}) => {
-  const handleClickDropAway = () => {
+const CategoryDropdown = ({ trigger }) => {
+  const { open, setOpen, handleSetCategory, categories } = useCardContext();
+  /*   const handleClickDropAway = () => {
     setOpen(false);
-  };
+  }; */
+  console.log(open);
   return (
-    <ClickAwayListener onClickAway={handleClickDropAway}>
+    <ClickAwayListener /* onClickAway={handleClickDropAway} */>
       <div className="dropdown">
         {trigger}
         {open ? (
