@@ -2,6 +2,8 @@
   /*  aspect-ratio: 5 / 7; */
   height: 35vmin;
   width: 25vmin;
+  max-height: 392px;
+  max-width: 280px;
   position: relative;
   margin-top: 2em;
   /* top: 50%; */
@@ -10,21 +12,23 @@
   transform: translate(-50%, -50%); */
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .task-container {
     height: 51.8vmin;
     width: 37.5vmin;
   }
-}
+} */
 
 .task-container-spread {
   height: 21vmin !important;
   width: 15vmin !important;
+  max-height: 234.73px !important;
+  max-width: 167.67px !important;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .task-container-spread {
     height: 30.8vmin;
     width: 22.5vmin;
   }
-}
+} */
