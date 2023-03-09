@@ -1,30 +1,17 @@
-import './TaskForm.css';
-import { v4 as uuidv4 } from 'uuid';
-import { useState, useEffect } from 'react';
-import { useCardContext } from '../../hooks/Context';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
-import { useTempCardContext } from '../../hooks/TempContext';
-import CategoryFormDropdown from './CategoryFormDropdown';
-import { IoIosArrowDropdownCircle } from 'react-icons/io';
+import "./TaskForm.css";
+import { v4 as uuidv4 } from "uuid";
+import { useState, useEffect } from "react";
+import { useCardContext } from "../../hooks/Context";
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+import { useTempCardContext } from "../../hooks/TempContext";
+import CategoryFormDropdown from "./CategoryFormDropdown";
 
 const TaskForm = () => {
-  const {
-    addTask,
-    setaddTaskBtn,
-    closeForm,
-    user,
-    open,
-    setOpen,
-    handleOpen,
-    categories,
-    setCategories,
-    category,
-    setCategory,
-    handleSetCategory,
-  } = useCardContext();
+  const { addTask, setaddTaskBtn, closeForm, user, category } =
+    useCardContext();
   const { addTempTask } = useTempCardContext();
-  const [name, setName] = useState('');
-  const [desc, setDesc] = useState('');
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,8 +33,8 @@ const TaskForm = () => {
       });
     }
 
-    setName('');
-    setDesc('');
+    setName("");
+    setDesc("");
     closeForm();
     setaddTaskBtn(true);
   };
@@ -55,13 +42,13 @@ const TaskForm = () => {
   /*   Ability to close form with escape key */
   useEffect(() => {
     const closeModalIfEscaped = (e) => {
-      e.key === 'Escape' && closeForm();
+      e.key === "Escape" && closeForm();
     };
 
-    window.addEventListener('keydown', closeModalIfEscaped);
+    window.addEventListener("keydown", closeModalIfEscaped);
 
     return () => {
-      window.removeEventListener('keydown', closeModalIfEscaped);
+      window.removeEventListener("keydown", closeModalIfEscaped);
     };
   }, [closeForm]);
 
@@ -94,18 +81,7 @@ const TaskForm = () => {
                 autoFocus
               />
 
-              <CategoryFormDropdown
-                trigger={
-                  <button
-                    type="button"
-                    onClick={handleOpen}
-                    className="dropdown-btn"
-                    style={{ backgroundColor: category.color }}
-                  >
-                    <IoIosArrowDropdownCircle className="dropdown-icon" />
-                  </button>
-                }
-              />
+              <CategoryFormDropdown />
             </div>
 
             {/* <label htmlFor="desc" className="form-labels">
@@ -118,10 +94,7 @@ const TaskForm = () => {
               onInput={(e) => setDesc(e.target.value)}
               rows="8"
             ></textarea>
-            <button
-              type="submit"
-              className="add-task-btn"
-            >
+            <button type="submit" className="add-task-btn">
               Submit
             </button>
           </form>
