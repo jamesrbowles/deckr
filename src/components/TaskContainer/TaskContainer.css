@@ -2,6 +2,8 @@
   /*  aspect-ratio: 5 / 7; */
   height: 35vmin;
   width: 25vmin;
+  min-height: 210px;
+  min-width: 150px;
   max-height: 392px;
   max-width: 280px;
   position: relative;
@@ -22,6 +24,8 @@
 .task-container-spread {
   height: 21vmin !important;
   width: 15vmin !important;
+  min-height: 125.75px !important;
+  min-width: 89.82px !important;
   max-height: 234.73px !important;
   max-width: 167.67px !important;
 }
