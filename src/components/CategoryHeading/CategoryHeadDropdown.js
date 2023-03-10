@@ -1,9 +1,9 @@
-import ClickAwayListener from '@mui/base/ClickAwayListener';
-import { useCardContext } from '../../hooks/Context';
-import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { FaChevronDown } from 'react-icons/fa';
-import { FaChevronUp } from 'react-icons/fa';
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+import { useCardContext } from "../../hooks/Context";
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 const CategoryHeadDropdown = ({ trigger }) => {
   const {
@@ -22,10 +22,7 @@ const CategoryHeadDropdown = ({ trigger }) => {
 
   return (
     <ClickAwayListener onClickAway={handleClickDropAway}>
-      <Menu
-        as="div"
-        className="relative inline-block text-left z-50"
-      >
+      <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button
             className="rounded-md w-[34px] h-[34px] flex justify-center items-center transition-all"
@@ -49,7 +46,7 @@ const CategoryHeadDropdown = ({ trigger }) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute flex flex-col right-0 mt-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute flex flex-col right-0 mt-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  z-50">
             {categories.map((menuItem, index) => (
               <Menu.Item
                 key={index}
@@ -60,7 +57,7 @@ const CategoryHeadDropdown = ({ trigger }) => {
                 {({ active }) => (
                   <div
                     className={`${
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-900"
                     } group flex w-full items-center rounded-md mr-4 py-2 text-sm cursor-pointer`}
                   >
                     <div

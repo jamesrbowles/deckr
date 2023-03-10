@@ -5,10 +5,17 @@ import { useCardContext } from "../../hooks/Context";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import { useTempCardContext } from "../../hooks/TempContext";
 import CategoryFormDropdown from "./CategoryFormDropdown";
+import { useUserContext } from "../../hooks/AuthContext";
 
 const TaskForm = () => {
-  const { addTask, setaddTaskBtn, closeForm, user, category } =
-    useCardContext();
+  const {
+    addTask,
+    setaddTaskBtn,
+    closeForm,
+    user,
+    formCategory,
+    setHeadCategory,
+  } = useCardContext();
   const { addTempTask } = useTempCardContext();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -20,7 +27,6 @@ const TaskForm = () => {
         id: uuidv4(),
         name: name,
         description: desc,
-        category: category.title,
         completed: false,
       });
     } else {
@@ -28,7 +34,7 @@ const TaskForm = () => {
         id: uuidv4(),
         name: name,
         description: desc,
-        category: category.title,
+        category: formCategory.title,
         completed: false,
       });
     }
@@ -37,6 +43,7 @@ const TaskForm = () => {
     setDesc("");
     closeForm();
     setaddTaskBtn(true);
+    setHeadCategory(formCategory);
   };
 
   /*   Ability to close form with escape key */
@@ -80,8 +87,7 @@ const TaskForm = () => {
                 required
                 autoFocus
               />
-
-              <CategoryFormDropdown />
+              {user && <CategoryFormDropdown />}
             </div>
 
             {/* <label htmlFor="desc" className="form-labels">

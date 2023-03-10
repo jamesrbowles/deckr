@@ -29,6 +29,16 @@ const CardProvider = ({ children }) => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const [loading, setLoading] = useState(true);
   const { tempTasks, tempTaskSpread } = useTempCardContext();
+  const [headCatOpen, setHeadCatOpen] = useState(false);
+  const [formCatOpen, setFormCatOpen] = useState(false);
+  const [headCategory, setHeadCategory] = useState({
+    title: "Home",
+    color: "#3f75f2",
+  });
+  const [formCategory, setFormCategory] = useState({
+    title: "Home",
+    color: "#3f75f2",
+  });
 
   const user = auth.currentUser;
 
@@ -45,7 +55,8 @@ const CardProvider = ({ children }) => {
           tasksCollectionRef,
           orderBy("order", "asc"),
           /*   orderBy("timestamp", "asc"), */
-          where("userId", "==", user.uid)
+          where("userId", "==", user.uid),
+          where("category", "==", headCategory.title)
         );
         const unsubscribeTasks = onSnapshot(q, (querySnapshot) => {
           let tasksArr = [];
@@ -62,7 +73,7 @@ const CardProvider = ({ children }) => {
     });
 
     return () => unsubscribeAuth();
-  }, []);
+  }, [headCategory]);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -77,16 +88,6 @@ const CardProvider = ({ children }) => {
   };
 
   /*   Category section of form */
-  const [headCatOpen, setHeadCatOpen] = useState(false);
-  const [formCatOpen, setFormCatOpen] = useState(false);
-  const [headCategory, setHeadCategory] = useState({
-    title: "Home",
-    color: "#3f75f2",
-  });
-  const [formCategory, setFormCategory] = useState({
-    title: "Home",
-    color: "#3f75f2",
-  });
 
   const handleSetHeadCategory = (category) => {
     setHeadCategory(category);

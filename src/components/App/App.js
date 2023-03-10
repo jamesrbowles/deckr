@@ -29,7 +29,7 @@ import ProtectedRoute from "../../pages/ProtectedRoute/ProtectedRoute";
 import CategoryHeading from "../CategoryHeading/CategoryHeading";
 
 function App() {
-  const { showForm, isEditing, loading } = useCardContext();
+  const { showForm, isEditing, loading, user } = useCardContext();
 
   return (
     <>
@@ -41,7 +41,8 @@ function App() {
             <>
               <div className={showForm || isEditing ? "background-blur" : ""}>
                 <Header />
-                <CategoryHeading />
+                {user && <CategoryHeading />}
+
                 {/* <DateSelect /> */}
               </div>
               {showForm && <TaskForm />}

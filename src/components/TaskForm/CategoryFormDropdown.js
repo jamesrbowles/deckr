@@ -49,7 +49,7 @@ const CategoryFormDropdown = ({ trigger }) => {
             {categories.map((menuItem, index) => (
               <Menu.Item
                 key={index}
-                as="button"
+                as="a"
                 onClick={() => handleFormSetCategory(menuItem)}
                 className=""
               >
