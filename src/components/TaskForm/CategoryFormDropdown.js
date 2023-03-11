@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
 import { useCardContext } from "../../hooks/Context";
 import { Menu, Transition } from "@headlessui/react";
@@ -15,21 +16,19 @@ const CategoryFormDropdown = ({ trigger }) => {
     handleFormCatOpen,
     addCategory,
   } = useCardContext();
-  /*     const [categoryTitle, setCategoryTitle] = useState("");
-    const [categoryColor, setCategoryColor] = useState(""); */
+  const [showAddCategory, setShowAddCategory] = useState(false);
+  const [categoryTitle, setCategoryTitle] = useState("");
+  /*   const [categoryColor, setCategoryColor] = useState(""); */
 
   const handleClickDropAway = () => {
     setFormCatOpen(false);
+    setShowAddCategory(false);
   };
 
-  /*   handleAddCategory({
-    id: uuidv4(),
-    name: name,
-    description: desc,
-    category: formCategory.title,
-    completed: false,
-  });
- */
+  const handleAddCategory = () => {
+    setShowAddCategory(true);
+  };
+  console.log(categoryTitle);
   return (
     <ClickAwayListener onClickAway={handleClickDropAway}>
       <Menu as="div" className="relative inline-block text-left">
@@ -78,12 +77,29 @@ const CategoryFormDropdown = ({ trigger }) => {
                 )}
               </Menu.Item>
             ))}
-            <div
-              className="hover:bg-gray-100  flex w-full items-center rounded-md justify-center py-2 text-sm cursor-pointer"
-              /* onClick={handleAddCategory} */
-            >
-              Add new...
-            </div>
+            {!showAddCategory ? (
+              <div
+                className="hover:bg-gray-100  flex w-full items-center rounded-md justify-center py-2 text-sm cursor-pointer"
+                onClick={handleAddCategory}
+              >
+                Add new...
+              </div>
+            ) : (
+              <div className="flex w-full items-center rounded-md mr-4 py-2 text-sm ">
+                <div
+                  className="py-2 px-2 rounded-sm mx-3"
+                  style={{ backgroundColor: "black" }}
+                />
+                <input
+                  className="rounded-md py-2 text-sm"
+                  type="text"
+                  /*   value={name} */
+                  placeholder="Category"
+                  onInput={(e) => setCategoryTitle(e.target.value)}
+                  autoFocus
+                />
+              </div>
+            )}
           </Menu.Items>
         </Transition>
       </Menu>
