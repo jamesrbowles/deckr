@@ -120,6 +120,18 @@ const CardProvider = ({ children }) => {
     },
   ]);
 
+  /*   const addCategory = async (category) => {
+    try {
+      await addDoc(collection(db, "categories"), {
+        categoryTitle: category.title,
+        categoryColor: category.color,
+        order: tasks.length,
+        userId: auth?.currentUser?.uid,
+      });
+    } catch (err) {
+      console.error(err);
+    } */
+
   /*   Add task button positioning */
   const [addTaskBtn, setaddTaskBtn] = useState(false);
   const addTaskBtnPosition = () => {
@@ -297,6 +309,7 @@ const CardProvider = ({ children }) => {
         formCategory,
         setFormCategory,
         setHeadCategory,
+        /*         addCategory, */
       }}
     >
       {children}

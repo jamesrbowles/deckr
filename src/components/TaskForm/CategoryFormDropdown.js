@@ -13,12 +13,23 @@ const CategoryFormDropdown = ({ trigger }) => {
     categories,
     formCategory,
     handleFormCatOpen,
+    addCategory,
   } = useCardContext();
+  /*     const [categoryTitle, setCategoryTitle] = useState("");
+    const [categoryColor, setCategoryColor] = useState(""); */
 
   const handleClickDropAway = () => {
     setFormCatOpen(false);
   };
 
+  /*   handleAddCategory({
+    id: uuidv4(),
+    name: name,
+    description: desc,
+    category: formCategory.title,
+    completed: false,
+  });
+ */
   return (
     <ClickAwayListener onClickAway={handleClickDropAway}>
       <Menu as="div" className="relative inline-block text-left">
@@ -51,7 +62,6 @@ const CategoryFormDropdown = ({ trigger }) => {
                 key={index}
                 as="a"
                 onClick={() => handleFormSetCategory(menuItem)}
-                className=""
               >
                 {({ active }) => (
                   <div
@@ -68,6 +78,12 @@ const CategoryFormDropdown = ({ trigger }) => {
                 )}
               </Menu.Item>
             ))}
+            <div
+              className="hover:bg-gray-100  flex w-full items-center rounded-md justify-center py-2 text-sm cursor-pointer"
+              /* onClick={handleAddCategory} */
+            >
+              Add new...
+            </div>
           </Menu.Items>
         </Transition>
       </Menu>
