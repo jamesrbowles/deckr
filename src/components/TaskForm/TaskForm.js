@@ -34,7 +34,7 @@ const TaskForm = () => {
         id: uuidv4(),
         name: name,
         description: desc,
-        category: formCategory.title,
+        category: formCategory.name,
         completed: false,
       });
     }

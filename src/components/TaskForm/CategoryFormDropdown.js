@@ -5,6 +5,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { FaChevronUp } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 
 const CategoryFormDropdown = ({ trigger }) => {
   const {
@@ -15,9 +16,12 @@ const CategoryFormDropdown = ({ trigger }) => {
     formCategory,
     handleFormCatOpen,
     addCategory,
+    deleteCategory,
+    defaultCategories,
+    setCategories,
   } = useCardContext();
   const [showAddCategory, setShowAddCategory] = useState(false);
-  const [categoryTitle, setCategoryTitle] = useState("");
+  const [categoryName, setCategoryName] = useState("");
   /*   const [categoryColor, setCategoryColor] = useState(""); */
 
   const handleClickDropAway = () => {
@@ -25,10 +29,27 @@ const CategoryFormDropdown = ({ trigger }) => {
     setShowAddCategory(false);
   };
 
-  const handleAddCategory = () => {
+  const handleInitiateAddCategory = () => {
     setShowAddCategory(true);
   };
-  console.log(categoryTitle);
+
+  const handleAddCategory = (e) => {
+    e.preventDefault();
+    const newCategory = {
+      name: categoryName,
+      color: "#000",
+      id: uuidv4(),
+    };
+    // Check if category already exists
+    const categoryExists = categories.some(
+      (category) => category.name === categoryName
+    );
+    if (!categoryExists) {
+      setCategories((prevCategories) => [...prevCategories, newCategory]);
+      addCategory(newCategory);
+    }
+  };
+
   return (
     <ClickAwayListener onClickAway={handleClickDropAway}>
       <Menu as="div" className="relative inline-block text-left">
@@ -63,27 +84,35 @@ const CategoryFormDropdown = ({ trigger }) => {
                 onClick={() => handleFormSetCategory(menuItem)}
               >
                 {({ active }) => (
-                  <div
-                    className={`${
-                      active ? "bg-gray-100 " : "text-gray-900"
-                    } group flex w-full items-center rounded-md mr-4 py-2 text-sm cursor-pointer`}
-                  >
+                  <div className="flex justify-between items-center">
                     <div
-                      className="py-2 px-2 rounded-sm mx-3"
-                      style={{ backgroundColor: menuItem.color }}
-                    />
-                    {menuItem.title}
+                      className={`${
+                        active ? "bg-gray-100 " : "text-gray-900"
+                      } group flex w-full items-center rounded-md mr-4 py-2 text-sm cursor-pointer`}
+                    >
+                      <div
+                        className="py-2 px-2 rounded-sm mx-3"
+                        style={{ backgroundColor: menuItem.color }}
+                      />
+                      {menuItem.name}
+                    </div>
+                    <button
+                      className="cursor-pointer"
+                      onClick={() => deleteCategory(menuItem.id)}
+                    >
+                      x
+                    </button>
                   </div>
                 )}
               </Menu.Item>
             ))}
             {!showAddCategory ? (
-              <div
+              <button
                 className="hover:bg-gray-100  flex w-full items-center rounded-md justify-center py-2 text-sm cursor-pointer"
-                onClick={handleAddCategory}
+                onClick={handleInitiateAddCategory}
               >
                 Add new...
-              </div>
+              </button>
             ) : (
               <div className="flex w-full items-center rounded-md mr-4 py-2 text-sm ">
                 <div
@@ -91,13 +120,16 @@ const CategoryFormDropdown = ({ trigger }) => {
                   style={{ backgroundColor: "black" }}
                 />
                 <input
-                  className="rounded-md py-2 text-sm"
+                  className="rounded-md py-2 text-sm "
                   type="text"
                   /*   value={name} */
                   placeholder="Category"
-                  onInput={(e) => setCategoryTitle(e.target.value)}
+                  onChange={(e) => setCategoryName(e.target.value)}
                   autoFocus
                 />
+                <button className="text-xl" onClick={handleAddCategory}>
+                  +
+                </button>
               </div>
             )}
           </Menu.Items>

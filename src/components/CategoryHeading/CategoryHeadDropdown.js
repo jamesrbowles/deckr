@@ -64,7 +64,7 @@ const CategoryHeadDropdown = ({ trigger }) => {
                       className="py-2 px-2 rounded-sm mx-3"
                       style={{ backgroundColor: menuItem.color }}
                     />
-                    {menuItem.title}
+                    {menuItem.name}
                   </div>
                 )}
               </Menu.Item>
