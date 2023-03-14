@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useCardContext } from '../../hooks/Context';
 import { Menu, Transition } from '@headlessui/react';
@@ -17,9 +17,8 @@ const CategoryFormDropdown = () => {
     handleFormCatOpen,
     addCategory,
     deleteCategory,
-    setCategories,
   } = useCardContext();
-  const categoriesMemo = useMemo(() => categories, [categories]);
+
   const [showAddCategory, setShowAddCategory] = useState(false);
   const [categoryName, setCategoryName] = useState('');
   /*   const [categoryColor, setCategoryColor] = useState(""); */
@@ -33,19 +32,19 @@ const CategoryFormDropdown = () => {
     setShowAddCategory(true);
   };
 
-  const handleAddCategory = (e) => {
+  /*   const handleAddCategory = (e) => {
     e.preventDefault();
     const newCategory = {
       name: categoryName,
       color: '#000',
       id: uuidv4(),
-    };
-    // Check if category already exists
+    }; */
+  // Check if category already exists
 
-    /*     setCategories((prevCategories) => [...prevCategories, newCategory]); */
-    addCategory(newCategory);
+  /*     setCategories((prevCategories) => [...prevCategories, newCategory]); */
+  /*     addCategory(newCategory);
     setCategoryName('');
-  };
+  }; */
 
   return (
     <ClickAwayListener onClickAway={handleClickDropAway}>
@@ -77,36 +76,36 @@ const CategoryFormDropdown = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute flex flex-col right-0 mt-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            {categoriesMemo.map((menuItem, index) => (
+            {categories.map((menuItem, index) => (
               <Menu.Item
                 key={index}
                 as="a"
                 onClick={() => handleFormSetCategory(menuItem)}
               >
                 {({ active }) => (
-                  <div className="flex justify-between items-center">
+                  /*  <div className="flex justify-between items-center"> */
+                  <div
+                    className={`${
+                      active ? 'bg-gray-100 ' : 'text-gray-900'
+                    } group flex w-full items-center rounded-md mr-4 py-2 text-sm cursor-pointer`}
+                  >
                     <div
-                      className={`${
-                        active ? 'bg-gray-100 ' : 'text-gray-900'
-                      } group flex w-full items-center rounded-md mr-4 py-2 text-sm cursor-pointer`}
-                    >
-                      <div
-                        className="py-2 px-2 rounded-sm mx-3"
-                        style={{ backgroundColor: menuItem.color }}
-                      />
-                      {menuItem.name}
-                    </div>
-                    <button
+                      className="py-2 px-2 rounded-sm mx-3"
+                      style={{ backgroundColor: menuItem.color }}
+                    />
+                    {menuItem.name}
+                  </div>
+                  /*             <button
                       className="cursor-pointer"
                       onClick={() => deleteCategory(menuItem.id)}
                     >
                       x
-                    </button>
-                  </div>
+                    </button> 
+                  </div> */
                 )}
               </Menu.Item>
             ))}
-            {!showAddCategory ? (
+            {/*       {!showAddCategory ? (
               <button
                 className="hover:bg-gray-100  flex w-full items-center rounded-md justify-center py-2 text-sm cursor-pointer"
                 onClick={handleInitiateAddCategory}
@@ -136,7 +135,7 @@ const CategoryFormDropdown = () => {
                   +
                 </button>
               </div>
-            )}
+            )} */}
           </Menu.Items>
         </Transition>
       </Menu>

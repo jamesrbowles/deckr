@@ -42,16 +42,6 @@ const CardProvider = ({ children }) => {
     color: '#3f75f2',
   });
   const [categories, setCategories] = useState([]);
-  const [defaultCategories, setDefaultCategories] = useState([
-    {
-      name: 'Home',
-      color: '#3f75f2',
-    },
-    {
-      name: 'Work',
-      color: '#32a852',
-    },
-  ]);
 
   const user = auth.currentUser;
 
@@ -354,7 +344,6 @@ const CardProvider = ({ children }) => {
         setHeadCategory,
         addCategory,
         deleteCategory,
-        defaultCategories,
       }}
     >
       {children}
