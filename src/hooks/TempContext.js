@@ -28,11 +28,18 @@ const TempCardProvider = ({ children }) => {
     } else {
       setTempTaskIndex(tempTasks.length - 2);
     }
-    // takes user out of spread mode if only one task left
+
     if (tempTasks.length < 3) {
       setTempTaskSpread(false);
     }
   };
+
+  // takes user out of spread mode if only one task left
+  /*   useEffect(() => {
+    if (tempTasks.length < 2) {
+      setTempTaskSpread(false);
+    }
+  }); */
 
   const [completed, setCompleted] = useState(false);
   const completeTempTask = (id) => {

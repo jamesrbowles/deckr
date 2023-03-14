@@ -1,4 +1,5 @@
-/* import { IoAddCircleOutline } from 'react-icons/io5'; */
+/* import { IoAddCircleOutline } from "react-icons/io5"; */
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 //Routes
 import { Route, Routes } from 'react-router-dom';
@@ -15,7 +16,7 @@ import '../icons.css';
 import Header from '../Header/Header';
 import TaskForm from '../TaskForm/TaskForm';
 import TaskContainer from '../TaskContainer/TaskContainer';
-import DateSelect from '../DateSelect/DateSelect';
+/* import DateSelect from "../DateSelect/DateSelect"; */
 import EditForm from '../TaskForm/EditForm';
 import ColorSwitcher from '../ColorSwitcher/ColorSwitcher';
 import About from '../../pages/About/About';
@@ -25,9 +26,10 @@ import Login from '../../pages/Login/Login';
 import Signup from '../../pages/Signup/Signup';
 import Account from '../../pages/Account/Account';
 import ProtectedRoute from '../../pages/ProtectedRoute/ProtectedRoute';
+import CategoryHeading from '../CategoryHeading/CategoryHeading';
 
 function App() {
-  const { showForm, isEditing, loading } = useCardContext();
+  const { showForm, isEditing, loading, user } = useCardContext();
 
   return (
     <>
@@ -39,7 +41,9 @@ function App() {
             <>
               <div className={showForm || isEditing ? 'background-blur' : ''}>
                 <Header />
-                <DateSelect />
+                {user && <CategoryHeading />}
+
+                {/* <DateSelect /> */}
               </div>
               {showForm && <TaskForm />}
               {isEditing && <EditForm />}
@@ -50,7 +54,9 @@ function App() {
                     : 'container-position'
                 }
               >
-                {loading && <h1>Loading</h1>}
+                {loading && (
+                  <AiOutlineLoading3Quarters className="animate-spin text-4xl inline-block" />
+                )}
                 <TaskContainer />
                 {/*   <div className="added-plus2"></div> */}
               </div>

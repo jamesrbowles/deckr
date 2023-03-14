@@ -4,9 +4,18 @@ import { useState, useEffect } from 'react';
 import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
+import CategoryFormDropdown from './CategoryFormDropdown';
+import { useUserContext } from '../../hooks/AuthContext';
 
 const TaskForm = () => {
-  const { addTask, setaddTaskBtn, closeForm, user } = useCardContext();
+  const {
+    addTask,
+    setaddTaskBtn,
+    closeForm,
+    user,
+    formCategory,
+    setHeadCategory,
+  } = useCardContext();
   const { addTempTask } = useTempCardContext();
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
@@ -25,6 +34,7 @@ const TaskForm = () => {
         id: uuidv4(),
         name: name,
         description: desc,
+        category: formCategory.name,
         completed: false,
       });
     }
@@ -33,6 +43,7 @@ const TaskForm = () => {
     setDesc('');
     closeForm();
     setaddTaskBtn(true);
+    setHeadCategory(formCategory);
   };
 
   /*   Ability to close form with escape key */
@@ -66,15 +77,18 @@ const TaskForm = () => {
             {/* <label htmlFor="name" className="form-labels">
             Name
           </label> */}
-            <input
-              type="text"
-              className="add-task-input"
-              value={name}
-              placeholder="Task name"
-              onInput={(e) => setName(e.target.value)}
-              required
-              autoFocus
-            />
+            <div className="flex gap-3 justify-center">
+              <input
+                type="text"
+                className="add-task-input"
+                value={name}
+                placeholder="Task name"
+                onInput={(e) => setName(e.target.value)}
+                required
+                autoFocus
+              />
+              {user && <CategoryFormDropdown />}
+            </div>
 
             {/* <label htmlFor="desc" className="form-labels">
             Description

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext, useRef } from 'react';
-
 import { db, auth } from '../firebase';
 import {
   query,
@@ -13,6 +12,8 @@ import {
   serverTimestamp,
   where,
   writeBatch,
+  getDoc,
+  getDocs,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
@@ -30,6 +31,17 @@ const CardProvider = ({ children }) => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const [loading, setLoading] = useState(true);
   const { tempTasks, tempTaskSpread } = useTempCardContext();
+  const [headCatOpen, setHeadCatOpen] = useState(false);
+  const [formCatOpen, setFormCatOpen] = useState(false);
+  const [headCategory, setHeadCategory] = useState({
+    name: 'Home',
+    color: '#3f75f2',
+  });
+  const [formCategory, setFormCategory] = useState({
+    name: 'Home',
+    color: '#3f75f2',
+  });
+  const [categories, setCategories] = useState([]);
 
   const user = auth.currentUser;
 
@@ -37,6 +49,7 @@ const CardProvider = ({ children }) => {
   useEffect(() => {
     const auth = getAuth();
     const tasksCollectionRef = collection(db, 'tasks');
+    const categoriesCollectionRef = collection(db, 'categories');
 
     // Set up a listener to get the current user's ID
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
@@ -46,7 +59,8 @@ const CardProvider = ({ children }) => {
           tasksCollectionRef,
           orderBy('order', 'asc'),
           /*   orderBy("timestamp", "asc"), */
-          where('userId', '==', user.uid)
+          where('userId', '==', user.uid),
+          where('category', '==', headCategory.name)
         );
         const unsubscribeTasks = onSnapshot(q, (querySnapshot) => {
           let tasksArr = [];
@@ -56,14 +70,48 @@ const CardProvider = ({ children }) => {
           setTasks(tasksArr);
           setLoading(false);
         });
-        return () => unsubscribeTasks();
+
+        // Set the default categories
+        const defaultCategories = [
+          {
+            name: 'Home',
+            color: '#3f75f2',
+          },
+          {
+            name: 'Work',
+            color: '#32a852',
+          },
+        ];
+        setCategories(defaultCategories);
+
+        // Fetch only the categories that belong to the current user
+        const categoriesQuery = query(
+          categoriesCollectionRef,
+          orderBy('order', 'asc'),
+          where('userId', '==', user.uid)
+        );
+        // Fetch the remaining categories from Firestore
+        const unsubscribeCategories = onSnapshot(
+          categoriesQuery,
+          (querySnapshot) => {
+            let categoriesArr = defaultCategories;
+            querySnapshot.forEach((doc) => {
+              categoriesArr.push({ ...doc.data(), id: doc.id });
+            });
+            setCategories(categoriesArr);
+          }
+        );
+        return () => {
+          unsubscribeTasks();
+          unsubscribeCategories();
+        };
       } else {
         setLoading(false);
       }
     });
 
     return () => unsubscribeAuth();
-  }, []);
+  }, [headCategory, user]);
 
   /* Add a new task form display and close */
   const [showForm, setShowForm] = useState(false);
@@ -75,6 +123,46 @@ const CardProvider = ({ children }) => {
 
   const closeForm = () => {
     setShowForm(false);
+  };
+
+  /*   Category section of form */
+
+  const handleSetHeadCategory = (category) => {
+    setHeadCategory(category);
+
+    setHeadCatOpen(false);
+  };
+
+  const handleFormSetCategory = (category) => {
+    setFormCategory(category);
+
+    setFormCatOpen(false);
+  };
+
+  const handleHeadCatOpen = () => {
+    setHeadCatOpen(!headCatOpen);
+  };
+
+  const handleFormCatOpen = () => {
+    setFormCatOpen(!formCatOpen);
+  };
+
+  const addCategory = async (category) => {
+    try {
+      await addDoc(collection(db, 'categories'), {
+        name: category.name,
+        color: category.color,
+        order: serverTimestamp(),
+        id: category.id,
+        userId: auth?.currentUser?.uid,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteCategory = async (id) => {
+    await deleteDoc(doc(db, 'categories', id));
   };
 
   /*   Add task button positioning */
@@ -96,6 +184,7 @@ const CardProvider = ({ children }) => {
       await addDoc(collection(db, 'tasks'), {
         name: task.name,
         description: task.description,
+        category: task.category,
         completed: task.completed,
         id: task.id,
         order: tasks.length,
@@ -239,6 +328,22 @@ const CardProvider = ({ children }) => {
         dragTask,
         dragOverTask,
         handleSort,
+        formCatOpen,
+        setFormCatOpen,
+        handleFormCatOpen,
+        categories,
+        setCategories,
+        handleFormSetCategory,
+        handleHeadCatOpen,
+        headCatOpen,
+        setHeadCatOpen,
+        handleSetHeadCategory,
+        headCategory,
+        formCategory,
+        setFormCategory,
+        setHeadCategory,
+        addCategory,
+        deleteCategory,
       }}
     >
       {children}

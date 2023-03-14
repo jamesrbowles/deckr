@@ -5,7 +5,6 @@ import '../TaskCard/TaskCard.css';
 
 import TempTaskBtns from './TempTasksBtns';
 //custom hooks
-
 import { useTempCardContext } from '../../hooks/TempContext';
 
 const TempTaskCard = ({ index, task }) => {
