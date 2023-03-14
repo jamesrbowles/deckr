@@ -12,8 +12,6 @@ import {
   serverTimestamp,
   where,
   writeBatch,
-  getDoc,
-  getDocs,
 } from 'firebase/firestore';
 
 import { onAuthStateChanged, getAuth } from 'firebase/auth';

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+/* import { useState } from 'react'; */
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useCardContext } from '../../hooks/Context';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { FaChevronUp } from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
+/* import { v4 as uuidv4 } from 'uuid'; */
 
 const CategoryFormDropdown = () => {
   const {
@@ -15,22 +15,22 @@ const CategoryFormDropdown = () => {
     categories,
     formCategory,
     handleFormCatOpen,
-    addCategory,
-    deleteCategory,
+    /*     addCategory,
+    deleteCategory, */
   } = useCardContext();
 
-  const [showAddCategory, setShowAddCategory] = useState(false);
-  const [categoryName, setCategoryName] = useState('');
+  /*   const [showAddCategory, setShowAddCategory] = useState(false); */
+  /*   const [categoryName, setCategoryName] = useState(''); */
   /*   const [categoryColor, setCategoryColor] = useState(""); */
 
   const handleClickDropAway = () => {
     setFormCatOpen(false);
-    setShowAddCategory(false);
+    /*  setShowAddCategory(false); */
   };
 
-  const handleInitiateAddCategory = () => {
+  /*   const handleInitiateAddCategory = () => {
     setShowAddCategory(true);
-  };
+  }; */
 
   /*   const handleAddCategory = (e) => {
     e.preventDefault();

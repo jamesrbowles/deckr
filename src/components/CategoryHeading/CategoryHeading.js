@@ -1,6 +1,5 @@
-import { useCardContext } from "../../hooks/Context";
-import { IoIosArrowDown } from "react-icons/io";
-import CategoryHeadDropdown from "./CategoryHeadDropdown";
+import { useCardContext } from '../../hooks/Context';
+import CategoryHeadDropdown from './CategoryHeadDropdown';
 
 const CategoryHeading = () => {
   const { headCategory } = useCardContext();

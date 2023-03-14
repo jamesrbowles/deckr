@@ -5,7 +5,6 @@ import { useCardContext } from '../../hooks/Context';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
 import CategoryFormDropdown from './CategoryFormDropdown';
-import { useUserContext } from '../../hooks/AuthContext';
 
 const TaskForm = () => {
   const {
