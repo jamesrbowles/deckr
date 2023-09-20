@@ -4,7 +4,7 @@ import './Navbar.css';
 import { useCardContext } from '../../hooks/Context';
 import { useUserContext } from '../../hooks/AuthContext';
 import logo from '../../util/nav-logo.png';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 const Navbar = () => {
   const { isMenuToggled, setIsMenuToggled, setTasks } = useCardContext();

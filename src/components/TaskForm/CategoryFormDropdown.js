@@ -1,5 +1,5 @@
 /* import { useState } from 'react'; */
-import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useCardContext } from '../../hooks/Context';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';

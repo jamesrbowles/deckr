@@ -2,7 +2,7 @@ import './TaskForm.css';
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import { useCardContext } from '../../hooks/Context';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
 import CategoryFormDropdown from './CategoryFormDropdown';
 

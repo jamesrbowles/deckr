@@ -1,7 +1,7 @@
 import './TaskForm.css';
 import { useState, useEffect } from 'react';
 import { useCardContext } from '../../hooks/Context';
-import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useTempCardContext } from '../../hooks/TempContext';
 
 const EditForm = () => {
